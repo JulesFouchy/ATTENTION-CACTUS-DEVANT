@@ -10,7 +10,7 @@ On ^peut fusionner des masques
 PNJ qui réagissent différemment en fonction du masque
 
 Début du jeu on a un masque qu'il faut retirer pour accèder au jeu
-Masque écran titre et menu où tu peux modif settings du jeu 
+Masque écran titre et menu où tu peux modif settings du jeu
 Combinaison de masque qui fait apparaitre les crédits de fin
 Chaque masque permet une mécanique/ un truc spécifique, tous ne sont pas associable
 
@@ -20,14 +20,23 @@ A chaque game couleurs et et morceau visage ne désigne pas la même chose / il 
 
 
 
-- se balader
-- récupérer des masques et objets?
-- masque qui rendent accessible certaines zones et objets, qui modifient comportement PNJ, qui modifient le décors
-- Changer de masque / Equiper
-- mixer des masques
-- Menu / écran titre / crédits
+
+* se balader
+* récupérer des masques et objets?
+* masque qui rendent accessible certaines zones et objets, qui modifient comportement PNJ, qui modifient le décors
+* Changer de masque / Equiper
+* mixer des masques
+* Menu / écran titre / crédits
 
 
 
 
+
+
+
+
+
+QUESTION DEV GODOT : 
+
+&#x09;comment il fait pop les "inbuilt fonction" a 0:38??? https://www.youtube.com/watch?v=8cV-5ByZLOE
 

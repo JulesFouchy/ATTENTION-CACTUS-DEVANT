@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://0y3drg66ums2"]
+
+[ext_resource type="Script" uid="uid://ductso18hnvfk" path="res://level.gd" id="1_r2nuk"]
+[ext_resource type="PackedScene" uid="uid://b3o1pigaa7vj6" path="res://obstacle.tscn" id="2_fgjnt"]
+[ext_resource type="PackedScene" uid="uid://cydoeybs5bcuy" path="res://player.tscn" id="3_e68xr"]
+[ext_resource type="PackedScene" uid="uid://dctemd4pgx60h" path="res://gui.tscn" id="4_j5wul"]
+
+[node name="Level" type="Node3D" unique_id=1840064657]
+script = ExtResource("1_r2nuk")
+
+[node name="Obstacle" parent="." unique_id=1354599717 instance=ExtResource("2_fgjnt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4861174, 0, 0)
+
+[node name="Obstacle2" parent="." unique_id=2024468223 instance=ExtResource("2_fgjnt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.0729427, 0, 0)
+
+[node name="Obstacle3" parent="." unique_id=1978731948 instance=ExtResource("2_fgjnt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5536013, 0, 0)
+
+[node name="Player" parent="." unique_id=260235842 instance=ExtResource("3_e68xr")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=80694050]
+visible = false
+
+[node name="Gui" parent="CanvasLayer" unique_id=1184162246 instance=ExtResource("4_j5wul")]
+anchors_preset = -1
+anchor_right = 1.131
+anchor_bottom = 1.3950001
+offset_right = 5726.088
+offset_bottom = 3605.04
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Gui" unique_id=2040878176]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+expand_mode = 1
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Gui/TextureRect" unique_id=1775847196]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
