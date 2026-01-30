@@ -1,20 +1,20 @@
 [gd_scene format=3 uid="uid://b3o1pigaa7vj6"]
 
-[ext_resource type="Script" uid="uid://c2mk7rmf6tdvu" path="res://obstacle.gd" id="1_aubd6"]
-[ext_resource type="Script" uid="uid://d6lgd5ytx28u" path="res://area_3d.gd" id="1_sl1jc"]
+[ext_resource type="Script" uid="uid://c2mk7rmf6tdvu" path="res://Scripts/obstacle.gd" id="1_2p81s"]
+[ext_resource type="Script" uid="uid://d6lgd5ytx28u" path="res://Scripts/area_3d.gd" id="2_rvx1i"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_qcbvg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qcbvg"]
 
 [node name="Obstacle" type="Node3D" unique_id=1354599717]
-script = ExtResource("1_aubd6")
+script = ExtResource("1_2p81s")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1956477167]
 mesh = SubResource("BoxMesh_qcbvg")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1701168608]
-script = ExtResource("1_sl1jc")
+script = ExtResource("2_rvx1i")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=348231817]
 shape = SubResource("BoxShape3D_qcbvg")
