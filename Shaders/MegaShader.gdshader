@@ -8,6 +8,8 @@ uniform sampler2D noise_texture : hint_screen_texture, repeat_enable;
 // --- Activation des effets ---
 uniform bool vhs_enabled = false;
 uniform bool water_enabled = false;
+uniform bool enable_flip_horizontal = false;
+uniform bool enable_flip_vertical = false;
 uniform float global_opacity = 1.;
 
 // --- Paramètres VHS ---
@@ -120,6 +122,16 @@ vec4 apply_opacity(vec4 color) {
 // --- Fragment Shader ---
 void fragment() {
     vec2 uv = UV;
+
+    // Flip vertical
+    if (enable_flip_vertical) {
+        uv.y = 1.0 - uv.y;
+    }
+
+    // Flip horizontal
+    if (enable_flip_horizontal) {
+        uv.x = 1.0 - uv.x;
+    }
 
     // 1. Applique la distorsion d'eau en premier
     if (water_enabled) {
