@@ -1,10 +1,17 @@
 [gd_scene format=3 uid="uid://ckfko6l8ld1gi"]
 
 [ext_resource type="Script" uid="uid://ductso18hnvfk" path="res://Scripts/level.gd" id="1_81xng"]
-[ext_resource type="PackedScene" uid="uid://b3o1pigaa7vj6" path="res://Scenes/obstacle.tscn" id="2_wqkje"]
+[ext_resource type="PackedScene" uid="uid://bf8pn47wr7lf4" path="res://Scenes/obstacle_cube.tscn" id="2_wqkje"]
 [ext_resource type="PackedScene" uid="uid://cydoeybs5bcuy" path="res://Scenes/player.tscn" id="3_0f350"]
-[ext_resource type="PackedScene" uid="uid://bx8ra316hj0ub" path="res://Scenes/obstacle2.tscn" id="3_wqkje"]
+[ext_resource type="PackedScene" uid="uid://ceb0701pf7fv6" path="res://Scenes/obstacle_sphere.tscn" id="3_8c0lf"]
 [ext_resource type="PackedScene" uid="uid://c6bph7tclmmdh" path="res://Scenes/ui_game_over.tscn" id="5_wqkje"]
+
+[sub_resource type="Gradient" id="Gradient_wqkje"]
+offsets = PackedFloat32Array(0.14174455, 0.20404984, 0.24766356, 0.37227413, 0.9423676)
+colors = PackedColorArray(0, 0, 0, 1, 0.47730434, 0.12379829, 0.14989787, 1, 0.37007797, 0.0016060269, 0.79705614, 1, 0.92097193, 0, 0.024697237, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0f350"]
+gradient = SubResource("Gradient_wqkje")
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_wqkje"]
 
@@ -14,10 +21,14 @@ sky_material = SubResource("PhysicalSkyMaterial_wqkje")
 [sub_resource type="Environment" id="Environment_wqkje"]
 background_mode = 2
 sky = SubResource("Sky_wqkje")
+adjustment_enabled = true
+adjustment_color_correction = SubResource("GradientTexture1D_0f350")
+
+[sub_resource type="QuadMesh" id="QuadMesh_8c0lf"]
 
 [node name="Level" type="Node3D" unique_id=1840064657]
 script = ExtResource("1_81xng")
-obstacle_scenes = Array[PackedScene]([ExtResource("2_wqkje"), ExtResource("3_wqkje")])
+obstacle_scenes = Array[PackedScene]([ExtResource("2_wqkje"), ExtResource("3_8c0lf")])
 TimeInSeconds = 0.1
 
 [node name="Player" parent="." unique_id=260235842 instance=ExtResource("3_0f350")]
@@ -36,6 +47,9 @@ wait_time = 5.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Lighting" unique_id=12470069]
 environment = SubResource("Environment_wqkje")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Lighting/WorldEnvironment" unique_id=124962353]
+mesh = SubResource("QuadMesh_8c0lf")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting" unique_id=1096942082]
 transform = Transform3D(0.52459526, 0.8513518, 0, -0.5596576, 0.34485593, 0.7535634, 0.64154756, -0.3953158, 0.6573752, 0, 2.9467344, 0)

@@ -1,23 +1,10 @@
-[gd_scene format=3 uid="uid://b3o1pigaa7vj6"]
+[gd_scene format=3 uid="uid://bx8ra316hj0ub"]
 
-[ext_resource type="Script" uid="uid://c2mk7rmf6tdvu" path="res://Scripts/obstacle.gd" id="1_2p81s"]
-[ext_resource type="Script" uid="uid://d6lgd5ytx28u" path="res://Scripts/area_3d.gd" id="2_rvx1i"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_qcbvg"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_qcbvg"]
+[ext_resource type="Script" uid="uid://c2mk7rmf6tdvu" path="res://Scripts/obstacle.gd" id="1_dhrd1"]
 
 [node name="Obstacle" type="Node3D" unique_id=1354599717]
-script = ExtResource("1_2p81s")
-spawn_probability = 0.5
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1956477167]
-mesh = SubResource("BoxMesh_qcbvg")
+script = ExtResource("1_dhrd1")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1701168608]
-script = ExtResource("2_rvx1i")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=348231817]
-shape = SubResource("BoxShape3D_qcbvg")
 
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
