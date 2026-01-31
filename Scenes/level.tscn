@@ -4,8 +4,16 @@
 [ext_resource type="PackedScene" uid="uid://bf8pn47wr7lf4" path="res://Scenes/obstacle_cube.tscn" id="2_wqkje"]
 [ext_resource type="PackedScene" uid="uid://cydoeybs5bcuy" path="res://Scenes/player.tscn" id="3_0f350"]
 [ext_resource type="PackedScene" uid="uid://ceb0701pf7fv6" path="res://Scenes/obstacle_sphere.tscn" id="3_8c0lf"]
+[ext_resource type="PackedScene" path="res://Scenes/prefabsmasque/bouche_dent.tscn" id="4_754fn"]
 [ext_resource type="PackedScene" uid="uid://0y3drg66ums2" path="res://Scenes/levelUIDEV.tscn" id="5_0f350"]
+[ext_resource type="PackedScene" uid="uid://b3fgdfbej3qtl" path="res://Scenes/prefabsmasque/oeil.tscn" id="5_bvt00"]
+[ext_resource type="PackedScene" uid="uid://bglp0ghphorg8" path="res://Scenes/prefabsmasque/bouche_lipstick.tscn" id="5_crh0w"]
 [ext_resource type="PackedScene" uid="uid://c6bph7tclmmdh" path="res://Scenes/ui_game_over.tscn" id="5_wqkje"]
+[ext_resource type="PackedScene" uid="uid://bll7gn1vvsafq" path="res://Scenes/prefabsmasque/nez.tscn" id="6_c7le1"]
+[ext_resource type="PackedScene" path="res://Scenes/prefabsmasque/nez_qui_coule.tscn" id="7_2klc5"]
+[ext_resource type="PackedScene" path="res://Scenes/prefabsmasque/oeilNoir.tscn" id="9_nngtn"]
+[ext_resource type="PackedScene" uid="uid://bxopsb1s5jt88" path="res://Scenes/prefabsmasque/oreille.tscn" id="10_vofx3"]
+[ext_resource type="PackedScene" path="res://Scenes/prefabsmasque/saignement_de_nez.tscn" id="11_00k4y"]
 
 [sub_resource type="Gradient" id="Gradient_wqkje"]
 offsets = PackedFloat32Array(0.14174455, 0.20404984, 0.24766356, 0.37227413, 0.9423676)
@@ -30,12 +38,14 @@ adjustment_color_correction = SubResource("GradientTexture1D_0f350")
 [node name="Level" type="Node3D" unique_id=1840064657]
 script = ExtResource("1_81xng")
 obstacle_scenes = Array[PackedScene]([ExtResource("2_wqkje"), ExtResource("3_8c0lf")])
+mask_scenes = Array[PackedScene]([ExtResource("4_754fn"), ExtResource("5_crh0w"), ExtResource("6_c7le1"), ExtResource("7_2klc5"), ExtResource("5_bvt00"), ExtResource("9_nngtn"), ExtResource("10_vofx3"), ExtResource("11_00k4y")])
 TimeInSeconds = 0.1
 
 [node name="Player" parent="." unique_id=260235842 instance=ExtResource("3_0f350")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.32577038, 0)
 
 [node name="LevelUIDEV" parent="." unique_id=276772718 instance=ExtResource("5_0f350")]
+script = null
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=80694050]
 
