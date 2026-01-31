@@ -1,5 +1,16 @@
 # ATTENTION-CACTUS-DEVANT
 
+Mécaniques
+
+- Plus on se prends certains obstacles plus la scène devient transparente
+- Certains obstacles permettent de remonter l'opacité de la scène
+- Certains obstacles déclenchent des vues et des glitchs rigolos
+- Certains obstacles sont dangereux d'autres neutre, d'autres ont des effets bénéfiques
+- Certains objets disparaissent ou apparaissent selon le masque
+- Certains objets ou PNJ se transforment selon le masque
+- Un morceau de masque permet de faire apparaître le menu (on aurait u morceau de masque déjà installé en ouvrant le jeu et qu'il faut retirer pour faire disparaître le menu)
+
+
 
 
 Notes random de l'idée:
