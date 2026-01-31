@@ -2,7 +2,8 @@ extends Node3D
 @onready var ui_game_over: Control = %UiGameOver
 
 @export var obstacle_scenes: Array[PackedScene]
-@export var mask_scenes: Array[PackedScene]
+@export var mask_textures: Array[Texture2D]
+const MORCEAU_DE_MASQUE_3D = preload("uid://bwnft7trmnfmw")
 
 @export var x_spawn: float = 50.
 @export var y_spawn: float = 10.
@@ -26,7 +27,8 @@ func spawn(scene_to_spawn) -> void:
 func _on_timer_timeout():
 	var scene_to_spawn
 	if randf() <= pick_mask_scene_probability:
-		scene_to_spawn = (mask_scenes.pick_random()).instantiate()
+		scene_to_spawn = MORCEAU_DE_MASQUE_3D.instantiate()
+		scene_to_spawn.texture = mask_textures.pick_random()
 	else:
 		scene_to_spawn = (obstacle_scenes.pick_random()).instantiate()
 	if movables_count < max_movables && randf() < scene_to_spawn.spawn_probability:

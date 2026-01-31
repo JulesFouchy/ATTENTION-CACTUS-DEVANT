@@ -1,4 +1,5 @@
 extends Node3D
+class_name MorceauMasque3D
 
 @export var iconemasque_scene: PackedScene
 

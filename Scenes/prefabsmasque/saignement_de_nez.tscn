@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://cs6vdwobsyhd1"]
-
-[ext_resource type="PackedScene" uid="uid://bwnft7trmnfmw" path="res://Scenes/prefabsmasque/morceau_de_masque3D.tscn" id="1_7j0d4"]
-[ext_resource type="Texture2D" uid="uid://bqa7g60gnxyfx" path="res://IconesPNG/saignements-de-nez.png" id="2_jnix3"]
-
-[node name="Node3D" unique_id=1633394539 instance=ExtResource("1_7j0d4")]
-
-[node name="Sprite3D" parent="Area3D" parent_id_path=PackedInt32Array(455129916) index="1" unique_id=436402469]
-texture = ExtResource("2_jnix3")
