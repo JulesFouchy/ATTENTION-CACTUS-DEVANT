@@ -8,14 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://0y3drg66ums2" path="res://Scenes/ui_game.tscn" id="5_0f350"]
 [ext_resource type="Texture2D" uid="uid://dgtm8c0nurgbb" path="res://IconesPNG/bouche(1).png" id="5_qxfql"]
 [ext_resource type="PackedScene" uid="uid://c6bph7tclmmdh" path="res://Scenes/ui_game_over.tscn" id="5_wqkje"]
+[ext_resource type="PackedScene" uid="uid://4swj753njvcx" path="res://Scenes/post_process.tscn" id="10_2klc5"]
+[ext_resource type="Script" uid="uid://d27fgfelfybbt" path="res://Scripts/music_player.gd" id="11_2klc5"]
 [ext_resource type="AudioStream" uid="uid://dumuv0fhx2ml7" path="res://AUDIO/ambiancebackground.mp3" id="12_crh0w"]
 [ext_resource type="AudioStream" uid="uid://c2j1vuy63a3xu" path="res://AUDIO/Walking Slowly Sound Effect [1E93HRoKPfg].mp3" id="12_pa6b8"]
-[ext_resource type="Script" path="res://music_player.gd" id="13_crh0w"]
 [ext_resource type="Texture2D" uid="uid://cu7f3u161io2t" path="res://textures/cobblestone_05_4k.blend/textures/cobblestone_05_diff_4k.jpg" id="15_nngtn"]
 [ext_resource type="Texture2D" uid="uid://devj6xojvrep8" path="res://textures/cobblestone_05_4k.blend/textures/cobblestone_05_rough_4k.jpg" id="16_vofx3"]
 [ext_resource type="Texture2D" uid="uid://cb5qlkj7sfdun" path="res://textures/cobblestone_05_4k.blend/textures/cobblestone_05_disp_4k.png" id="17_00k4y"]
-[ext_resource type="Script" uid="uid://c1370uhgxhu61" path="res://Scripts/PostProcess.gd" id="17_nngtn"]
-[ext_resource type="Script" path="res://Scripts/pavé.gd" id="18_vofx3"]
 
 [sub_resource type="Gradient" id="Gradient_wqkje"]
 offsets = PackedFloat32Array(0.14174455, 0.20404984, 0.24766356, 0.37227413, 0.9423676)
@@ -44,6 +43,23 @@ normal_enabled = true
 normal_texture = ExtResource("16_vofx3")
 uv1_scale = Vector3(100, 1, 1)
 
+[sub_resource type="GDScript" id="GDScript_2klc5"]
+script/source = "extends MeshInstance3D
+
+var speed_x: float = 0.2
+var speed_y: float = 0.0
+
+func _process(delta):
+	var mat := get_surface_override_material(0)
+
+	if mat == null:
+		return
+
+	# On décale l’offset UV1
+	mat.uv1_offset.x += speed_x * delta
+	mat.uv1_offset.y += speed_y * delta
+"
+
 [node name="Level" type="Node3D" unique_id=1840064657]
 script = ExtResource("1_81xng")
 obstacle_scenes = Array[PackedScene]([ExtResource("2_wqkje"), ExtResource("3_8c0lf"), ExtResource("4_oqgf2")])
@@ -58,7 +74,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3607347, 0)
 wait_time = 5.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=80694050]
-script = ExtResource("17_nngtn")
 
 [node name="ui_game" parent="CanvasLayer" unique_id=1752764723 instance=ExtResource("5_0f350")]
 
@@ -66,14 +81,7 @@ script = ExtResource("17_nngtn")
 unique_name_in_owner = true
 visible = false
 
-[node name="Post-process" type="Control" parent="CanvasLayer" unique_id=2011920328]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
+[node name="Post-process" parent="CanvasLayer" unique_id=847744655 instance=ExtResource("10_2klc5")]
 
 [node name="Lighting" type="Node3D" parent="." unique_id=1207204043]
 
@@ -86,7 +94,7 @@ transform = Transform3D(0.52459526, 0.8513518, 0, -0.5596576, 0.34485593, 0.7535
 [node name="ambiencebackgroundmusic" type="AudioStreamPlayer3D" parent="." unique_id=806156387]
 stream = ExtResource("12_crh0w")
 autoplay = true
-script = ExtResource("13_crh0w")
+script = ExtResource("11_2klc5")
 
 [node name="walkingsound" type="AudioStreamPlayer3D" parent="." unique_id=2041234620]
 stream = ExtResource("12_pa6b8")
@@ -100,6 +108,6 @@ parameters/looping = true
 transform = Transform3D(145.84798, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.005603552, 0)
 mesh = SubResource("PlaneMesh_3a44l")
 surface_material_override/0 = SubResource("StandardMaterial3D_0cmrb")
-script = ExtResource("18_vofx3")
+script = SubResource("GDScript_2klc5")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

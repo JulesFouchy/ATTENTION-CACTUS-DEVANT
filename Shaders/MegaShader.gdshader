@@ -1,9 +1,4 @@
-[gd_scene format=3 uid="uid://4swj753njvcx"]
-
-[ext_resource type="Script" uid="uid://c1370uhgxhu61" path="res://Scripts/PostProcess.gd" id="2_u2qoe"]
-
-[sub_resource type="Shader" id="Shader_rjkk8"]
-code = "shader_type canvas_item;
+shader_type canvas_item;
 render_mode blend_mix;
 
 // --- Paramètres communs ---
@@ -149,45 +144,3 @@ void fragment() {
 	
     COLOR = color;
 }
-"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1mi1w"]
-shader = SubResource("Shader_rjkk8")
-shader_parameter/vhs_enabled = false
-shader_parameter/water_enabled = false
-shader_parameter/global_opacity = 1.0
-shader_parameter/scanlines_opacity = 0.4
-shader_parameter/scanlines_width = 0.25
-shader_parameter/grille_opacity = 0.3
-shader_parameter/roll_speed = 8.0
-shader_parameter/roll_size = 15.0
-shader_parameter/distort_intensity = 0.05
-shader_parameter/aberration = 0.03
-shader_parameter/noise_opacity = 0.4
-shader_parameter/noise_speed = 5.0
-shader_parameter/vignette_intensity = 0.4
-shader_parameter/vignette_opacity = 0.5
-shader_parameter/resolution = Vector2(640, 480)
-shader_parameter/water_distortion = 0.02
-shader_parameter/water_speed = 2.0
-shader_parameter/water_color = Vector3(0, 0.3, 0.7)
-
-[node name="Post-process" type="Control" unique_id=847744655]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="MegaShader" type="ColorRect" parent="." unique_id=1332409673]
-material = SubResource("ShaderMaterial_1mi1w")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-script = ExtResource("2_u2qoe")
