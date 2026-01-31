@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bbd1s6ccb5fcl" path="res://Scenes/prefabsmasque/oeilNoir.tscn" id="7_8lkc0"]
 [ext_resource type="PackedScene" uid="uid://bwtimiqnau458" path="res://Scenes/prefabsmasque/oreille.tscn" id="7_f2u4o"]
 [ext_resource type="PackedScene" uid="uid://bgu06ykgevcsr" path="res://Scenes/prefabsmasque/saignement_de_nez.tscn" id="9_ene0p"]
+[ext_resource type="Script" uid="uid://bpdrb557fcjqs" path="res://Scenes/clickable_detect_script.gd" id="11_64hcw"]
 
 [node name="LevelUIDEV" type="Node3D" unique_id=1840064657]
 script = ExtResource("1_nkef0")
@@ -20,6 +21,9 @@ masques_scenes = Array[PackedScene]([ExtResource("2_0jywc"), ExtResource("3_64hc
 
 [node name="Player" parent="." unique_id=260235842 instance=ExtResource("3_e68xr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.014652252, 0.035720825, -0.0020589828)
+
+[node name="clickableDetectScript" type="Node3D" parent="Player" unique_id=1367629520]
+script = ExtResource("11_64hcw")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=80694050]
 

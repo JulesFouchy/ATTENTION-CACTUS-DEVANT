@@ -13,6 +13,7 @@ script = ExtResource("2_lw37p")
 [node name="Area3D" type="Area3D" parent="Sprite3D" unique_id=455129916]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Sprite3D/Area3D" unique_id=1209568522]
+transform = Transform3D(5.235, 0, 0, 0, 5.235, 0, 0, 0, 5.235, 0, 0, 0)
 shape = SubResource("BoxShape3D_ftbco")
 
 [connection signal="mouse_entered" from="Sprite3D/Area3D" to="Sprite3D" method="_on_area_3d_mouse_entered"]
