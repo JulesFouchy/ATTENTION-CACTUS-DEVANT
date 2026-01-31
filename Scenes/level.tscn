@@ -24,8 +24,8 @@
 [ext_resource type="Texture2D" uid="uid://cb5qlkj7sfdun" path="res://textures/cobblestone_05_4k.blend/textures/cobblestone_05_disp_4k.png" id="17_00k4y"]
 
 [sub_resource type="Gradient" id="Gradient_wqkje"]
-offsets = PackedFloat32Array(0.14174455, 0.20404984, 0.24766356, 0.37227413, 0.9423676)
-colors = PackedColorArray(0, 0, 0, 1, 0.47730434, 0.12379829, 0.14989787, 1, 0.37007797, 0.0016060269, 0.79705614, 1, 0.92097193, 0, 0.024697237, 1, 1, 1, 1, 1)
+offsets = PackedFloat32Array(0.14174455, 0.20404984, 0.24766356, 0.5413223, 0.8636364, 0.95454544)
+colors = PackedColorArray(0, 0, 0, 1, 0.47730434, 0.12379829, 0.14989787, 1, 0.37007797, 0.0016060269, 0.79705614, 1, 0.92097193, 0, 0.024697237, 1, 0.86150527, 0.5750886, 1.540184e-06, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_0f350"]
 gradient = SubResource("Gradient_wqkje")
@@ -38,7 +38,25 @@ sky_material = SubResource("PhysicalSkyMaterial_wqkje")
 [sub_resource type="Environment" id="Environment_wqkje"]
 background_mode = 2
 sky = SubResource("Sky_wqkje")
+sky_custom_fov = 149.0
+tonemap_exposure = 0.89
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.7099651, 0.33867374, 0.9534022, 1)
+fog_light_energy = 0.07
+fog_sun_scatter = 0.16
+fog_density = 0.0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0156
+volumetric_fog_emission = Color(0.06469653, 0.06469653, 0.06469653, 1)
+volumetric_fog_emission_energy = 5.69
+volumetric_fog_anisotropy = 0.81
+volumetric_fog_ambient_inject = 1.36
+volumetric_fog_sky_affect = 0.87
 adjustment_enabled = true
+adjustment_brightness = 1.14
+adjustment_contrast = 1.7
+adjustment_saturation = 0.41
 adjustment_color_correction = SubResource("GradientTexture1D_0f350")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_3a44l"]
