@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://vrwb4coykvc1"]
+
+[ext_resource type="PackedScene" uid="uid://bx8ra316hj0ub" path="res://Scenes/obstacle.tscn" id="1_ce4ae"]
+[ext_resource type="PackedScene" uid="uid://b77rrrfyw4u0e" path="res://fbx/Meshy_AI_Happy_Golden_Retrieve_0131165632_texture_fbx/Meshy_AI_Happy_Golden_Retrieve_0131165632_texture.fbx" id="2_06wn2"]
+
+[node name="Obstacle" unique_id=1354599717 instance=ExtResource("1_ce4ae")]
+
+[node name="Meshy_AI_Happy_Golden_Retrieve_0131165632_texture" parent="." index="1" unique_id=533304166 instance=ExtResource("2_06wn2")]
