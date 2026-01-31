@@ -18,7 +18,7 @@ func _ready() -> void:
 	State.MaskChanged.connect(_on_mask_changed)
 	
 func _on_mask_changed() -> void:
-	enabled = not enabled
+	pass
 
 func _process(delta: float) -> void:
 	translate(Vector3(-delta * speed, 0, 0))
