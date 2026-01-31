@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://d21behqbnijov"]
+
+[ext_resource type="Texture2D" uid="uid://dgtm8c0nurgbb" path="res://IconesPNG/bouche(1).png" id="1_g3er6"]
+[ext_resource type="Script" uid="uid://bh4c1x7k6tfcx" path="res://Scripts/morceaudemasque.gd" id="2_ge1gf"]
+
+[node name="Node3D" type="Node3D" unique_id=1633394539]
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=436402469]
+transform = Transform3D(-0.13052621, 0, -0.9914449, 0, 1, 0, 0.9914449, 0, -0.13052621, 0, 0, 0)
+texture = ExtResource("1_g3er6")
+script = ExtResource("2_ge1gf")
