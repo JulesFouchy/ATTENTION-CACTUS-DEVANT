@@ -1,4 +1,5 @@
 extends Node3D
+@onready var ui_game_over: Control = %UiGameOver
 
 @export var obstacle_scenes:Array[PackedScene]
 
@@ -20,6 +21,14 @@ func spawn_obstacle()-> void:
 	
 func _ready() -> void:
 	$Timer.start(TimeInSeconds)
+	State.YouLost.connect(_on_you_lost)
+	State.TryAgain.connect(_on_try_again)
+	
+func _on_you_lost() -> void:
+	ui_game_over.visible = true
+	
+func _on_try_again() -> void:
+	ui_game_over.visible = false
 
 func _on_timer_timeout():
 	spawn_obstacle()
