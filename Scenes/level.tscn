@@ -8,6 +8,17 @@
 [ext_resource type="PackedScene" uid="uid://0y3drg66ums2" path="res://Scenes/ui_game.tscn" id="5_0f350"]
 [ext_resource type="Texture2D" uid="uid://dgtm8c0nurgbb" path="res://IconesPNG/bouche(1).png" id="5_qxfql"]
 [ext_resource type="PackedScene" uid="uid://c6bph7tclmmdh" path="res://Scenes/ui_game_over.tscn" id="5_wqkje"]
+[ext_resource type="Texture2D" uid="uid://beur4n8xqdox3" path="res://IconesPNG/5-59566_transparent-mouth-with-braces-hd-png-download-removebg-preview.png" id="6_vofx3"]
+[ext_resource type="Texture2D" uid="uid://dyh3djt286ppl" path="res://IconesPNG/235-2354425_illustration-hd-png-download-removebg-preview.png" id="7_00k4y"]
+[ext_resource type="Texture2D" uid="uid://cx8hc0qrvxg8w" path="res://IconesPNG/235-2354634_mouth-steveharvey-smile-lips-teeth-interesting-transparent-smile-removebg-preview.png" id="8_3a44l"]
+[ext_resource type="Texture2D" uid="uid://djyug0kbxosmc" path="res://IconesPNG/407-4071418_screaming-mouth-clipart-png-20-free-cliparts-smile-removebg-preview.png" id="9_0cmrb"]
+[ext_resource type="Texture2D" uid="uid://qec22j86nm6g" path="res://IconesPNG/421-4215081_evil-transparent-eye-devil-eyes-png-png-png-removebg-preview.png" id="10_pnhnk"]
+[ext_resource type="Texture2D" uid="uid://dgtm8c0nurgbb" path="res://IconesPNG/bouche(1).png" id="11_24uko"]
+[ext_resource type="Texture2D" uid="uid://cpschey7m61b5" path="res://IconesPNG/bouche.png" id="12_gf56v"]
+[ext_resource type="Texture2D" uid="uid://bricr04fmpxyh" path="res://IconesPNG/mouth-removebg-preview.png" id="13_6y3s5"]
+[ext_resource type="Shader" uid="uid://dl4yschp7l6ng" path="res://Shaders/VHS.gdshader" id="15_2klc5"]
+[ext_resource type="Script" uid="uid://c1370uhgxhu61" path="res://Scenes/color_rect.gd" id="17_nngtn"]
+[ext_resource type="Texture2D" uid="uid://bodao60mau1iy" path="res://IconesPNG/tetefond-removebg-preview.png" id="19_00k4y"]
 [ext_resource type="Shader" uid="uid://dl4yschp7l6ng" path="res://Shaders/VHS.gdshader" id="9_qxfql"]
 [ext_resource type="Script" uid="uid://c1370uhgxhu61" path="res://Scripts/PostProcess.gd" id="17_nngtn"]
 [ext_resource type="Script" uid="uid://c6t83jn73bqo8" path="res://Scripts/transparency.gd" id="17_vofx3"]
@@ -57,7 +68,7 @@ adjustment_color_correction = SubResource("GradientTexture1D_0f350")
 [node name="Level" type="Node3D" unique_id=1840064657]
 script = ExtResource("1_81xng")
 obstacle_scenes = Array[PackedScene]([ExtResource("2_wqkje"), ExtResource("3_8c0lf"), ExtResource("4_oqgf2")])
-mask_textures = Array[Texture2D]([ExtResource("5_qxfql")])
+mask_textures = Array[Texture2D]([ExtResource("4_bvt00"), ExtResource("6_vofx3"), ExtResource("7_00k4y"), ExtResource("8_3a44l"), ExtResource("9_0cmrb"), ExtResource("10_pnhnk"), ExtResource("11_24uko"), ExtResource("12_gf56v"), ExtResource("13_6y3s5")])
 y_spawn = 1.0
 TimeInSeconds = 0.1
 
@@ -128,5 +139,10 @@ environment = SubResource("Environment_wqkje")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting" unique_id=1096942082]
 transform = Transform3D(0.52459526, 0.8513518, 0, -0.5596576, 0.34485593, 0.7535634, 0.64154756, -0.3953158, 0.6573752, 0, 2.9467344, 0)
+
+[node name="TetefondRemovebgPreview" type="Sprite2D" parent="." unique_id=1300868934]
+position = Vector2(967.00006, 400.00003)
+scale = Vector2(1.154, 1.2)
+texture = ExtResource("19_00k4y")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
