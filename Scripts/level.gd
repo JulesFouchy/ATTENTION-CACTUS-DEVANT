@@ -16,13 +16,12 @@ func spawn_obstacle()-> void:
 		add_child(obstacle_to_spawn)
 		obstacle_to_spawn.set_global_position(Vector3(x_spawn,0. , randf_range(-y_spawn, y_spawn)))
 		obstacle_count+=1
-		
-		obstacle_to_spawn.connect("destroyed_obstacle", Callable(self, "_on_obstacle_destroyed"))
 	
 func _ready() -> void:
 	$Timer.start(TimeInSeconds)
 	State.YouLost.connect(_on_you_lost)
 	State.TryAgain.connect(_on_try_again)
+	State.destroyed_obstacle.connect(_on_obstacle_destroyed)
 	
 func _input(event):
 	if Input.is_action_just_pressed("interact"):
