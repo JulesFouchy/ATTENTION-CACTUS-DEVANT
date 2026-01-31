@@ -8,7 +8,7 @@ var enabled := true:
 		else:
 			visible = false
 
-func _on_mask_changed() -> void:
+func _apply_mask() -> void:
 	if MaskState.is_effect_active(MaskState.Effect.SpheresDisappear):
 		enabled = false
 	else:
