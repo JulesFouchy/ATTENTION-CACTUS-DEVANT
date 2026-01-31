@@ -1,20 +1,22 @@
 [gd_scene format=3 uid="uid://0y3drg66ums2"]
 
 [ext_resource type="Script" uid="uid://c1fysob3b4qet" path="res://Scripts/levelUIDEV.gd" id="1_nkef0"]
+[ext_resource type="PackedScene" uid="uid://dgmtgpcif715q" path="res://Scenes/prefabsmasque/bouche_dent.tscn" id="2_0jywc"]
+[ext_resource type="PackedScene" uid="uid://bglp0ghphorg8" path="res://Scenes/prefabsmasque/bouche_lipstick.tscn" id="3_64hcw"]
 [ext_resource type="PackedScene" uid="uid://cydoeybs5bcuy" path="res://Scenes/player.tscn" id="3_e68xr"]
-[ext_resource type="PackedScene" uid="uid://c02xpcgli5hp6" path="res://Scenes/prefabsmasque/nez.tscn" id="3_ql1nj"]
-[ext_resource type="PackedScene" uid="uid://dobhb1b7x6j1l" path="res://Scenes/prefabsmasque/nezquicoule.tscn" id="4_0jywc"]
-[ext_resource type="PackedScene" uid="uid://cv2f066bba6nc" path="res://Scenes/prefabsmasque/oeil2.tscn" id="5_64hcw"]
-[ext_resource type="PackedScene" uid="uid://cb5ka0bhwb7xc" path="res://morceau_de_masque.tscn" id="5_fgjnt"]
+[ext_resource type="PackedScene" uid="uid://bll7gn1vvsafq" path="res://Scenes/prefabsmasque/nez.tscn" id="3_ql1nj"]
+[ext_resource type="PackedScene" uid="uid://cb5ka0bhwb7xc" path="res://Scenes/IconeMasque.tscn" id="5_fgjnt"]
+[ext_resource type="PackedScene" uid="uid://dy3umadb6j6gl" path="res://Scenes/prefabsmasque/nez_qui_coule.tscn" id="5_qe5qy"]
 [ext_resource type="PackedScene" uid="uid://dimb1xaea5otu" path="res://test.tscn" id="6_e68xr"]
 [ext_resource type="PackedScene" uid="uid://bwnft7trmnfmw" path="res://Scenes/prefabsmasque/morceau_de_masque3D.tscn" id="6_nkef0"]
-[ext_resource type="PackedScene" uid="uid://b3fgdfbej3qtl" path="res://Scenes/prefabsmasque/oeil.tscn" id="6_qe5qy"]
-[ext_resource type="PackedScene" uid="uid://bxopsb1s5jt88" path="res://Scenes/prefabsmasque/oreille.tscn" id="7_f2u4o"]
-[ext_resource type="PackedScene" uid="uid://d21behqbnijov" path="res://Scenes/prefabsmasque/saignement.tscn" id="8_8lkc0"]
+[ext_resource type="PackedScene" uid="uid://crwiri4lity5t" path="res://Scenes/prefabsmasque/oeil.tscn" id="6_qe5qy"]
+[ext_resource type="PackedScene" uid="uid://bbd1s6ccb5fcl" path="res://Scenes/prefabsmasque/oeilNoir.tscn" id="7_8lkc0"]
+[ext_resource type="PackedScene" uid="uid://bwtimiqnau458" path="res://Scenes/prefabsmasque/oreille.tscn" id="7_f2u4o"]
+[ext_resource type="PackedScene" uid="uid://bgu06ykgevcsr" path="res://Scenes/prefabsmasque/saignement_de_nez.tscn" id="9_ene0p"]
 
 [node name="LevelUIDEV" type="Node3D" unique_id=1840064657]
 script = ExtResource("1_nkef0")
-masques_scenes = Array[PackedScene]([ExtResource("6_nkef0"), ExtResource("3_ql1nj"), ExtResource("4_0jywc"), ExtResource("5_64hcw"), ExtResource("6_qe5qy"), ExtResource("7_f2u4o"), ExtResource("8_8lkc0")])
+masques_scenes = Array[PackedScene]([ExtResource("2_0jywc"), ExtResource("3_64hcw"), ExtResource("3_ql1nj"), ExtResource("5_qe5qy"), ExtResource("6_qe5qy"), ExtResource("7_8lkc0"), ExtResource("7_f2u4o"), ExtResource("9_ene0p")])
 
 [node name="Player" parent="." unique_id=260235842 instance=ExtResource("3_e68xr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.014652252, 0.035720825, -0.0020589828)

@@ -10,7 +10,9 @@ func _process(delta: float) -> void:
 	if position.x > +10.:
 		queue_free()
 
-func _on_area_3d_area_entered(area: Area3D) -> void:
-	State.score += 1
-	print(State.score)
-	
+
+
+
+func _on_area_3d_mouse_entered() -> void:
+	print("yeeee")
+	pass # Replace with function body.

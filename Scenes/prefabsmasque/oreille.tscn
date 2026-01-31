@@ -1,11 +1,9 @@
-[gd_scene format=3 uid="uid://bxopsb1s5jt88"]
+[gd_scene format=3 uid="uid://bwtimiqnau458"]
 
-[ext_resource type="Texture2D" uid="uid://dgtm8c0nurgbb" path="res://IconesPNG/bouche(1).png" id="1_kwvgx"]
-[ext_resource type="Script" uid="uid://bh4c1x7k6tfcx" path="res://Scripts/morceaudemasque.gd" id="2_h0oyi"]
+[ext_resource type="PackedScene" uid="uid://bwnft7trmnfmw" path="res://Scenes/prefabsmasque/morceau_de_masque3D.tscn" id="1_twrtq"]
+[ext_resource type="Texture2D" uid="uid://cl14lcswuc4ul" path="res://IconesPNG/oreille.png" id="2_n7i3n"]
 
-[node name="Node3D" type="Node3D" unique_id=1633394539]
+[node name="Node3D" unique_id=1633394539 instance=ExtResource("1_twrtq")]
 
-[node name="Sprite3D" type="Sprite3D" parent="." unique_id=436402469]
-transform = Transform3D(-0.13052621, 0, -0.9914449, 0, 1, 0, 0.9914449, 0, -0.13052621, 0, 0, 0)
-texture = ExtResource("1_kwvgx")
-script = ExtResource("2_h0oyi")
+[node name="Sprite3D" parent="." index="0" unique_id=436402469]
+texture = ExtResource("2_n7i3n")

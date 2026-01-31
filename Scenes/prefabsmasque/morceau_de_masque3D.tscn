@@ -1,11 +1,18 @@
 [gd_scene format=3 uid="uid://bwnft7trmnfmw"]
 
-[ext_resource type="Texture2D" uid="uid://cpschey7m61b5" path="res://IconesPNG/bouche.png" id="1_ftbco"]
-[ext_resource type="Script" uid="uid://bh4c1x7k6tfcx" path="res://Scripts/morceaudemasque.gd" id="2_lw37p"]
+[ext_resource type="Script" uid="uid://bh4c1x7k6tfcx" path="res://Scripts/morceau_De_Masque.gd" id="2_lw37p"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ftbco"]
 
 [node name="Node3D" type="Node3D" unique_id=1633394539]
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=436402469]
 transform = Transform3D(-0.13052621, 0, -0.9914449, 0, 1, 0, 0.9914449, 0, -0.13052621, 0, 0, 0)
-texture = ExtResource("1_ftbco")
 script = ExtResource("2_lw37p")
+
+[node name="Area3D" type="Area3D" parent="Sprite3D" unique_id=455129916]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sprite3D/Area3D" unique_id=1209568522]
+shape = SubResource("BoxShape3D_ftbco")
+
+[connection signal="mouse_entered" from="Sprite3D/Area3D" to="Sprite3D" method="_on_area_3d_mouse_entered"]

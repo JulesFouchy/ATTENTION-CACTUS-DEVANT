@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dgmtgpcif715q"]
+
+[ext_resource type="PackedScene" uid="uid://bwnft7trmnfmw" path="res://Scenes/prefabsmasque/morceau_de_masque3D.tscn" id="1_yd7pi"]
+[ext_resource type="Texture2D" uid="uid://cpschey7m61b5" path="res://IconesPNG/bouche.png" id="2_acgqw"]
+
+[node name="Node3D" unique_id=1633394539 instance=ExtResource("1_yd7pi")]
+
+[node name="Sprite3D" parent="." index="0" unique_id=436402469]
+texture = ExtResource("2_acgqw")

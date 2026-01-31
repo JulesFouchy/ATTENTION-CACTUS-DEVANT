@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cb5ka0bhwb7xc"]
 
-[ext_resource type="Script" uid="uid://dwf0h5kmeqagr" path="res://texture_rect.gd" id="2_ek34n"]
+[ext_resource type="Script" uid="uid://dwf0h5kmeqagr" path="res://Scripts/iconeDrag.gd" id="2_ek34n"]
 
 [node name="Morceau_de_masque" type="TextureRect" unique_id=1322640462]
 custom_minimum_size = Vector2(100, 100)

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dimb1xaea5otu"]
 
-[ext_resource type="PackedScene" uid="uid://cb5ka0bhwb7xc" path="res://morceau_de_masque.tscn" id="1_37kl0"]
+[ext_resource type="PackedScene" uid="uid://cb5ka0bhwb7xc" path="res://Scenes/IconeMasque.tscn" id="1_37kl0"]
 [ext_resource type="Texture2D" uid="uid://dgtm8c0nurgbb" path="res://IconesPNG/bouche(1).png" id="2_g14j6"]
 [ext_resource type="Texture2D" uid="uid://cpschey7m61b5" path="res://IconesPNG/bouche.png" id="3_vbegm"]
 [ext_resource type="Texture2D" uid="uid://bmo225nwjh0dc" path="res://IconesPNG/nez-qui-coule.png" id="4_ehkex"]

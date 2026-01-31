@@ -1,6 +1,7 @@
 extends TextureRect
 
-class_name Morceau
+class_name IconeDDrag
+
 func _get_drag_data(at_position):
 	var preview_texture = TextureRect.new()
 	
