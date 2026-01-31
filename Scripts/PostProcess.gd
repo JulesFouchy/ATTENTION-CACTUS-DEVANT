@@ -9,11 +9,11 @@ func _ready() -> void:
 	self.material.set_shader_parameter("water_enabled", false)
 	self.material.set_shader_parameter("global_opacity", opacity)
 
-func set_shader_boolean(str, effect) -> void :
+func set_shader_boolean(boolean, effect) -> void :
 	if MaskState.is_effect_active(effect):
-		self.material.set_shader_parameter(str, true)
+		self.material.set_shader_parameter(boolean, true)
 	else:
-		self.material.set_shader_parameter(str, false)
+		self.material.set_shader_parameter(boolean, false)
 
 func _on_mask_changed() -> void:
 	set_shader_boolean("vhs_enabled", MaskState.Effect.VHS)
