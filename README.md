@@ -29,7 +29,10 @@ A chaque game couleurs et et morceau visage ne désigne pas la même chose / il 
 * Menu / écran titre / crédits
 
 
-
+- murs haut bas côté
+- ennemis qui changent comportement en fonction masque (agressif, gentil, blessent malgré gentil etc)
+- obstacles qui apparaissent en fonction du masque
+- le décors qui disparait plus on prends d’obstacles
 
 
 
