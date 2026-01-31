@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://b0m4d738dypql"]
+[gd_scene format=3 uid="uid://4swj753njvcx"]
 
 [ext_resource type="Script" uid="uid://c1370uhgxhu61" path="res://Scripts/PostProcess.gd" id="2_u2qoe"]
-[ext_resource type="Shader" uid="uid://ddn7y0s4qe4yn" path="res://Shaders/MegaShader.gdshader" id="4_pba03"]
+[ext_resource type="Shader" path="res://Shaders/MegaShader.gdshader" id="4_pba03"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pba03"]
 shader = ExtResource("4_pba03")

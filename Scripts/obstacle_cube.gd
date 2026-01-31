@@ -13,6 +13,6 @@ func _apply_mask() -> void:
 
 func _on_area_3d_area_entered(area: Area3D) -> void:
 	if cube_rouge.visible and area.is_in_group("Player"):
-		get_node("/root/Level/CanvasLayer/Post-process/MegaShader").more_transparency()
+		get_node("/root/Level/CanvasLayer/Post-process/Transparency").more_transparency()
 	if cube_rose.visible and area.is_in_group("Player"):
-		get_node("/root/Level/CanvasLayer/Post-process/MegaShader").less_transparency()
+		get_node("/root/Level/CanvasLayer/Post-process/Transparency").less_transparency()
