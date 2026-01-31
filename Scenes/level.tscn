@@ -12,8 +12,12 @@
 [ext_resource type="AudioStream" uid="uid://dumuv0fhx2ml7" path="res://AUDIO/ambiancebackground.mp3" id="12_crh0w"]
 [ext_resource type="AudioStream" uid="uid://c2j1vuy63a3xu" path="res://AUDIO/Walking Slowly Sound Effect [1E93HRoKPfg].mp3" id="12_pa6b8"]
 [ext_resource type="Script" uid="uid://d27fgfelfybbt" path="res://Scenes/music_player.gd" id="13_crh0w"]
+[ext_resource type="Texture2D" uid="uid://cu7f3u161io2t" path="res://textures/cobblestone_05_4k.blend/textures/cobblestone_05_diff_4k.jpg" id="15_nngtn"]
+[ext_resource type="Texture2D" uid="uid://devj6xojvrep8" path="res://textures/cobblestone_05_4k.blend/textures/cobblestone_05_rough_4k.jpg" id="16_vofx3"]
+[ext_resource type="Texture2D" uid="uid://cb5qlkj7sfdun" path="res://textures/cobblestone_05_4k.blend/textures/cobblestone_05_disp_4k.png" id="17_00k4y"]
 [ext_resource type="Script" uid="uid://c1370uhgxhu61" path="res://Scripts/PostProcess.gd" id="17_nngtn"]
 [ext_resource type="Script" uid="uid://c6t83jn73bqo8" path="res://Scripts/transparency.gd" id="17_vofx3"]
+[ext_resource type="Script" uid="uid://vue76g57qe7w" path="res://Scenes/pavé.gd" id="18_vofx3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2klc5"]
 shader = ExtResource("9_qxfql")
@@ -57,6 +61,15 @@ sky = SubResource("Sky_wqkje")
 adjustment_enabled = true
 adjustment_color_correction = SubResource("GradientTexture1D_0f350")
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_3a44l"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0cmrb"]
+albedo_texture = ExtResource("15_nngtn")
+roughness_texture = ExtResource("17_00k4y")
+normal_enabled = true
+normal_texture = ExtResource("16_vofx3")
+uv1_scale = Vector3(100, 1, 1)
+
 [node name="Level" type="Node3D" unique_id=1840064657]
 script = ExtResource("1_81xng")
 obstacle_scenes = Array[PackedScene]([ExtResource("2_wqkje"), ExtResource("3_8c0lf"), ExtResource("4_oqgf2")])
@@ -65,7 +78,7 @@ y_spawn = 1.0
 TimeInSeconds = 0.1
 
 [node name="Player" parent="." unique_id=260235842 instance=ExtResource("3_0f350")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.32577038, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3607347, 0)
 
 [node name="Timer" type="Timer" parent="." unique_id=1872439113]
 wait_time = 5.0
@@ -144,5 +157,11 @@ pitch_scale = 0.7
 autoplay = true
 panning_strength = 1.47
 parameters/looping = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2140384341]
+transform = Transform3D(145.84798, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.005603552, 0)
+mesh = SubResource("PlaneMesh_3a44l")
+surface_material_override/0 = SubResource("StandardMaterial3D_0cmrb")
+script = ExtResource("18_vofx3")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
