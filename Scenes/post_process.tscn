@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://b0m4d738dypql"]
+
+[ext_resource type="Shader" uid="uid://dl4yschp7l6ng" path="res://Shaders/VHS.gdshader" id="1_pba03"]
+[ext_resource type="Script" uid="uid://c1370uhgxhu61" path="res://Scripts/PostProcess.gd" id="2_u2qoe"]
+[ext_resource type="Shader" uid="uid://b85l182jtfi8w" path="res://Shaders/Water.gdshader" id="3_83h05"]
+[ext_resource type="Script" uid="uid://c6t83jn73bqo8" path="res://Scripts/transparency.gd" id="4_tqnlb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_crh0w"]
+shader = ExtResource("1_pba03")
+shader_parameter/overlay = false
+shader_parameter/resolution = Vector2(640, 480)
+shader_parameter/brightness = 1.4
+shader_parameter/scanlines_opacity = 0.4
+shader_parameter/scanlines_width = 0.25
+shader_parameter/grille_opacity = 0.3
+shader_parameter/roll = true
+shader_parameter/roll_speed = 8.0
+shader_parameter/roll_size = 15.0
+shader_parameter/roll_variation = 1.8
+shader_parameter/distort_intensity = 0.05
+shader_parameter/aberration = 0.03
+shader_parameter/noise_opacity = 0.4
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.06
+shader_parameter/pixelate = true
+shader_parameter/discolor = true
+shader_parameter/warp_amount = 1.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.5
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ha31o"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pa6b8"]
+shader = ExtResource("3_83h05")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_ha31o")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2klc5"]
+shader = ExtResource("3_83h05")
+
+[node name="Post-process" type="Control" unique_id=847744655]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="VHS" type="ColorRect" parent="." unique_id=443298400]
+visible = false
+material = SubResource("ShaderMaterial_crh0w")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2_u2qoe")
+effect = 3
+
+[node name="Water" type="ColorRect" parent="." unique_id=2135430747]
+visible = false
+material = SubResource("ShaderMaterial_pa6b8")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2_u2qoe")
+effect = 2
+
+[node name="Transparency" type="ColorRect" parent="." unique_id=1491871243]
+material = SubResource("ShaderMaterial_2klc5")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("4_tqnlb")
