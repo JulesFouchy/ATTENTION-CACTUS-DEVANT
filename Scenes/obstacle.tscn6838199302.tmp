@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bx8ra316hj0ub"]
+
+[ext_resource type="Script" uid="uid://c2mk7rmf6tdvu" path="res://Scripts/obstacle.gd" id="1_dhrd1"]
+
+[node name="Obstacle" type="Node3D" unique_id=1354599717]
+script = ExtResource("1_dhrd1")
+speed = null
+spawn_probability = null
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1701168608]
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
