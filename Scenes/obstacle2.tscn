@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://bx8ra316hj0ub"]
 
 [ext_resource type="Script" uid="uid://c2mk7rmf6tdvu" path="res://Scripts/obstacle.gd" id="1_dhrd1"]
-[ext_resource type="Script" uid="uid://d6lgd5ytx28u" path="res://Scripts/area_3d.gd" id="2_ss3h7"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_dhrd1"]
 
@@ -14,10 +13,8 @@ script = ExtResource("1_dhrd1")
 mesh = SubResource("SphereMesh_dhrd1")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1701168608]
-script = ExtResource("2_ss3h7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=348231817]
 shape = SubResource("SphereShape3D_ss3h7")
-script = ExtResource("1_dhrd1")
 
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
