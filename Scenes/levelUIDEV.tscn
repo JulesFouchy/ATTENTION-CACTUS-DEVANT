@@ -4,16 +4,53 @@
 [ext_resource type="PackedScene" uid="uid://dgmtgpcif715q" path="res://Scenes/prefabsmasque/bouche_dent.tscn" id="2_0jywc"]
 [ext_resource type="PackedScene" uid="uid://bglp0ghphorg8" path="res://Scenes/prefabsmasque/bouche_lipstick.tscn" id="3_64hcw"]
 [ext_resource type="PackedScene" uid="uid://cydoeybs5bcuy" path="res://Scenes/player.tscn" id="3_e68xr"]
-[ext_resource type="PackedScene" uid="uid://c02xpcgli5hp6" path="res://Scenes/prefabsmasque/nez.tscn" id="3_ql1nj"]
+[ext_resource type="PackedScene" uid="uid://bll7gn1vvsafq" path="res://Scenes/prefabsmasque/nez.tscn" id="3_ql1nj"]
 [ext_resource type="PackedScene" uid="uid://cb5ka0bhwb7xc" path="res://Scenes/IconeMasque.tscn" id="5_fgjnt"]
 [ext_resource type="PackedScene" uid="uid://dy3umadb6j6gl" path="res://Scenes/prefabsmasque/nez_qui_coule.tscn" id="5_qe5qy"]
 [ext_resource type="PackedScene" uid="uid://dimb1xaea5otu" path="res://test.tscn" id="6_e68xr"]
 [ext_resource type="PackedScene" uid="uid://bwnft7trmnfmw" path="res://Scenes/prefabsmasque/morceau_de_masque3D.tscn" id="6_nkef0"]
-[ext_resource type="PackedScene" uid="uid://b3fgdfbej3qtl" path="res://Scenes/prefabsmasque/oeil.tscn" id="6_qe5qy"]
+[ext_resource type="PackedScene" uid="uid://crwiri4lity5t" path="res://Scenes/prefabsmasque/oeil.tscn" id="6_qe5qy"]
 [ext_resource type="PackedScene" uid="uid://bbd1s6ccb5fcl" path="res://Scenes/prefabsmasque/oeilNoir.tscn" id="7_8lkc0"]
-[ext_resource type="PackedScene" uid="uid://bxopsb1s5jt88" path="res://Scenes/prefabsmasque/oreille.tscn" id="7_f2u4o"]
+[ext_resource type="PackedScene" uid="uid://bwtimiqnau458" path="res://Scenes/prefabsmasque/oreille.tscn" id="7_f2u4o"]
 [ext_resource type="PackedScene" uid="uid://bgu06ykgevcsr" path="res://Scenes/prefabsmasque/saignement_de_nez.tscn" id="9_ene0p"]
-[ext_resource type="Script" uid="uid://bpdrb557fcjqs" path="res://Scenes/clickable_detect_script.gd" id="11_64hcw"]
+
+[sub_resource type="GDScript" id="GDScript_0jywc"]
+script/source = "extends Node3D
+
+var mouse = Vector2()
+
+@export var DIST: float = 1000
+
+
+
+
+
+func _input(event: InputEvent) -> void:
+		if event is InputEventMouseMotion:
+			mouse = event.position
+		if event is InputEventMouseButton:
+			if event.pressed == false and event.button_index == MOUSE_BUTTON_LEFT:
+				get_mouse_world_pos(mouse)
+
+
+func get_mouse_world_pos(mouse:Vector2):
+	var space = get_world_3d().direct_space_state
+	var start =  get_viewport().get_camera_3d().project_ray_origin(mouse)
+	var end = get_viewport().get_camera_3d().project_position(mouse,DIST)
+	var params = PhysicsRayQueryParameters3D.new()
+	params.from = start
+	params.to = end
+	# Debug : dessine le rayon
+	print(\"camera:\", get_viewport().get_camera_3d())
+
+	print(start)
+	print(end)
+	DebugDraw3D.draw_line(start, end, Color.RED, 5)
+
+	var result = space.intersect_ray(params)
+	print(result)
+	
+"
 
 [node name="LevelUIDEV" type="Node3D" unique_id=1840064657]
 script = ExtResource("1_nkef0")
@@ -22,8 +59,8 @@ masques_scenes = Array[PackedScene]([ExtResource("2_0jywc"), ExtResource("3_64hc
 [node name="Player" parent="." unique_id=260235842 instance=ExtResource("3_e68xr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.014652252, 0.035720825, -0.0020589828)
 
-[node name="clickableDetectScript" type="Node3D" parent="Player" unique_id=1367629520]
-script = ExtResource("11_64hcw")
+[node name="Node3D" type="Node3D" parent="Player" unique_id=1367629520]
+script = SubResource("GDScript_0jywc")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=80694050]
 

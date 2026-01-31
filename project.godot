@@ -13,7 +13,7 @@ config_version=5
 [application]
 
 config/name="ATTENTION CACTUS DEVANT"
-run/main_scene="uid://ckfko6l8ld1gi"
+run/main_scene="uid://0y3drg66ums2"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
