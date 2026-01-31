@@ -6,12 +6,19 @@
 [ext_resource type="PackedScene" uid="uid://ceb0701pf7fv6" path="res://Scenes/decors/obstacle_sphere.tscn" id="3_8c0lf"]
 [ext_resource type="PackedScene" uid="uid://vrwb4coykvc1" path="res://Scenes/decors/dogidog.tscn" id="4_oqgf2"]
 [ext_resource type="PackedScene" uid="uid://0y3drg66ums2" path="res://Scenes/ui_game.tscn" id="5_0f350"]
-[ext_resource type="Texture2D" uid="uid://dgtm8c0nurgbb" path="res://IconesPNG/bouche(1).png" id="5_qxfql"]
+[ext_resource type="Texture2D" uid="uid://beur4n8xqdox3" path="res://IconesPNG/5-59566_transparent-mouth-with-braces-hd-png-download-removebg-preview.png" id="5_24uko"]
 [ext_resource type="PackedScene" uid="uid://c6bph7tclmmdh" path="res://Scenes/ui_game_over.tscn" id="5_wqkje"]
+[ext_resource type="Texture2D" uid="uid://dyh3djt286ppl" path="res://IconesPNG/235-2354425_illustration-hd-png-download-removebg-preview.png" id="6_gf56v"]
+[ext_resource type="Texture2D" uid="uid://cx8hc0qrvxg8w" path="res://IconesPNG/235-2354634_mouth-steveharvey-smile-lips-teeth-interesting-transparent-smile-removebg-preview.png" id="7_6y3s5"]
+[ext_resource type="Texture2D" uid="uid://djyug0kbxosmc" path="res://IconesPNG/407-4071418_screaming-mouth-clipart-png-20-free-cliparts-smile-removebg-preview.png" id="8_u0did"]
+[ext_resource type="Texture2D" uid="uid://qec22j86nm6g" path="res://IconesPNG/421-4215081_evil-transparent-eye-devil-eyes-png-png-png-removebg-preview.png" id="9_53r2q"]
 [ext_resource type="PackedScene" uid="uid://4swj753njvcx" path="res://Scenes/post_process.tscn" id="10_2klc5"]
+[ext_resource type="Texture2D" uid="uid://bricr04fmpxyh" path="res://IconesPNG/mouth-removebg-preview.png" id="10_luodc"]
 [ext_resource type="Script" uid="uid://d27fgfelfybbt" path="res://Scripts/music_player.gd" id="11_2klc5"]
 [ext_resource type="AudioStream" uid="uid://dumuv0fhx2ml7" path="res://AUDIO/ambiancebackground.mp3" id="12_crh0w"]
+[ext_resource type="Texture2D" uid="uid://jvhtbnvsdhlh" path="res://IconesPNG/Weirdcore-Eyes-PNG-Pic.png" id="12_hcs0j"]
 [ext_resource type="AudioStream" uid="uid://c2j1vuy63a3xu" path="res://AUDIO/Walking Slowly Sound Effect [1E93HRoKPfg].mp3" id="12_pa6b8"]
+[ext_resource type="Texture2D" uid="uid://bhl8nwjelqluw" path="res://IconesPNG/Weirdcore-PNG-Image.png" id="13_t205d"]
 [ext_resource type="Texture2D" uid="uid://cu7f3u161io2t" path="res://textures/cobblestone_05_4k.blend/textures/cobblestone_05_diff_4k.jpg" id="15_nngtn"]
 [ext_resource type="Texture2D" uid="uid://devj6xojvrep8" path="res://textures/cobblestone_05_4k.blend/textures/cobblestone_05_rough_4k.jpg" id="16_vofx3"]
 [ext_resource type="Texture2D" uid="uid://cb5qlkj7sfdun" path="res://textures/cobblestone_05_4k.blend/textures/cobblestone_05_disp_4k.png" id="17_00k4y"]
@@ -63,7 +70,7 @@ func _process(delta):
 [node name="Level" type="Node3D" unique_id=1840064657]
 script = ExtResource("1_81xng")
 obstacle_scenes = Array[PackedScene]([ExtResource("2_wqkje"), ExtResource("3_8c0lf"), ExtResource("4_oqgf2")])
-mask_textures = Array[Texture2D]([ExtResource("5_qxfql")])
+mask_textures = Array[Texture2D]([ExtResource("5_24uko"), ExtResource("6_gf56v"), ExtResource("7_6y3s5"), ExtResource("8_u0did"), ExtResource("9_53r2q"), ExtResource("10_luodc"), ExtResource("12_hcs0j"), ExtResource("13_t205d")])
 y_spawn = 4.0
 TimeInSeconds = 0.1
 

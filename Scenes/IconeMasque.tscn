@@ -12,6 +12,6 @@ script = ExtResource("2_ek34n")
 [node name="Panel" type="Panel" parent="." unique_id=1618378047]
 show_behind_parent = true
 layout_mode = 0
-offset_right = 100.0
+offset_right = 99.88
 offset_bottom = 100.0
 mouse_filter = 2

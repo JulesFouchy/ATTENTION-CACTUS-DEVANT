@@ -1,11 +1,8 @@
 [gd_scene format=3 uid="uid://dimb1xaea5otu"]
 
 [ext_resource type="PackedScene" uid="uid://cb5ka0bhwb7xc" path="res://Scenes/IconeMasque.tscn" id="1_37kl0"]
-[ext_resource type="Texture2D" uid="uid://dgtm8c0nurgbb" path="res://IconesPNG/bouche(1).png" id="2_g14j6"]
-[ext_resource type="Texture2D" uid="uid://cpschey7m61b5" path="res://IconesPNG/bouche.png" id="3_vbegm"]
-[ext_resource type="Texture2D" uid="uid://bmo225nwjh0dc" path="res://IconesPNG/nez-qui-coule.png" id="4_ehkex"]
-[ext_resource type="Texture2D" uid="uid://ongiynwjlma4" path="res://IconesPNG/oeil(1).png" id="5_xersf"]
-[ext_resource type="Texture2D" uid="uid://bmo0utiknnfi3" path="res://IconesPNG/oeil.png" id="6_00tp4"]
+[ext_resource type="Texture2D" uid="uid://beur4n8xqdox3" path="res://IconesPNG/5-59566_transparent-mouth-with-braces-hd-png-download-removebg-preview.png" id="2_6uqi0"]
+[ext_resource type="Texture2D" uid="uid://jvhtbnvsdhlh" path="res://IconesPNG/Weirdcore-Eyes-PNG-Pic.png" id="3_ppyta"]
 
 [node name="Node2D" type="Node2D" unique_id=1953848623]
 
@@ -14,35 +11,32 @@ offset_left = 63.0
 offset_top = 509.0
 offset_right = 163.0
 offset_bottom = 609.0
-texture = ExtResource("2_g14j6")
+texture = ExtResource("2_6uqi0")
 
 [node name="Inventaire2" parent="." unique_id=1853086669 instance=ExtResource("1_37kl0")]
 offset_left = 203.0
 offset_top = 509.0
 offset_right = 303.0
 offset_bottom = 609.0
-texture = ExtResource("3_vbegm")
+texture = ExtResource("3_ppyta")
 
 [node name="Inventaire3" parent="." unique_id=912481589 instance=ExtResource("1_37kl0")]
 offset_left = 338.0
 offset_top = 514.0
 offset_right = 438.0
 offset_bottom = 614.0
-texture = ExtResource("4_ehkex")
 
 [node name="Inventaire4" parent="." unique_id=808484425 instance=ExtResource("1_37kl0")]
 offset_left = 468.0
 offset_top = 509.0
 offset_right = 568.0
 offset_bottom = 609.0
-texture = ExtResource("5_xersf")
 
 [node name="Inventaire5" parent="." unique_id=1445656390 instance=ExtResource("1_37kl0")]
 offset_left = 611.0
 offset_top = 506.0
 offset_right = 711.0
 offset_bottom = 606.0
-texture = ExtResource("6_00tp4")
 
 [node name="boucheolder" parent="." unique_id=48969071 instance=ExtResource("1_37kl0")]
 offset_left = 929.0

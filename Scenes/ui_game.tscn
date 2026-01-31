@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://0y3drg66ums2"]
 
+[ext_resource type="Texture2D" uid="uid://bodao60mau1iy" path="res://IconesPNG/tetefond-removebg-preview.png" id="1_5uj8f"]
 [ext_resource type="PackedScene" uid="uid://cb5ka0bhwb7xc" path="res://Scenes/IconeMasque.tscn" id="5_fgjnt"]
 [ext_resource type="PackedScene" uid="uid://dimb1xaea5otu" path="res://test.tscn" id="6_e68xr"]
 
@@ -9,9 +10,15 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="TetefondRemovebgPreview" type="Sprite2D" parent="." unique_id=422472605]
+position = Vector2(954, 418)
+scale = Vector2(1, 1.137)
+texture = ExtResource("1_5uj8f")
+
 [node name="TextureRect" parent="." unique_id=1322640462 instance=ExtResource("5_fgjnt")]
 layout_mode = 0
 offset_right = 100.0
 offset_bottom = 100.0
 
 [node name="Node2D" parent="." unique_id=1953848623 instance=ExtResource("6_e68xr")]
+position = Vector2(7, 27)
