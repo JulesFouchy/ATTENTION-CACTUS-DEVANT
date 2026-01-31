@@ -15,14 +15,14 @@ func spawn_obstacle()-> void:
 	obstacle_to_spawn.set_global_position(Vector3(x_spawn,0. , randf_range(-y_spawn, y_spawn)))
 	obstacle_count+=1
 	
+	obstacle_to_spawn.connect("destroyed_obstacle", Callable(self, "_on_obstacle_destroyed"))
+	
 func _ready() -> void:
 	$Timer.start(TimeInSeconds)
 
 func _on_timer_timeout():
 	if obstacle_count < max_obstacles :
 		spawn_obstacle()
-		print("create",obstacle_count)
 
 func _on_obstacle_destroyed():
 	obstacle_count -= 1
-	print("delete",obstacle_count)
