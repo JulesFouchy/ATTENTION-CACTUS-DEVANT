@@ -19,6 +19,8 @@
 [ext_resource type="Shader" uid="uid://dl4yschp7l6ng" path="res://Shaders/VHS.gdshader" id="15_2klc5"]
 [ext_resource type="Script" uid="uid://c1370uhgxhu61" path="res://Scenes/color_rect.gd" id="17_nngtn"]
 [ext_resource type="Texture2D" uid="uid://bodao60mau1iy" path="res://IconesPNG/tetefond-removebg-preview.png" id="19_00k4y"]
+[ext_resource type="AudioStream" uid="uid://dumuv0fhx2ml7" path="res://AUDIO/ambiancebackground.mp3" id="20_0cmrb"]
+[ext_resource type="Script" uid="uid://d27fgfelfybbt" path="res://Scenes/music_player.gd" id="21_0cmrb"]
 [ext_resource type="Shader" uid="uid://dl4yschp7l6ng" path="res://Shaders/VHS.gdshader" id="9_qxfql"]
 [ext_resource type="Script" uid="uid://c1370uhgxhu61" path="res://Scripts/PostProcess.gd" id="17_nngtn"]
 [ext_resource type="Script" uid="uid://c6t83jn73bqo8" path="res://Scripts/transparency.gd" id="17_vofx3"]
@@ -144,5 +146,10 @@ transform = Transform3D(0.52459526, 0.8513518, 0, -0.5596576, 0.34485593, 0.7535
 position = Vector2(967.00006, 400.00003)
 scale = Vector2(1.154, 1.2)
 texture = ExtResource("19_00k4y")
+
+[node name="MusicPlayer" type="AudioStreamPlayer3D" parent="." unique_id=1263360670]
+stream = ExtResource("20_0cmrb")
+autoplay = true
+script = ExtResource("21_0cmrb")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
