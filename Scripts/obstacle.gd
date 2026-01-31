@@ -4,6 +4,7 @@ class_name Obstacle
 signal destroyed_obstacle
 
 @export var speed: float = 3.
+@export var spawn_probability : float = .1
 
 func _process(delta: float) -> void:
 	translate(Vector3(-delta * speed, 0, 0))

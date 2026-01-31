@@ -9,7 +9,6 @@
 [node name="Level" type="Node3D" unique_id=1840064657]
 script = ExtResource("1_81xng")
 obstacle_scenes = Array[PackedScene]([ExtResource("2_wqkje"), ExtResource("3_wqkje")])
-spawn_probability = 0.3
 
 [node name="Player" parent="." unique_id=260235842 instance=ExtResource("3_0f350")]
 
