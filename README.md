@@ -12,6 +12,13 @@ Mécaniques
 
 
 
+- flip screen
+- faire apparaitre texture de base
+- mirror
+- fog dans le fond pour pas voir les trucs popper
+- Quand ça fait la transparence c'est avec une texture par défaut
+
+
 
 Notes random de l'idée:
 
