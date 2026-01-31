@@ -26,6 +26,10 @@ MaskState="*uid://0b3fey42cio6"
 
 settings/addon_root_folder="res://addons/debug_draw_3d"
 
+[filesystem]
+
+import/blender/enabled=false
+
 [global_group]
 
 Player=""
