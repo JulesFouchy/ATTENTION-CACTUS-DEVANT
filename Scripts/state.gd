@@ -2,3 +2,4 @@ extends Node
 
 signal YouLost
 signal TryAgain
+signal MaskChanged

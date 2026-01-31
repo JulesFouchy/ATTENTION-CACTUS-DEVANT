@@ -24,6 +24,10 @@ func _ready() -> void:
 	State.YouLost.connect(_on_you_lost)
 	State.TryAgain.connect(_on_try_again)
 	
+func _input(event):
+	if Input.is_action_just_pressed("interact"):
+		State.MaskChanged.emit()
+	
 func _on_you_lost() -> void:
 	ui_game_over.visible = true
 	
