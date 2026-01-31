@@ -1,6 +1,7 @@
 extends Node3D
 class_name Movable
 
+@export var spawn_probability: float = .1
 @export var speed: float = 10.
 
 func _process(delta: float) -> void:

@@ -8,6 +8,7 @@ extends Node3D
 @export var y_spawn : float = 10.
 @export var TimeInSeconds : float = 1.
 @export var max_movables : int = 20
+@export var pick_mask_scene_probability : float = 0.3
 
 var movables_count : int = 0
 
@@ -21,14 +22,15 @@ func spawn(scene_to_spawn) -> void:
 	add_child(scene_to_spawn)
 	scene_to_spawn.set_global_position(Vector3(x_spawn,0. , randf_range(-y_spawn, y_spawn)))
 	movables_count+=1
-	
+
 func _on_timer_timeout():
-	var scene_to_spawn = (obstacle_scenes.pick_random()).instantiate()
-	var obstacle_to_spawn = (obstacle_scenes.pick_random()).instantiate()
-	var mask_scene = (mask_scenes.pick_random()).instantiate()
-	if movables_count < max_movables && randf() < obstacle_to_spawn.spawn_probability :
-		spawn(obstacle_to_spawn)
-		spawn(mask_scene)
+	var scene_to_spawn
+	if randf() <= pick_mask_scene_probability:
+		scene_to_spawn = (mask_scenes.pick_random()).instantiate()
+	else: 
+		scene_to_spawn = (obstacle_scenes.pick_random()).instantiate()
+	if movables_count < max_movables && randf() < scene_to_spawn.spawn_probability :
+		spawn(scene_to_spawn)
 
 func _input(event):
 	if Input.is_action_just_pressed("interact"):

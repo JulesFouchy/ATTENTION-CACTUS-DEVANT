@@ -1,8 +1,6 @@
 extends Movable
 class_name Obstacle
 
-@export var spawn_probability: float = .1
-			
 func _ready() -> void:
 	State.MaskChanged.connect(_on_mask_changed)
 	
