@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://0y3drg66ums2"]
 
-[ext_resource type="Script" uid="uid://ductso18hnvfk" path="res://level.gd" id="1_r2nuk"]
-[ext_resource type="PackedScene" uid="uid://b3o1pigaa7vj6" path="res://obstacle.tscn" id="2_fgjnt"]
-[ext_resource type="PackedScene" uid="uid://cydoeybs5bcuy" path="res://player.tscn" id="3_e68xr"]
-[ext_resource type="PackedScene" uid="uid://dctemd4pgx60h" path="res://gui.tscn" id="4_j5wul"]
+[ext_resource type="Script" uid="uid://c1fysob3b4qet" path="res://Scripts/levelUIDEV.gd" id="1_nkef0"]
+[ext_resource type="PackedScene" uid="uid://b3o1pigaa7vj6" path="res://Scenes/obstacle.tscn" id="2_fgjnt"]
+[ext_resource type="PackedScene" uid="uid://cydoeybs5bcuy" path="res://Scenes/player.tscn" id="3_e68xr"]
+[ext_resource type="PackedScene" uid="uid://dctemd4pgx60h" path="res://Scenes/gui.tscn" id="4_j5wul"]
 [ext_resource type="PackedScene" uid="uid://cb5ka0bhwb7xc" path="res://morceau_de_masque.tscn" id="5_fgjnt"]
 [ext_resource type="PackedScene" uid="uid://dimb1xaea5otu" path="res://test.tscn" id="6_e68xr"]
 
 [node name="LevelUIDEV" type="Node3D" unique_id=1840064657]
-script = ExtResource("1_r2nuk")
+script = ExtResource("1_nkef0")
 
 [node name="Obstacle" parent="." unique_id=1354599717 instance=ExtResource("2_fgjnt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4861174, 0, 0)
