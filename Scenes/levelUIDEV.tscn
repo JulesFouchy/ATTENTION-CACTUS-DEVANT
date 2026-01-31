@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://cydoeybs5bcuy" path="res://Scenes/player.tscn" id="3_e68xr"]
 [ext_resource type="PackedScene" uid="uid://c02xpcgli5hp6" path="res://Scenes/prefabsmasque/nez.tscn" id="3_ql1nj"]
 [ext_resource type="PackedScene" uid="uid://dobhb1b7x6j1l" path="res://Scenes/prefabsmasque/nezquicoule.tscn" id="4_0jywc"]
-[ext_resource type="PackedScene" uid="uid://dctemd4pgx60h" path="res://Scenes/gui.tscn" id="4_j5wul"]
 [ext_resource type="PackedScene" uid="uid://cv2f066bba6nc" path="res://Scenes/prefabsmasque/oeil2.tscn" id="5_64hcw"]
 [ext_resource type="PackedScene" uid="uid://cb5ka0bhwb7xc" path="res://morceau_de_masque.tscn" id="5_fgjnt"]
 [ext_resource type="PackedScene" uid="uid://dimb1xaea5otu" path="res://test.tscn" id="6_e68xr"]
@@ -21,13 +20,6 @@ masques_scenes = Array[PackedScene]([ExtResource("6_nkef0"), ExtResource("3_ql1n
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.014652252, 0.035720825, -0.0020589828)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=80694050]
-
-[node name="Gui" parent="CanvasLayer" unique_id=1184162246 instance=ExtResource("4_j5wul")]
-anchors_preset = -1
-anchor_right = 1.131
-anchor_bottom = 1.3950001
-offset_right = 5726.088
-offset_bottom = 3605.04
 
 [node name="TextureRect" parent="CanvasLayer" unique_id=1322640462 instance=ExtResource("5_fgjnt")]
 

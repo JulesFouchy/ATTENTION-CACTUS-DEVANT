@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://b3o1pigaa7vj6" path="res://Scenes/obstacle.tscn" id="2_wqkje"]
 [ext_resource type="PackedScene" uid="uid://cydoeybs5bcuy" path="res://Scenes/player.tscn" id="3_0f350"]
 [ext_resource type="PackedScene" uid="uid://bx8ra316hj0ub" path="res://Scenes/obstacle2.tscn" id="3_wqkje"]
-[ext_resource type="PackedScene" uid="uid://dctemd4pgx60h" path="res://Scenes/gui.tscn" id="4_8c0lf"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_wqkje"]
 
@@ -24,8 +23,6 @@ TimeInSeconds = 0.1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.32577038, 0)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=80694050]
-
-[node name="Gui" parent="CanvasLayer" unique_id=1184162246 instance=ExtResource("4_8c0lf")]
 
 [node name="Timer" type="Timer" parent="." unique_id=1872439113]
 wait_time = 5.0
