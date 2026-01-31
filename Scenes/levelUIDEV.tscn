@@ -1,23 +1,14 @@
 [gd_scene format=3 uid="uid://0y3drg66ums2"]
 
 [ext_resource type="Script" uid="uid://c1fysob3b4qet" path="res://Scripts/levelUIDEV.gd" id="1_nkef0"]
-[ext_resource type="PackedScene" uid="uid://b3o1pigaa7vj6" path="res://Scenes/obstacle.tscn" id="2_fgjnt"]
 [ext_resource type="PackedScene" uid="uid://cydoeybs5bcuy" path="res://Scenes/player.tscn" id="3_e68xr"]
 [ext_resource type="PackedScene" uid="uid://dctemd4pgx60h" path="res://Scenes/gui.tscn" id="4_j5wul"]
 [ext_resource type="PackedScene" uid="uid://cb5ka0bhwb7xc" path="res://morceau_de_masque.tscn" id="5_fgjnt"]
 [ext_resource type="PackedScene" uid="uid://dimb1xaea5otu" path="res://test.tscn" id="6_e68xr"]
+[ext_resource type="PackedScene" uid="uid://bwnft7trmnfmw" path="res://Scenes/morceau_de_masque3D.tscn" id="6_nkef0"]
 
 [node name="LevelUIDEV" type="Node3D" unique_id=1840064657]
 script = ExtResource("1_nkef0")
-
-[node name="Obstacle" parent="." unique_id=1354599717 instance=ExtResource("2_fgjnt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4861174, 0, 0)
-
-[node name="Obstacle2" parent="." unique_id=2024468223 instance=ExtResource("2_fgjnt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.0729427, 0, 0)
-
-[node name="Obstacle3" parent="." unique_id=1978731948 instance=ExtResource("2_fgjnt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5536013, 0, 0)
 
 [node name="Player" parent="." unique_id=260235842 instance=ExtResource("3_e68xr")]
 
@@ -33,3 +24,8 @@ offset_bottom = 3605.04
 [node name="TextureRect" parent="CanvasLayer" unique_id=1322640462 instance=ExtResource("5_fgjnt")]
 
 [node name="Node2D" parent="CanvasLayer" unique_id=1953848623 instance=ExtResource("6_e68xr")]
+
+[node name="Timer" type="Timer" parent="." unique_id=2053633432]
+
+[node name="Node3D" parent="." unique_id=1633394539 instance=ExtResource("6_nkef0")]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 25.232367, -1, -1.0808907)
