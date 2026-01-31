@@ -1,21 +1,11 @@
 [gd_scene format=3 uid="uid://ckfko6l8ld1gi"]
 
 [ext_resource type="Script" uid="uid://ductso18hnvfk" path="res://Scripts/level.gd" id="1_81xng"]
-[ext_resource type="PackedScene" uid="uid://b3o1pigaa7vj6" path="res://Scenes/obstacle.tscn" id="2_wqkje"]
 [ext_resource type="PackedScene" uid="uid://cydoeybs5bcuy" path="res://Scenes/player.tscn" id="3_0f350"]
 [ext_resource type="PackedScene" uid="uid://dctemd4pgx60h" path="res://Scenes/gui.tscn" id="4_8c0lf"]
 
 [node name="Level" type="Node3D" unique_id=1840064657]
 script = ExtResource("1_81xng")
-
-[node name="Obstacle" parent="." unique_id=1354599717 instance=ExtResource("2_wqkje")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4861174, 0, 0)
-
-[node name="Obstacle2" parent="." unique_id=2024468223 instance=ExtResource("2_wqkje")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.0729427, 0, 0)
-
-[node name="Obstacle3" parent="." unique_id=1978731948 instance=ExtResource("2_wqkje")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5536013, 0, 0)
 
 [node name="Player" parent="." unique_id=260235842 instance=ExtResource("3_0f350")]
 
