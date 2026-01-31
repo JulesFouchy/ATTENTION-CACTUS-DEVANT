@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://0y3drg66ums2"]
 
-[ext_resource type="PackedScene" path="res://Scenes/IconeMasque.tscn" id="5_fgjnt"]
+[ext_resource type="PackedScene" uid="uid://cb5ka0bhwb7xc" path="res://Scenes/IconeMasque.tscn" id="5_fgjnt"]
 [ext_resource type="PackedScene" uid="uid://dimb1xaea5otu" path="res://test.tscn" id="6_e68xr"]
 
 [node name="ui_game" type="Control" unique_id=1752764723]

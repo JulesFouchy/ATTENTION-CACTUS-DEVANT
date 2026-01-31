@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 State="*uid://b63kjbf1k2o2p"
+MaskState="*uid://0b3fey42cio6"
 
 [debug_draw_3d]
 
