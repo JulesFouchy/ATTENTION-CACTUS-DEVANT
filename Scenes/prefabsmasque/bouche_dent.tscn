@@ -5,5 +5,5 @@
 
 [node name="Node3D" unique_id=1633394539 instance=ExtResource("1_yd7pi")]
 
-[node name="Sprite3D" parent="." index="0" unique_id=436402469]
+[node name="Sprite3D" parent="Area3D" parent_id_path=PackedInt32Array(455129916) index="1" unique_id=436402469]
 texture = ExtResource("2_acgqw")
