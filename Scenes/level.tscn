@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bf8pn47wr7lf4" path="res://Scenes/obstacle_cube.tscn" id="2_wqkje"]
 [ext_resource type="PackedScene" uid="uid://cydoeybs5bcuy" path="res://Scenes/player.tscn" id="3_0f350"]
 [ext_resource type="PackedScene" uid="uid://ceb0701pf7fv6" path="res://Scenes/obstacle_sphere.tscn" id="3_8c0lf"]
+[ext_resource type="PackedScene" uid="uid://0y3drg66ums2" path="res://Scenes/levelUIDEV.tscn" id="5_0f350"]
 [ext_resource type="PackedScene" uid="uid://c6bph7tclmmdh" path="res://Scenes/ui_game_over.tscn" id="5_wqkje"]
 
 [sub_resource type="Gradient" id="Gradient_wqkje"]
@@ -33,6 +34,8 @@ TimeInSeconds = 0.1
 
 [node name="Player" parent="." unique_id=260235842 instance=ExtResource("3_0f350")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.32577038, 0)
+
+[node name="LevelUIDEV" parent="." unique_id=276772718 instance=ExtResource("5_0f350")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=80694050]
 

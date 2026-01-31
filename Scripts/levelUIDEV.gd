@@ -13,7 +13,7 @@ func spawn_obstacle()-> void:
 	var masques_scene = (masques_scenes.pick_random()).instantiate()
 
 	add_child(masques_scene)
-	masques_scene.set_global_position(Vector3( x_spawn , randf_range(-y_spawn, y_spawn),0))
+	masques_scene.set_global_position(Vector3( x_spawn , 0,randf_range(-y_spawn, y_spawn)))
 	obstacle_count+=1
 		
 	
