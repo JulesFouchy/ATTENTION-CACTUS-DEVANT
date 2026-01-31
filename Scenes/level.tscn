@@ -24,7 +24,6 @@
 [ext_resource type="AudioStream" uid="uid://dumuv0fhx2ml7" path="res://AUDIO/ambiancebackground.mp3" id="12_crh0w"]
 [ext_resource type="Texture2D" uid="uid://jvhtbnvsdhlh" path="res://IconesPNG/Weirdcore-Eyes-PNG-Pic.png" id="12_hcs0j"]
 [ext_resource type="Texture2D" uid="uid://ccmu4elct4jjy" path="res://IconesPNG/dfgsdgsfdgerfg.png" id="12_maxl3"]
-[ext_resource type="AudioStream" uid="uid://c2j1vuy63a3xu" path="res://AUDIO/Walking Slowly Sound Effect [1E93HRoKPfg].mp3" id="12_pa6b8"]
 [ext_resource type="Texture2D" uid="uid://b05vjufilxmeh" path="res://IconesPNG/azefef.png" id="12_xmogu"]
 [ext_resource type="Texture2D" uid="uid://y4vrdagxh7xv" path="res://IconesPNG/Untitled-1.png" id="13_24uko"]
 [ext_resource type="Texture2D" uid="uid://c1ll8nv2wljdj" path="res://IconesPNG/eyebouche.png" id="13_md013"]
@@ -32,10 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://c85qg3qchtiel" path="res://IconesPNG/fvrebqgn shnbgrfezgqebs.png" id="14_ogdfn"]
 [ext_resource type="Texture2D" uid="uid://cbh52y4d3g1ix" path="res://IconesPNG/azrzaerez.png" id="14_udrpa"]
 [ext_resource type="Texture2D" uid="uid://bxglr5fesc1tp" path="res://IconesPNG/gbvfze.png" id="15_l1uqm"]
-[ext_resource type="Texture2D" uid="uid://cu7f3u161io2t" path="res://textures/cobblestone_05_4k.blend/textures/cobblestone_05_diff_4k.jpg" id="15_nngtn"]
 [ext_resource type="Texture2D" uid="uid://wta1lxm0cnle" path="res://IconesPNG/gfnfgnfgnfgn.png" id="16_gx30c"]
-[ext_resource type="Texture2D" uid="uid://devj6xojvrep8" path="res://textures/cobblestone_05_4k.blend/textures/cobblestone_05_rough_4k.jpg" id="16_vofx3"]
-[ext_resource type="Texture2D" uid="uid://cb5qlkj7sfdun" path="res://textures/cobblestone_05_4k.blend/textures/cobblestone_05_disp_4k.png" id="17_00k4y"]
 [ext_resource type="Texture2D" uid="uid://cdoe25hr6jfyx" path="res://IconesPNG/gretzhgef.png" id="17_jmchl"]
 [ext_resource type="Texture2D" uid="uid://sbp01hq2rbrm" path="res://IconesPNG/hgjhfsdfqghnj.png" id="18_s14gf"]
 [ext_resource type="Texture2D" uid="uid://bk3jdnvgjnv0h" path="res://IconesPNG/dgfdgfdg.png" id="18_tj58u"]
@@ -100,6 +96,9 @@
 [ext_resource type="Texture2D" uid="uid://b5825jkeebhfk" path="res://IconesPNG/zegezgzeg.png" id="87_5s2nr"]
 [ext_resource type="Texture2D" uid="uid://dhmx81oxnjwrd" path="res://IconesPNG/zegzegezg.png" id="88_8xmy8"]
 [ext_resource type="Texture2D" uid="uid://b7iavkm21f8sq" path="res://IconesPNG/zzzergr.png" id="89_gus1c"]
+[ext_resource type="AudioStream" uid="uid://bti6e23801isp" path="res://AUDIO/walk.mp3" id="97_tj58u"]
+[ext_resource type="PackedScene" uid="uid://20eksw01fl1b" path="res://Scenes/tapisdegravat.tscn" id="98_s6d7k"]
+[ext_resource type="PackedScene" uid="uid://cg6e38dk0jrmp" path="res://Scenes/tapisdherbe.tscn" id="99_1u35f"]
 
 [sub_resource type="Gradient" id="Gradient_wqkje"]
 offsets = PackedFloat32Array(0.14174455, 0.20404984, 0.24766356, 0.5413223, 0.8636364, 0.95454544)
@@ -137,32 +136,6 @@ adjustment_contrast = 1.7
 adjustment_saturation = 0.41
 adjustment_color_correction = SubResource("GradientTexture1D_0f350")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_3a44l"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0cmrb"]
-albedo_texture = ExtResource("15_nngtn")
-roughness_texture = ExtResource("17_00k4y")
-normal_enabled = true
-normal_texture = ExtResource("16_vofx3")
-uv1_scale = Vector3(100, 1, 1)
-
-[sub_resource type="GDScript" id="GDScript_2klc5"]
-script/source = "extends MeshInstance3D
-
-var speed_x: float = 0.2
-var speed_y: float = 0.0
-
-func _process(delta):
-	var mat := get_surface_override_material(0)
-
-	if mat == null:
-		return
-
-	# On décale l’offset UV1
-	mat.uv1_offset.x += speed_x * delta
-	mat.uv1_offset.y += speed_y * delta
-"
-
 [node name="Level" type="Node3D" unique_id=1840064657]
 script = ExtResource("1_81xng")
 obstacle_scenes = Array[PackedScene]([ExtResource("2_wqkje"), ExtResource("3_8c0lf"), ExtResource("4_oqgf2")])
@@ -196,21 +169,22 @@ transform = Transform3D(0.52459526, 0.8513518, 0, -0.5596576, 0.34485593, 0.7535
 
 [node name="ambiencebackgroundmusic" type="AudioStreamPlayer3D" parent="." unique_id=806156387]
 stream = ExtResource("12_crh0w")
+volume_db = -80.0
 autoplay = true
 script = ExtResource("11_2klc5")
 
 [node name="walkingsound" type="AudioStreamPlayer3D" parent="." unique_id=2041234620]
-stream = ExtResource("12_pa6b8")
+stream = ExtResource("97_tj58u")
 volume_db = 80.0
 pitch_scale = 0.7
 autoplay = true
 panning_strength = 1.47
 parameters/looping = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2140384341]
+[node name="MeshInstance3D" parent="." unique_id=205945086 instance=ExtResource("98_s6d7k")]
 transform = Transform3D(145.84798, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.005603552, 0)
-mesh = SubResource("PlaneMesh_3a44l")
-surface_material_override/0 = SubResource("StandardMaterial3D_0cmrb")
-script = SubResource("GDScript_2klc5")
+
+[node name="MeshInstance3D2" parent="." unique_id=1744533803 instance=ExtResource("99_1u35f")]
+transform = Transform3D(176.93294, 0, 0, 0, 1.2131326, 0, 0, 0, 258.12128, 0, -0.119856834, 3.8110678)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
