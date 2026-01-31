@@ -23,7 +23,7 @@ func get_mouse_world_pos(mouse:Vector2):
 	params.from = start
 	params.to = end
 	# Debug : dessine le rayon
-	DebugDraw3D.draw_line(start, end, Color.RED, 0.1)
+	#DebugDraw3D.draw_line(start, end, Color.RED, 0.1)
 
 	var result = space.intersect_ray(params)
 	print(result)
