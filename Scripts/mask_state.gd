@@ -11,9 +11,7 @@ var _map: Dictionary
 
 func set_slot(i: int, mask_piece: int) -> void:
 	_slots[i] = mask_piece
-	print(_slots)
-	for effect in Effect.values():
-		print(is_effect_active(effect))
+	State.MaskChanged.emit()
 
 func is_effect_active(effect: Effect) -> bool:
 	for i in len(_slots):
