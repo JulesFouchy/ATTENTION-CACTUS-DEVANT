@@ -1,8 +1,6 @@
-extends Movable
+extends Node3D
+
 @export var iconemasque_scene: PackedScene
-
-
-
 
 func _on_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
 	

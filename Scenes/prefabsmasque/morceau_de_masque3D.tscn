@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://bwnft7trmnfmw"]
 
-[ext_resource type="PackedScene" uid="uid://cb5ka0bhwb7xc" path="res://Scenes/IconeMasque.tscn" id="2_ftbco"]
+[ext_resource type="Script" uid="uid://cg7kilg4hyfod" path="res://Scripts/mask_piece.gd" id="1_lw37p"]
+[ext_resource type="PackedScene" path="res://Scenes/IconeMasque.tscn" id="2_ftbco"]
 [ext_resource type="Script" uid="uid://bh4c1x7k6tfcx" path="res://Scripts/morceau_De_Masque.gd" id="2_lw37p"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ftbco"]
 
 [node name="Node3D" type="Node3D" unique_id=1633394539]
+script = ExtResource("1_lw37p")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=455129916]
 transform = Transform3D(-0.13052621, 0, -0.9914449, 0, 1, 0, 0.9914449, 0, -0.13052621, 0, 0, 0)

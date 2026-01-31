@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://bll7gn1vvsafq"]
 
-[ext_resource type="Script" uid="uid://bh4c1x7k6tfcx" path="res://Scripts/morceau_De_Masque.gd" id="2_4an3s"]
+[ext_resource type="Script" uid="uid://cg7kilg4hyfod" path="res://Scripts/mask_piece.gd" id="1_hmbgb"]
 [ext_resource type="Texture2D" uid="uid://bkp6rt20w1wq4" path="res://IconesPNG/nez.png" id="2_rlf4h"]
 
 [node name="Node3D" type="Node3D" unique_id=1633394539]
-script = ExtResource("2_4an3s")
+script = ExtResource("1_hmbgb")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=436402469]
 transform = Transform3D(-0.13052621, 0, -0.9914449, 0, 1, 0, 0.9914449, 0, -0.13052621, 0, 0, 0)
