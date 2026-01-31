@@ -6,6 +6,7 @@ var obstacle_scene: PackedScene = preload("res://Scenes/obstacle.tscn")
 @export var y_spawn : float = 10.
 @export var TimeInSeconds : float = 1.
 @export var max_obstacles : int = 20
+@export var spawn_probability : float = 0.1
 
 var obstacle_count : int = 0
 
@@ -21,7 +22,7 @@ func _ready() -> void:
 	$Timer.start(TimeInSeconds)
 
 func _on_timer_timeout():
-	if obstacle_count < max_obstacles :
+	if obstacle_count < max_obstacles && randf() < spawn_probability :
 		spawn_obstacle()
 
 func _on_obstacle_destroyed():
