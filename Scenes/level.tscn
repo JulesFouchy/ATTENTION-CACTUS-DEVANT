@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://bf8pn47wr7lf4" path="res://Scenes/obstacle_cube.tscn" id="2_wqkje"]
 [ext_resource type="PackedScene" uid="uid://cydoeybs5bcuy" path="res://Scenes/player.tscn" id="3_0f350"]
 [ext_resource type="PackedScene" uid="uid://ceb0701pf7fv6" path="res://Scenes/obstacle_sphere.tscn" id="3_8c0lf"]
-[ext_resource type="PackedScene" path="res://Scenes/prefabsmasque/bouche_dent.tscn" id="4_754fn"]
-[ext_resource type="PackedScene" uid="uid://0y3drg66ums2" path="res://Scenes/levelUIDEV.tscn" id="5_0f350"]
+[ext_resource type="PackedScene" uid="uid://y1e24cvgf0xg" path="res://Scenes/prefabsmasque/bouche_dent.tscn" id="4_754fn"]
+[ext_resource type="PackedScene" uid="uid://0y3drg66ums2" path="res://Scenes/ui_game.tscn" id="5_0f350"]
 [ext_resource type="PackedScene" uid="uid://b3fgdfbej3qtl" path="res://Scenes/prefabsmasque/oeil.tscn" id="5_bvt00"]
 [ext_resource type="PackedScene" uid="uid://bglp0ghphorg8" path="res://Scenes/prefabsmasque/bouche_lipstick.tscn" id="5_crh0w"]
 [ext_resource type="PackedScene" uid="uid://c6bph7tclmmdh" path="res://Scenes/ui_game_over.tscn" id="5_wqkje"]
@@ -44,10 +44,9 @@ TimeInSeconds = 0.1
 [node name="Player" parent="." unique_id=260235842 instance=ExtResource("3_0f350")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.32577038, 0)
 
-[node name="LevelUIDEV" parent="." unique_id=276772718 instance=ExtResource("5_0f350")]
-script = null
-
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=80694050]
+
+[node name="ui_game" parent="CanvasLayer" unique_id=1752764723 instance=ExtResource("5_0f350")]
 
 [node name="UiGameOver" parent="CanvasLayer" unique_id=657935277 instance=ExtResource("5_wqkje")]
 unique_name_in_owner = true
