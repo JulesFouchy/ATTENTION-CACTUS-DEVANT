@@ -2,7 +2,7 @@
 
 Mécaniques
 
-- Plus on se prends certains obstacles plus la scène devient transparente
+- Plus on se prend certains obstacles plus la scène devient transparente
 - Certains obstacles permettent de remonter l'opacité de la scène
 - Certains obstacles déclenchent des vues et des glitchs rigolos
 - Certains obstacles sont dangereux d'autres neutre, d'autres ont des effets bénéfiques
