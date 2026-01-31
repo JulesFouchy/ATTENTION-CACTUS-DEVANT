@@ -5,8 +5,6 @@ enum Effect {
 	CubesArePink,
 	Water,
 	VHS,
-	VerticalFlip,
-	HorizontalFlip,
 }
 
 var _slots: Array[int]
