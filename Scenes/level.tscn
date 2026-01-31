@@ -1,11 +1,15 @@
 [gd_scene format=3 uid="uid://ckfko6l8ld1gi"]
 
 [ext_resource type="Script" uid="uid://ductso18hnvfk" path="res://Scripts/level.gd" id="1_81xng"]
+[ext_resource type="PackedScene" uid="uid://b3o1pigaa7vj6" path="res://Scenes/obstacle.tscn" id="2_wqkje"]
 [ext_resource type="PackedScene" uid="uid://cydoeybs5bcuy" path="res://Scenes/player.tscn" id="3_0f350"]
+[ext_resource type="PackedScene" uid="uid://bx8ra316hj0ub" path="res://Scenes/obstacle2.tscn" id="3_wqkje"]
 [ext_resource type="PackedScene" uid="uid://dctemd4pgx60h" path="res://Scenes/gui.tscn" id="4_8c0lf"]
 
 [node name="Level" type="Node3D" unique_id=1840064657]
 script = ExtResource("1_81xng")
+obstacle_scenes = Array[PackedScene]([ExtResource("2_wqkje"), ExtResource("3_wqkje")])
+spawn_probability = 0.3
 
 [node name="Player" parent="." unique_id=260235842 instance=ExtResource("3_0f350")]
 
