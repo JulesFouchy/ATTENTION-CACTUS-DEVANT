@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cb5ka0bhwb7xc"]
+
+[ext_resource type="Script" uid="uid://dwf0h5kmeqagr" path="res://texture_rect.gd" id="2_ek34n"]
+
+[node name="Morceau_de_masque" type="TextureRect" unique_id=1322640462]
+custom_minimum_size = Vector2(100, 100)
+offset_right = 61.0
+offset_bottom = 61.0
+expand_mode = 1
+script = ExtResource("2_ek34n")
+
+[node name="Panel" type="Panel" parent="." unique_id=1618378047]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+mouse_filter = 2

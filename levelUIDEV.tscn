@@ -4,8 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://b3o1pigaa7vj6" path="res://obstacle.tscn" id="2_fgjnt"]
 [ext_resource type="PackedScene" uid="uid://cydoeybs5bcuy" path="res://player.tscn" id="3_e68xr"]
 [ext_resource type="PackedScene" uid="uid://dctemd4pgx60h" path="res://gui.tscn" id="4_j5wul"]
+[ext_resource type="PackedScene" uid="uid://cb5ka0bhwb7xc" path="res://morceau_de_masque.tscn" id="5_fgjnt"]
+[ext_resource type="PackedScene" uid="uid://dimb1xaea5otu" path="res://test.tscn" id="6_e68xr"]
 
-[node name="Level" type="Node3D" unique_id=1840064657]
+[node name="LevelUIDEV" type="Node3D" unique_id=1840064657]
 script = ExtResource("1_r2nuk")
 
 [node name="Obstacle" parent="." unique_id=1354599717 instance=ExtResource("2_fgjnt")]
@@ -20,7 +22,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5536013, 0, 0)
 [node name="Player" parent="." unique_id=260235842 instance=ExtResource("3_e68xr")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=80694050]
-visible = false
 
 [node name="Gui" parent="CanvasLayer" unique_id=1184162246 instance=ExtResource("4_j5wul")]
 anchors_preset = -1
@@ -29,14 +30,6 @@ anchor_bottom = 1.3950001
 offset_right = 5726.088
 offset_bottom = 3605.04
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Gui" unique_id=2040878176]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-expand_mode = 1
+[node name="TextureRect" parent="CanvasLayer" unique_id=1322640462 instance=ExtResource("5_fgjnt")]
 
-[node name="Panel" type="Panel" parent="CanvasLayer/Gui/TextureRect" unique_id=1775847196]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Node2D" parent="CanvasLayer" unique_id=1953848623 instance=ExtResource("6_e68xr")]
