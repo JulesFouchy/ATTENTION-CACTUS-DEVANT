@@ -1,5 +1,18 @@
 extends Node3D
 var obstacle_scene: PackedScene = preload("res://Scenes/obstacle.tscn")
 
+@export var x_spawn : float = 50.
+@export var y_spawn : float = 10.
+@export var TimeInSeconds : float = 1.
+
+func spawn_obstacle()-> void:
+	var obstacle_to_spawn = obstacle_scene.instantiate()
+	add_child(obstacle_to_spawn)
+	obstacle_to_spawn.set_global_position(Vector3(x_spawn,0. , randf_range(-y_spawn, y_spawn)))
+
 func _ready() -> void:
-	add_child(obstacle_scene.instantiate())
+	$Timer.start(TimeInSeconds)
+
+func _on_timer_timeout():
+	spawn_obstacle()
+	
