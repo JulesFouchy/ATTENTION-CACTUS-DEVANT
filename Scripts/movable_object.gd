@@ -10,5 +10,6 @@ func _process(delta: float) -> void:
 		destroy()
 		
 func destroy():
+	State.destroyed_movable.emit()
 	queue_free()
 	

@@ -17,7 +17,7 @@ func _ready() -> void:
 	$Timer.start(TimeInSeconds)
 	State.YouLost.connect(_on_you_lost)
 	State.TryAgain.connect(_on_try_again)
-	State.destroyed_obstacle.connect(_on_movable_destroyed)
+	State.destroyed_movable.connect(_on_movable_destroyed)
 	
 func spawn(scene_to_spawn) -> void:
 	add_child(scene_to_spawn)
