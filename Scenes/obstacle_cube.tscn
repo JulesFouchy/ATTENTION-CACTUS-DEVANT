@@ -2,21 +2,40 @@
 
 [ext_resource type="PackedScene" uid="uid://bx8ra316hj0ub" path="res://Scenes/obstacle.tscn" id="1_1n6n5"]
 [ext_resource type="Script" uid="uid://biw41ady0kdxu" path="res://Scripts/obstacle_cube.gd" id="2_qkkv5"]
-[ext_resource type="Shader" uid="uid://dwk4wyqw4m0pw" path="res://Shaders/test.tres" id="3_h27aj"]
-[ext_resource type="Shader" uid="uid://kac6pdmj050i" path="res://Shaders/ab.tres" id="4_ggre3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1n6n5"]
 
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_wa5hw"]
+parameter_name = "ColorParameter"
+default_value_enabled = true
+default_value = Color(1, 0, 0, 1)
+
+[sub_resource type="VisualShader" id="VisualShader_e38p7"]
+nodes/vertex/0/position = Vector2(304, -304)
+nodes/fragment/2/node = SubResource("VisualShaderNodeColorParameter_wa5hw")
+nodes/fragment/2/position = Vector2(-208, 352)
+nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4r5bs"]
 render_priority = 0
-shader = ExtResource("3_h27aj")
+shader = SubResource("VisualShader_e38p7")
 shader_parameter/ColorParameter = Color(1, 0, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_1n6n5"]
 
+[sub_resource type="VisualShaderNodeColorFunc" id="VisualShaderNodeColorFunc_ypie6"]
+default_input_values = [0, Vector3(28.585, 0.205, 6.775)]
+function = 4
+
+[sub_resource type="VisualShader" id="VisualShader_wjw31"]
+nodes/vertex/0/position = Vector2(512, 80)
+nodes/fragment/2/node = SubResource("VisualShaderNodeColorFunc_ypie6")
+nodes/fragment/2/position = Vector2(-32, 272)
+nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ggre3"]
 render_priority = 0
-shader = ExtResource("4_ggre3")
+shader = SubResource("VisualShader_wjw31")
 
 [node name="Obstacle" unique_id=1354599717 instance=ExtResource("1_1n6n5")]
 script = ExtResource("2_qkkv5")

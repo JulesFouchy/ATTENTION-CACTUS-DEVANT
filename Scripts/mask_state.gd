@@ -3,6 +3,8 @@ extends Node
 enum Effect {
 	SpheresDisappear,
 	CubesArePink,
+	Water,
+	VHS,
 }
 
 var _slots: Array[int]
