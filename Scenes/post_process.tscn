@@ -153,24 +153,24 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1mi1w"]
 shader = SubResource("Shader_rjkk8")
-shader_parameter/vhs_enabled = false
-shader_parameter/water_enabled = false
+shader_parameter/vhs_enabled = true
+shader_parameter/water_enabled = true
 shader_parameter/global_opacity = 1.0
-shader_parameter/scanlines_opacity = 0.4
-shader_parameter/scanlines_width = 0.25
-shader_parameter/grille_opacity = 0.3
-shader_parameter/roll_speed = 8.0
-shader_parameter/roll_size = 15.0
-shader_parameter/distort_intensity = 0.05
+shader_parameter/scanlines_opacity = 0.72400003439
+shader_parameter/scanlines_width = 0.114000005415
+shader_parameter/grille_opacity = 0.390000018525
+shader_parameter/roll_speed = 4.955
+shader_parameter/roll_size = 31.7950015102625
+shader_parameter/distort_intensity = 0.20000000298023
 shader_parameter/aberration = 0.03
 shader_parameter/noise_opacity = 0.4
-shader_parameter/noise_speed = 5.0
+shader_parameter/noise_speed = 6.23
 shader_parameter/vignette_intensity = 0.4
-shader_parameter/vignette_opacity = 0.5
-shader_parameter/resolution = Vector2(640, 480)
-shader_parameter/water_distortion = 0.02
-shader_parameter/water_speed = 2.0
-shader_parameter/water_color = Vector3(0, 0.3, 0.7)
+shader_parameter/vignette_opacity = 0.018000000855
+shader_parameter/resolution = Vector2(659.03, 480)
+shader_parameter/water_distortion = 0.0630000029925
+shader_parameter/water_speed = 0.7950000377625
+shader_parameter/water_color = Vector3(1.43, 3.695, 3.26)
 
 [node name="Post-process" type="Control" unique_id=847744655]
 layout_mode = 3
