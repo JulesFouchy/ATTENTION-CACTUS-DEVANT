@@ -1,9 +1,13 @@
 extends TextureRect
-
-
 class_name IconeDrag
 
+@export var is_visible := true
+@onready var panel: Panel = $Panel
+
 @export var _slot: int = -1
+
+func _ready() -> void:
+	panel.visible = is_visible
 
 func _get_drag_data(at_position):
 	var preview_texture = TextureRect.new()
