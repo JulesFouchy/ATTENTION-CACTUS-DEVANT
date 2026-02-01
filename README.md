@@ -15,7 +15,7 @@ Mécaniques
 - fog dans le fond pour pas voir les trucs popper
 - Quand ça fait la transparence c'est avec une texture par défaut
 - Changer valeurs shaders
-
+- truc qui fait changer la hue de l'image
 
 - Certains objets disparaissent ou apparaissent selon le masque
 - Certains obstacles permettent de remonter l'opacité de la scène
