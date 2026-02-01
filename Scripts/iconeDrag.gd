@@ -2,7 +2,11 @@ extends TextureRect
 class_name IconeDrag
 
 @export var is_visible := true
-@export var start_with_a_piece := false
+@export var start_with_a_piece := false:
+	set(value):
+		start_with_a_piece = value
+		if start_with_a_piece:
+			State.LevelInit.connect(_on_level_init)
 
 @onready var panel: Panel = $Panel
 
