@@ -22,155 +22,50 @@ func set_shader_boolean(uniform_name, effect) -> void:
 func _on_mask_changed() -> void:
 	set_shader_boolean(
 		"water_enabled",
-		MaskState.is_effect_active(MaskState.Effect.Water) ||
-		# MaskState.is_effect_active(MaskState.Effect.WaterAndVHS) ||
-		# MaskState.is_effect_active(MaskState.Effect.WaterAndPixelate) ||
-		# MaskState.is_effect_active(MaskState.Effect.WaterAndNegative) ||
-		# MaskState.is_effect_active(MaskState.Effect.WaterAndEdge) ||
-		# MaskState.is_effect_active(MaskState.Effect.WaterAndChromaticAberration) ||
-		# MaskState.is_effect_active(MaskState.Effect.WaterAndHueShift) ||
-		# MaskState.is_effect_active(MaskState.Effect.WaterAndScreenShake)||
-		# MaskState.is_effect_active(MaskState.Effect.AllPostProcessWithoutVHS) ||
-		# MaskState.is_effect_active(MaskState.Effect.AllPostProcessWithoutChromaticAberration) ||
-		# MaskState.is_effect_active(MaskState.Effect.AllPostProcessWithoutEdge) ||
-		# MaskState.is_effect_active(MaskState.Effect.AllPostProcessWithoutScreenShake) ||
-		# MaskState.is_effect_active(MaskState.Effect.AllPostProcessWithoutPixelate) ||
-		# MaskState.is_effect_active(MaskState.Effect.AllPostProcessWithoutNegative) ||
-		MaskState.is_effect_active(MaskState.Effect.AllPostProcess)
+	!MaskState.is_effect_active(MaskState.Effect.DisableWater) && (MaskState.is_effect_active(MaskState.Effect.Water) ||
+		MaskState.is_effect_active(MaskState.Effect.AllPostProcess))
 	)
 
 	set_shader_boolean(
 		"vhs_enabled",
-		MaskState.is_effect_active(MaskState.Effect.VHS) ||
-		# MaskState.is_effect_active(MaskState.Effect.WaterAndVHS) ||
-		# MaskState.is_effect_active(MaskState.Effect.VHSAndPixelate) ||
-		# MaskState.is_effect_active(MaskState.Effect.VHSAndNegative) ||
-		# MaskState.is_effect_active(MaskState.Effect.VHSAndEdge) ||
-		# MaskState.is_effect_active(MaskState.Effect.VHSAndChromaticAberration) ||
-		# MaskState.is_effect_active(MaskState.Effect.VHSAndHueShift) ||
-		# MaskState.is_effect_active(MaskState.Effect.VHSAndScreenShake) ||
-		# MaskState.is_effect_active(MaskState.Effect.AllPostProcessWithoutWater) ||
-		# MaskState.is_effect_active(MaskState.Effect.AllPostProcessWithoutChromaticAberration) ||
-		# MaskState.is_effect_active(MaskState.Effect.AllPostProcessWithoutEdge) ||
-		# MaskState.is_effect_active(MaskState.Effect.AllPostProcessWithoutScreenShake) ||
-		# MaskState.is_effect_active(MaskState.Effect.AllPostProcessWithoutPixelate) ||
-		# MaskState.is_effect_active(MaskState.Effect.AllPostProcessWithoutNegative) ||
-		MaskState.is_effect_active(MaskState.Effect.AllPostProcess)
+	!MaskState.is_effect_active(MaskState.Effect.DisableVHS) && (MaskState.is_effect_active(MaskState.Effect.VHS) ||
+		MaskState.is_effect_active(MaskState.Effect.AllPostProcess))
 	)
 
 	set_shader_boolean(
 		"pixelate_enabled",
-		MaskState.is_effect_active(MaskState.Effect.Pixelate) ||
-		# MaskState.is_effect_active(MaskState.Effect.WaterAndPixelate) ||
-		# MaskState.is_effect_active(MaskState.Effect.VHSAndPixelate) ||
-		# MaskState.is_effect_active(MaskState.Effect.PixelateAndNegative) ||
-		# MaskState.is_effect_active(MaskState.Effect.PixelateAndEdge) ||
-		# MaskState.is_effect_active(MaskState.Effect.PixelateAndChromaticAberration) ||
-		# MaskState.is_effect_active(MaskState.Effect.PixelateAndHueShift) ||
-		# MaskState.is_effect_active(MaskState.Effect.PixelateAndScreenShake) ||
-		# MaskState.is_effect_active(MaskState.Effect.AllPostProcessWithoutWater) ||
-		# MaskState.is_effect_active(MaskState.Effect.AllPostProcessWithoutChromaticAberration) ||
-		# MaskState.is_effect_active(MaskState.Effect.AllPostProcessWithoutEdge) ||
-		# MaskState.is_effect_active(MaskState.Effect.AllPostProcessWithoutScreenShake) ||
-		# MaskState.is_effect_active(MaskState.Effect.AllPostProcessWithoutVHS) ||
-		# MaskState.is_effect_active(MaskState.Effect.AllPostProcessWithoutNegative) ||
-		MaskState.is_effect_active(MaskState.Effect.AllPostProcess)
+	!MaskState.is_effect_active(MaskState.Effect.DisablePixelate) && (MaskState.is_effect_active(MaskState.Effect.Pixelate) ||
+		MaskState.is_effect_active(MaskState.Effect.AllPostProcess))
 	)
 
 	set_shader_boolean(
 		"negative_enabled",
-		MaskState.is_effect_active(MaskState.Effect.Negative) ||
-		# MaskState.is_effect_active(MaskState.Effect.WaterAndNegative) ||
-		# MaskState.is_effect_active(MaskState.Effect.VHSAndNegative) ||
-		# MaskState.is_effect_active(MaskState.Effect.PixelateAndNegative) ||
-		# MaskState.is_effect_active(MaskState.Effect.NegativeAndEdge) ||
-		# MaskState.is_effect_active(MaskState.Effect.NegativeAndChromaticAberration) ||
-		# MaskState.is_effect_active(MaskState.Effect.NegativeAndHueShift) ||
-		# MaskState.is_effect_active(MaskState.Effect.NegativeAndScreenShake) ||
-		# MaskState.is_effect_active(MaskState.Effect.AllPostProcessWithoutWater) ||
-		# MaskState.is_effect_active(MaskState.Effect.AllPostProcessWithoutChromaticAberration) ||
-		# MaskState.is_effect_active(MaskState.Effect.AllPostProcessWithoutEdge) ||
-		# MaskState.is_effect_active(MaskState.Effect.AllPostProcessWithoutScreenShake) ||
-		# MaskState.is_effect_active(MaskState.Effect.AllPostProcessWithoutVHS) ||
-		# MaskState.is_effect_active(MaskState.Effect.AllPostProcessWithoutPixelate) ||
-		MaskState.is_effect_active(MaskState.Effect.AllPostProcess)
+	!MaskState.is_effect_active(MaskState.Effect.DisableNegative) && (MaskState.is_effect_active(MaskState.Effect.Negative) ||
+		MaskState.is_effect_active(MaskState.Effect.AllPostProcess))
 	)
 
 	set_shader_boolean(
 		"edge_enabled",
-		MaskState.is_effect_active(MaskState.Effect.Edge) ||
-		# MaskState.is_effect_active(MaskState.Effect.WaterAndEdge) ||
-		# MaskState.is_effect_active(MaskState.Effect.VHSAndEdge) ||
-		# MaskState.is_effect_active(MaskState.Effect.PixelateAndEdge) ||
-		# MaskState.is_effect_active(MaskState.Effect.NegativeAndEdge) ||
-		# MaskState.is_effect_active(MaskState.Effect.EdgeAndChromaticAberration) ||
-		# MaskState.is_effect_active(MaskState.Effect.EdgeAndHueShift) ||
-		# MaskState.is_effect_active(MaskState.Effect.EdgeAndScreenShake) ||
-		# MaskState.is_effect_active(MaskState.Effect.AllPostProcessWithoutWater) ||
-		# MaskState.is_effect_active(MaskState.Effect.AllPostProcessWithoutChromaticAberration) ||
-		# MaskState.is_effect_active(MaskState.Effect.AllPostProcessWithoutNegative) ||
-		# MaskState.is_effect_active(MaskState.Effect.AllPostProcessWithoutScreenShake) ||
-		# MaskState.is_effect_active(MaskState.Effect.AllPostProcessWithoutVHS) ||
-		# MaskState.is_effect_active(MaskState.Effect.AllPostProcessWithoutPixelate) ||
-		MaskState.is_effect_active(MaskState.Effect.AllPostProcess)
+	!MaskState.is_effect_active(MaskState.Effect.DisableEdge) && (MaskState.is_effect_active(MaskState.Effect.Edge) ||
+		MaskState.is_effect_active(MaskState.Effect.AllPostProcess))
 	)
 
 	set_shader_boolean(
 		"radial_aberration_enabled",
-		MaskState.is_effect_active(MaskState.Effect.ChromaticAberration) ||
-		# MaskState.is_effect_active(MaskState.Effect.WaterAndChromaticAberration) ||
-		# MaskState.is_effect_active(MaskState.Effect.VHSAndChromaticAberration) ||
-		# MaskState.is_effect_active(MaskState.Effect.PixelateAndChromaticAberration) ||
-		# MaskState.is_effect_active(MaskState.Effect.NegativeAndChromaticAberration) ||
-		# MaskState.is_effect_active(MaskState.Effect.EdgeAndChromaticAberration) ||
-		# MaskState.is_effect_active(MaskState.Effect.ChromaticAberrationAndHueShift) ||
-		# MaskState.is_effect_active(MaskState.Effect.ChromaticAberrationAndScreenShake) ||
-		# MaskState.is_effect_active(MaskState.Effect.AllPostProcessWithoutWater) ||
-		# MaskState.is_effect_active(MaskState.Effect.AllPostProcessWithoutEdge) ||
-		# MaskState.is_effect_active(MaskState.Effect.AllPostProcessWithoutNegative) ||
-		# MaskState.is_effect_active(MaskState.Effect.AllPostProcessWithoutScreenShake) ||
-		# MaskState.is_effect_active(MaskState.Effect.AllPostProcessWithoutVHS) ||
-		# MaskState.is_effect_active(MaskState.Effect.AllPostProcessWithoutPixelate) ||
-		MaskState.is_effect_active(MaskState.Effect.AllPostProcess)
+	!MaskState.is_effect_active(MaskState.Effect.DisableChromaticAberration) && (MaskState.is_effect_active(MaskState.Effect.ChromaticAberration) ||
+		MaskState.is_effect_active(MaskState.Effect.AllPostProcess))
 	)
 
 	set_shader_boolean(
 		"hue_shift_enabled",
-		MaskState.is_effect_active(MaskState.Effect.HueShift) ||
-		# MaskState.is_effect_active(MaskState.Effect.WaterAndHueShift) ||
-		# MaskState.is_effect_active(MaskState.Effect.VHSAndHueShift) ||
-		# MaskState.is_effect_active(MaskState.Effect.PixelateAndHueShift) ||
-		# MaskState.is_effect_active(MaskState.Effect.NegativeAndHueShift) ||
-		# MaskState.is_effect_active(MaskState.Effect.EdgeAndHueShift) ||
-		# MaskState.is_effect_active(MaskState.Effect.ChromaticAberrationAndHueShift) ||
-		# MaskState.is_effect_active(MaskState.Effect.HueShiftAndScreenShake) ||
-		# MaskState.is_effect_active(MaskState.Effect.AllPostProcessWithoutWater) ||
-		# MaskState.is_effect_active(MaskState.Effect.AllPostProcessWithoutEdge) ||
-		# MaskState.is_effect_active(MaskState.Effect.AllPostProcessWithoutNegative) ||
-		# MaskState.is_effect_active(MaskState.Effect.AllPostProcessWithoutScreenShake) ||
-		# MaskState.is_effect_active(MaskState.Effect.AllPostProcessWithoutChromaticAberration) ||
-		# MaskState.is_effect_active(MaskState.Effect.AllPostProcessWithoutVHS) ||
-		# MaskState.is_effect_active(MaskState.Effect.AllPostProcessWithoutPixelate) ||
-		MaskState.is_effect_active(MaskState.Effect.AllPostProcess)
+	!MaskState.is_effect_active(MaskState.Effect.DisableHueShift) && (MaskState.is_effect_active(MaskState.Effect.Water) ||
+		MaskState.is_effect_active(MaskState.Effect.AllPostProcess))
 	)
 
 	set_shader_boolean(
 		"screen_shake_enabled",
-		MaskState.is_effect_active(MaskState.Effect.ScreenShake) ||
-		# MaskState.is_effect_active(MaskState.Effect.WaterAndScreenShake) ||
-		# MaskState.is_effect_active(MaskState.Effect.VHSAndScreenShake) ||
-		# MaskState.is_effect_active(MaskState.Effect.PixelateAndScreenShake) ||
-		# MaskState.is_effect_active(MaskState.Effect.NegativeAndScreenShake) ||
-		# MaskState.is_effect_active(MaskState.Effect.EdgeAndScreenShake) ||
-		# MaskState.is_effect_active(MaskState.Effect.ChromaticAberrationAndScreenShake) ||
-		# MaskState.is_effect_active(MaskState.Effect.HueShiftAndScreenShake) ||
-		# MaskState.is_effect_active(MaskState.Effect.AllPostProcessWithoutWater) ||
-		# MaskState.is_effect_active(MaskState.Effect.AllPostProcessWithoutEdge) ||
-		# MaskState.is_effect_active(MaskState.Effect.AllPostProcessWithoutNegative) ||
-		# MaskState.is_effect_active(MaskState.Effect.AllPostProcessWithoutChromaticAberration) ||
-		# MaskState.is_effect_active(MaskState.Effect.AllPostProcessWithoutVHS) ||
-		# MaskState.is_effect_active(MaskState.Effect.AllPostProcessWithoutPixelate) ||
-		MaskState.is_effect_active(MaskState.Effect.AllPostProcess)
+	!MaskState.is_effect_active(MaskState.Effect.DisableScreenShake) && (MaskState.is_effect_active(MaskState.Effect.ScreenShake) ||
+		MaskState.is_effect_active(MaskState.Effect.AllPostProcess))
 	)
 
 func more_transparency() -> void:
