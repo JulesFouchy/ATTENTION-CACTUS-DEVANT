@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dq0mdbis0ym6r"]
 
 [ext_resource type="PackedScene" uid="uid://dv6mqyxc0buuv" path="res://perso/Walking(2).fbx" id="1_3j8y5"]
-[ext_resource type="Script" uid="uid://cmu26loq8g5ce" path="res://Scripts/movable_object.gd" id="2_16qgx"]
+[ext_resource type="Script" uid="uid://67t7cvrrm5h6" path="res://Scripts/Decors.gd" id="2_16qgx"]
 
 [node name="Walking(2)" unique_id=893181254 instance=ExtResource("1_3j8y5")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)

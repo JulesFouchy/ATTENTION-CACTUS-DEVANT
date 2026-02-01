@@ -17,4 +17,4 @@ func _on_input_event(camera: Node, event: InputEvent, event_position: Vector3, n
 			
 			var control: Control = State.ui_game
 			control.force_drag(preview_texture.texture, preview)
-			self.queue_free()
+			get_parent_node_3d().queue_free()
