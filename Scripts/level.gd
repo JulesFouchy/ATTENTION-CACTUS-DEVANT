@@ -97,31 +97,6 @@ func _on_timer_timeout():
 func _on_movable_destroyed():
 	movables_count -= 1
 	
-func _on_timer_timeout():
-	timeurcount += 1
-	if (timeurcount % 1000 == 0):
 
-		var chartospawn = (persosajout.pick_random()).instantiate()
-		var disty = chartospawn.getdist()
-		var randomy = randf_range(disty / 2, disty)
-		add_child(chartospawn)
-		chartospawn.set_global_position(Vector3(50, 0., randomy))
-		
-		print(Vector3(50, 0., randomy))
 
-func _on_timer_timeout():
-	
-		
-	var scene_to_spawn
-	var decor_to_spawn
-	if randf() <= pick_mask_scene_probability:
-		scene_to_spawn = MORCEAU_DE_MASQUE_3D.instantiate()
-		scene_to_spawn.texture = mask_textures.pick_random()
-	else:
-		scene_to_spawn = (obstacle_scenes.pick_random()).instantiate()
-		decor_to_spawn = (decors_scenes.pick_random()).instantiate()
-	if movables_count < max_movables && randf() < scene_to_spawn.spawn_probability:
-		spawn(scene_to_spawn)
-	if decor_to_spawn != null && movables_count < max_movables && randf() < decor_to_spawn.spawn_probability:
-		spawndecor(decor_to_spawn)
 		
