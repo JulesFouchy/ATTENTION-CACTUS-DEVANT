@@ -8,4 +8,6 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if(volume_db<0.):
+		volume_db += delta*3;
 	pass

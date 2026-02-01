@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://cg6e38dk0jrmp"]
+
+[ext_resource type="Texture2D" uid="uid://b882bhqxyvudv" path="res://textures/grass1-bl/grass1-albedo3.png" id="1_ci6mv"]
+[ext_resource type="Texture2D" uid="uid://ncldnfftt5ej" path="res://textures/grass1-bl/grass1-ao.png" id="2_6vow4"]
+[ext_resource type="Texture2D" uid="uid://s2sast4tk44c" path="res://textures/grass1-bl/grass1-normal1-ogl.png" id="3_33ayv"]
+[ext_resource type="Texture2D" uid="uid://dom6xbjm678j5" path="res://textures/grass1-bl/grass1-rough.png" id="4_o825y"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_3a44l"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tj58u"]
+albedo_texture = ExtResource("1_ci6mv")
+roughness_texture = ExtResource("4_o825y")
+normal_enabled = true
+normal_scale = 5.55
+normal_texture = ExtResource("3_33ayv")
+ao_enabled = true
+ao_texture = ExtResource("2_6vow4")
+uv1_scale = Vector3(100, 100, 1)
+
+[sub_resource type="GDScript" id="GDScript_2klc5"]
+script/source = "extends MeshInstance3D
+
+var speed_x: float = 0.05
+var speed_y: float = 0.0
+
+func _process(delta):
+	var mat := get_surface_override_material(0)
+
+	if mat == null:
+		return
+
+	# On décale l’offset UV1
+	mat.uv1_offset.x += speed_x * delta
+	mat.uv1_offset.y += speed_y * delta
+"
+
+[node name="MeshInstance3D2" type="MeshInstance3D" unique_id=1744533803]
+transform = Transform3D(176.93294, 0, 0, 0, 1.2131326, 0, 0, 0, 258.12128, 0, 0, 0)
+mesh = SubResource("PlaneMesh_3a44l")
+surface_material_override/0 = SubResource("StandardMaterial3D_tj58u")
+script = SubResource("GDScript_2klc5")

@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://20eksw01fl1b"]
+
+[ext_resource type="Texture2D" uid="uid://cu7f3u161io2t" path="res://textures/cobblestone_05_4k.blend/textures/cobblestone_05_diff_4k.jpg" id="1_jyd1u"]
+[ext_resource type="Texture2D" uid="uid://devj6xojvrep8" path="res://textures/cobblestone_05_4k.blend/textures/cobblestone_05_rough_4k.jpg" id="2_yd5vw"]
+[ext_resource type="Texture2D" uid="uid://cb5qlkj7sfdun" path="res://textures/cobblestone_05_4k.blend/textures/cobblestone_05_disp_4k.png" id="3_ekmxj"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_3a44l"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0cmrb"]
+albedo_texture = ExtResource("1_jyd1u")
+roughness_texture = ExtResource("3_ekmxj")
+normal_enabled = true
+normal_texture = ExtResource("2_yd5vw")
+uv1_scale = Vector3(100, 1, 1)
+
+[sub_resource type="GDScript" id="GDScript_2klc5"]
+script/source = "extends MeshInstance3D
+
+var speed_x: float = 0.05
+var speed_y: float = 0.0
+
+func _process(delta):
+	var mat := get_surface_override_material(0)
+
+	if mat == null:
+		return
+
+	# On décale l’offset UV1
+	mat.uv1_offset.x += speed_x * delta
+	mat.uv1_offset.y += speed_y * delta
+"
+
+[node name="MeshInstance3D" type="MeshInstance3D" unique_id=205945086]
+transform = Transform3D(145.84798, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("PlaneMesh_3a44l")
+surface_material_override/0 = SubResource("StandardMaterial3D_0cmrb")
+script = SubResource("GDScript_2klc5")
