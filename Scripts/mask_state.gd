@@ -3,6 +3,7 @@ extends Node
 enum Effect {
 	SpheresDisappear,
 	CubesArePink,
+	SpeedUp,
 	Dissolve,
 	Water,
 	VHS,

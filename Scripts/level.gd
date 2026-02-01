@@ -4,6 +4,8 @@ extends Node3D
 @export var decors_scenes: Array[PackedScene]
 @export var mask_textures: Array[Texture2D]
 const MORCEAU_DE_MASQUE_3D = preload("uid://bwnft7trmnfmw")
+@onready var ambiencebackgroundmusic: AudioStreamPlayer3D = $ambiencebackgroundmusic
+@onready var walkingsound: AudioStreamPlayer3D = $walkingsound
 
 @export var x_spawn: float = 50.
 @export var y_spawn: float = 10.
@@ -18,6 +20,7 @@ func _ready() -> void:
 	$Timer.start(TimeInSeconds)
 	State.destroyed_movable.connect(_on_movable_destroyed)
 	State.LevelInit.emit()
+	State.MaskChanged.connect(_on_mask_changed)
 	for n in range(0, 1000):
 		x_spawn = n / 20.
 		var scene_to_spawn
@@ -32,8 +35,17 @@ func _ready() -> void:
 			spawn(scene_to_spawn)
 		if decor_to_spawn != null && movables_count < max_movables && randf() < decor_to_spawn.spawn_probability:
 			spawndecor(decor_to_spawn)
+
+func _on_mask_changed() -> void:
+	if MaskState.is_effect_active(MaskState.Effect.SpeedUp):
+		Engine.time_scale = 50
+		ambiencebackgroundmusic.pitch_scale = 10
+		walkingsound.pitch_scale = 10
+	else:
+		Engine.time_scale = 1
+		ambiencebackgroundmusic.pitch_scale = 1
+		walkingsound.pitch_scale = 1
 		
-	
 func spawn(scene_to_spawn) -> void:
 	add_child(scene_to_spawn)
 	scene_to_spawn.set_global_position(Vector3(x_spawn, 0., randf_range(-y_spawn, y_spawn)))
