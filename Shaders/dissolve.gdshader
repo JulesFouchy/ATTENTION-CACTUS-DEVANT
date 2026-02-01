@@ -110,6 +110,34 @@ void vertex() {
     uv = UV;
 }
 
+vec4 hue_shift( vec4 color, vec2 image_uv) {
+    float hue = TIME * 0.5;
+
+    const vec3 kRGBToYPrime = vec3(0.299, 0.587, 0.114);
+    const vec3 kRGBToI = vec3(0.595716, -0.274453, -0.321263);
+    const vec3 kRGBToQ = vec3(0.211456, -0.522591, 0.311135);
+
+    float YPrime = dot(color.rgb, kRGBToYPrime);
+    float I = dot(color.rgb, kRGBToI);
+    float Q = dot(color.rgb, kRGBToQ);
+
+    float cos_hue = cos(hue);
+    float sin_hue = sin(hue);
+
+    vec3 yiq = vec3(YPrime, I, Q);
+    vec3 rotated_IQ = vec3(
+        I * cos_hue - Q * sin_hue,
+        I * sin_hue + Q * cos_hue,
+        0.);
+
+    color.rgb = vec3(
+        YPrime + rotated_IQ.x * 0.9563 + rotated_IQ.y * 0.6210,
+        YPrime - rotated_IQ.x * 0.2721 - rotated_IQ.y * 0.6474,
+        YPrime - rotated_IQ.x * 1.1070 + rotated_IQ.y * 1.7046
+    );
+    return color;
+}
+
 void fragment() {
     // Compute parallax UV coordinates using height mapping.
     // (If no height texture is assigned, the default black returns 0.)
@@ -154,7 +182,7 @@ void fragment() {
     animatedDissolve = clamp(animatedDissolve, 0.0, 1.0);
     float dissolveFactor = step(edgeNoise, animatedDissolve);
     float edgeMask = step(edgeNoise, animatedDissolve) - step(edgeNoise, animatedDissolve - edgesThickness);
-    vec3 edgeEmission = edgeMask * edgeColor.rgb * edgeEmissionSlider;
+    vec3 edgeEmission = edgeMask * hue_shift(edgeColor, texUV).rgb * edgeEmissionSlider;
     
     ALBEDO = albedoColor.rgb;
     ALPHA = dissolveFactor;
