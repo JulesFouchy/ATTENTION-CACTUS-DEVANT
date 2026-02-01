@@ -14,7 +14,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="HEAD" type="TextureRect" parent="." unique_id=205050167]
-modulate = Color(1, 1, 1, 0.50980395)
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
