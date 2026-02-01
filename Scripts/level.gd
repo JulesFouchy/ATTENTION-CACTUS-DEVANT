@@ -44,7 +44,7 @@ func _ready() -> void:
 func _on_mask_changed() -> void:
 	var speed = ((50.0 if MaskState.is_effect_active(MaskState.Effect.SpeedUp) else 1.0)
 	* (500.0 if MaskState.is_effect_active(MaskState.Effect.SpeedUpExtreme) else 1.0)
-	* (0.01 if MaskState.is_effect_active(MaskState.Effect.SlowDown) else 1.0)
+	* (0.1 if MaskState.is_effect_active(MaskState.Effect.SlowDown) else 1.0)
 	)
 	Engine.time_scale = speed
 	ambiencebackgroundmusic.pitch_scale = speed

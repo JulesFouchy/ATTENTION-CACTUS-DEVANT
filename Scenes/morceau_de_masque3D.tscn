@@ -8,6 +8,15 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_ftbco"]
 size = Vector3(0.560791, 0.10803223, 1)
 
+[sub_resource type="Gradient" id="Gradient_wcsxc"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(18.892157, 18.892157, 18.892157, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cloln"]
+gradient = SubResource("Gradient_wcsxc")
+use_hdr = true
+fill_from = Vector2(0.21367522, 0.75384617)
+
 [node name="Node3D" type="Node3D" unique_id=1633394539]
 script = ExtResource("1_6ns3s")
 spawn_probability = 0.007
@@ -26,5 +35,9 @@ debug_fill = false
 unique_name_in_owner = true
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 texture = ExtResource("4_wcsxc")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1329854414]
+transform = Transform3D(-3.4496704e-08, 0, 1.541, 0, 0.4894318, 0, -0.7891926, 0, -6.735925e-08, 0.039954543, 0, 0)
+texture = SubResource("GradientTexture2D_cloln")
 
 [connection signal="input_event" from="Area3D" to="Area3D" method="_on_input_event"]

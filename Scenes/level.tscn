@@ -129,6 +129,7 @@ background_mode = 2
 sky = SubResource("Sky_wqkje")
 sky_custom_fov = 149.0
 tonemap_exposure = 0.92
+glow_enabled = true
 fog_mode = 1
 fog_light_color = Color(0.7099651, 0.33867374, 0.9534022, 1)
 fog_light_energy = 0.07
