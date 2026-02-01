@@ -49,9 +49,7 @@ func spawndecor(decor_to_spawn) -> void:
 	add_child(decor_to_spawn)
 	var disty = decor_to_spawn.getdist()
 	var sens = (randi_range(1,2)*2-3)
-	print(sens)
 	var randomy = sens*randf_range(disty/2,disty)
-	print(randomy)
 	decor_to_spawn.set_global_position(Vector3(x_spawn, 0.,randomy))
 	decor_to_spawn.set_global_rotation(Vector3(0,randf_range(0,360),0))
 	movables_count += 1
