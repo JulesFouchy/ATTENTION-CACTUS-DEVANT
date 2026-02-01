@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://0y3drg66ums2"]
 
 [ext_resource type="Texture2D" uid="uid://bodao60mau1iy" path="res://IconesPNG/tetefond-removebg-preview.png" id="1_5uj8f"]
-[ext_resource type="Script" uid="uid://do2lp4djd3prf" path="res://Scenes/head.gd" id="2_6w1w1"]
-[ext_resource type="Script" uid="uid://dab1bwpddjgwa" path="res://Scenes/path_follow_2d.gd" id="4_1tdhr"]
+[ext_resource type="Script" uid="uid://do2lp4djd3prf" path="res://Scripts/head.gd" id="2_6w1w1"]
+[ext_resource type="Script" uid="uid://dab1bwpddjgwa" path="res://Scripts/path_follow_2d.gd" id="4_1tdhr"]
 [ext_resource type="Script" uid="uid://5rhrpieyne0b" path="res://Scripts/floatingdrag.gd" id="4_fmrx5"]
 [ext_resource type="PackedScene" uid="uid://cb5ka0bhwb7xc" path="res://Scenes/IconeMasque.tscn" id="5_fgjnt"]
 
