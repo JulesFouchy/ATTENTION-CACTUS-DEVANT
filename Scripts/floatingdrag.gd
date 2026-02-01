@@ -6,6 +6,7 @@ var base_y: float
 var randomstart: float
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	super._ready()
 	base_y = position.y
 	randomstart = randf_range(0.,10000.7)
 

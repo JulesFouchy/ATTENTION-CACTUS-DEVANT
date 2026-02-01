@@ -15,10 +15,12 @@ const MORCEAU_DE_MASQUE_3D = preload("uid://bwnft7trmnfmw")
 var movables_count: int = 0
 
 func _ready() -> void:
+	State.level = self
 	$Timer.start(TimeInSeconds)
 	State.YouLost.connect(_on_you_lost)
 	State.TryAgain.connect(_on_try_again)
 	State.destroyed_movable.connect(_on_movable_destroyed)
+	State.LevelInit.emit()
 	
 func spawn(scene_to_spawn) -> void:
 	add_child(scene_to_spawn)

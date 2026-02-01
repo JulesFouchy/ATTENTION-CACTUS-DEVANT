@@ -2,13 +2,20 @@ extends TextureRect
 class_name IconeDrag
 
 @export var is_visible := true
+@export var start_with_a_piece := false
+
 @onready var panel: Panel = $Panel
 
 @export var _slot: int = -1
 
 func _ready() -> void:
 	panel.visible = is_visible
+	if start_with_a_piece:
+		State.LevelInit.connect(_on_level_init)
 
+func _on_level_init() -> void:
+	texture = State.level.mask_textures.pick_random()
+	
 func _get_drag_data(at_position):
 	var preview_texture = TextureRect.new()
 	
