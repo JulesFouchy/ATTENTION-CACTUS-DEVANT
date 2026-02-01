@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://xyhviu1kpigv"]
+
+[ext_resource type="PackedScene" uid="uid://b4omk1xlxpgjt" path="res://fbx/Standart House/HouseFbx.fbx" id="1_wgbay"]
+
+[node name="HouseFbx" unique_id=1678041892 instance=ExtResource("1_wgbay")]
+transform = Transform3D(0.688962, 0, 0.7247974, 0, 1, 0, -0.7247974, 0, 0.688962, 0, 0, 0)

@@ -3,11 +3,13 @@
 [ext_resource type="Script" uid="uid://cg7kilg4hyfod" path="res://Scripts/mask_piece.gd" id="1_6ns3s"]
 [ext_resource type="Script" uid="uid://bh4c1x7k6tfcx" path="res://Scripts/morceau_De_Masque.gd" id="2_wcsxc"]
 [ext_resource type="PackedScene" uid="uid://cb5ka0bhwb7xc" path="res://Scenes/IconeMasque.tscn" id="3_cloln"]
+[ext_resource type="Texture2D" uid="uid://dyh3djt286ppl" path="res://IconesPNG/235-2354425_illustration-hd-png-download-removebg-preview.png" id="4_wcsxc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ftbco"]
 
 [node name="Node3D" type="Node3D" unique_id=1633394539]
 script = ExtResource("1_6ns3s")
+spawn_probability = 0.007
 
 [node name="Area3D" type="Area3D" parent="." unique_id=455129916]
 transform = Transform3D(-0.13052621, 0, -0.9914449, 0, 1, 0, 0.9914449, 0, -0.13052621, 0, 0, 0)
@@ -21,5 +23,7 @@ debug_fill = false
 
 [node name="Sprite3D" type="Sprite3D" parent="Area3D" unique_id=436402469]
 unique_name_in_owner = true
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+texture = ExtResource("4_wcsxc")
 
 [connection signal="input_event" from="Area3D" to="Area3D" method="_on_input_event"]
