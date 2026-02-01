@@ -16,6 +16,7 @@ func _ready() -> void:
 	panel.visible = is_visible
 	if start_with_a_piece:
 		State.LevelInit.connect(_on_level_init)
+	
 
 func _on_level_init() -> void:
 	texture = State.level.mask_textures.pick_random()

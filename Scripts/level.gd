@@ -21,6 +21,23 @@ func _ready() -> void:
 	State.TryAgain.connect(_on_try_again)
 	State.destroyed_movable.connect(_on_movable_destroyed)
 	State.LevelInit.emit()
+	for n in range(0,1000):
+		x_spawn = n /20.
+		var scene_to_spawn
+		var decor_to_spawn
+		if randf() <= pick_mask_scene_probability:
+			scene_to_spawn = MORCEAU_DE_MASQUE_3D.instantiate()
+			scene_to_spawn.texture = mask_textures.pick_random()
+		else:
+			scene_to_spawn = (obstacle_scenes.pick_random()).instantiate()
+			decor_to_spawn = (decors_scenes.pick_random()).instantiate()
+		if movables_count < max_movables && randf() < scene_to_spawn.spawn_probability:
+			spawn(scene_to_spawn)
+		if decor_to_spawn !=null && movables_count < max_movables && randf() < decor_to_spawn.spawn_probability :
+			spawndecor(decor_to_spawn)
+		
+	
+		
 	
 func spawn(scene_to_spawn) -> void:
 	add_child(scene_to_spawn)
