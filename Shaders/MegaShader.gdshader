@@ -14,8 +14,16 @@ uniform bool edge_enabled = false;
 uniform bool radial_aberration_enabled = false;
 uniform float global_opacity = 1.;
 
-//Paramètres chromatic radial
+// Uniforms pour l'aberration chromatique radiale
 uniform float radial_aberration_strength : hint_range(0.0, 10.) = 0.02;
+uniform float radial_aberration_fade : hint_range(0.0, 10.0) = 0.5;  // Fade-off de l'effet
+uniform float radial_aberration_blur : hint_range(0.0, 1) = 0.01;  // Intensité du blur
+
+
+// Uniforms pour l'effet Edge
+uniform float edge_threshold : hint_range(0.0, 0.5) = 0.1;  // Seuil de détection des contours
+uniform vec3 edge_color : source_color = vec3(1.0, 1.0, 1.0);  // Couleur des contours (blanc par défaut)
+uniform float edge_intensity : hint_range(0.0, 1.0) = 1.0;  // Intensité des contours
 
 //Paramètres Pixelate
 uniform float pixel_size = 100.0;
@@ -148,7 +156,6 @@ vec2 pixelate(vec2 uv) {
 vec4 apply_edge(vec4 color, vec2 uv) {
     if (!edge_enabled) return color;
 
-    // Échantillonne les pixels autour
     float dx = 1.0 / resolution.x;
     float dy = 1.0 / resolution.y;
 
@@ -163,36 +170,47 @@ vec4 apply_edge(vec4 color, vec2 uv) {
     float edge_y = length(top - bottom);
     float edge = max(edge_x, edge_y);
 
-    // Seuil pour détecter les contours
-    float threshold = 0.1;
-    if (edge > threshold) {
-        return vec4(vec3(1.0), color.a);  // Contours en blanc
-    } else {
-        return color;  // Garde la couleur originale
-    }
+    // Applique le seuil et l'intensité
+    float edge_factor = smoothstep(edge_threshold, edge_threshold + 0.1, edge);
+    vec3 edge_final = mix(center, edge_color, edge_factor * edge_intensity);
+
+    return vec4(edge_final, color.a);
 }
+
 
 vec4 apply_negative(vec4 color) {
     return vec4(1.0 - color.r, 1.0 - color.g, 1.0 - color.b, color.a);
 }
-vec4 apply_radial_chromatic_aberration(vec4 color, vec2 uv) {
 
-    // Calcule la distance depuis le centre de l'écran
+vec4 apply_radial_chromatic_aberration(vec4 color, vec2 uv) {
+    if (!radial_aberration_enabled) return color;
+
+    // Calcule la distance depuis le centre
     vec2 center_uv = uv - vec2(0.5);
     float dist = length(center_uv) * 2.0;  // Normalise entre 0 et 1
 
-    // Décale les canaux RGB en fonction de la distance radiale
-    vec2 offset_r = center_uv * radial_aberration_strength * dist * 0.5;
-    vec2 offset_g = center_uv * radial_aberration_strength * dist * 0.3;
-    vec2 offset_b = center_uv * radial_aberration_strength * dist * 0.0;
+    // Fade-off : Réduit l'effet vers les bords
+    float fade_factor = 1.0 - dist;
+    fade_factor = smoothstep(radial_aberration_fade, 0.0, fade_factor);
 
-    color.r = texture(screen_texture, uv - offset_r).r;
-    color.g = texture(screen_texture, uv - offset_g).g;
-    color.b = texture(screen_texture, uv - offset_b).b;
+    // Décale les canaux RGB avec un effet radial
+    vec2 offset_r = center_uv * radial_aberration_strength * dist * fade_factor * 0.5;
+    vec2 offset_g = center_uv * radial_aberration_strength * dist * fade_factor * 0.3;
+    vec2 offset_b = center_uv * radial_aberration_strength * dist * fade_factor * 0.0;
+
+    // Applique un léger blur pour adoucir les transitions
+    color.r = texture(screen_texture, uv + offset_r).r;
+    color.g = texture(screen_texture, uv + offset_g).g;
+    color.b = texture(screen_texture, uv + offset_b).b;
+
+    // Mélange avec la couleur originale pour adoucir l'effet
+    float blur_amount = radial_aberration_blur * dist;
+    color.r = mix(color.r, texture(screen_texture, uv - offset_r * 0.5).r, blur_amount);
+    color.g = mix(color.g, texture(screen_texture, uv - offset_g * 0.5).g, blur_amount);
+    color.b = mix(color.b, texture(screen_texture, uv - offset_b * 0.5).b, blur_amount);
 
     return color;
 }
-
 
 
 // --- Fragment Shader ---
