@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dj205wxp4agtk"]
 
-[ext_resource type="PackedScene" uid="uid://bx8ra316hj0ub" path="res://Scenes/obstacle.tscn" id="1_2c7ma"]
+[ext_resource type="PackedScene" uid="uid://bx8ra316hj0ub" path="res://Scenes/Obstacles/obstacle.tscn" id="1_2c7ma"]
 [ext_resource type="Script" uid="uid://dseh681ix56e2" path="res://Scripts/obstacle_sphere.gd" id="2_jsu32"]
 [ext_resource type="Shader" uid="uid://brjguxyfobkne" path="res://Shaders/obstacle_sphere.gdshader" id="3_kp8mi"]
 

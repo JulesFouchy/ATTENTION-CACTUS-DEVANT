@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d22w757pqnvfn"]
 
-[ext_resource type="PackedScene" uid="uid://bx8ra316hj0ub" path="res://Scenes/obstacle.tscn" id="1_1n6n5"]
-[ext_resource type="Script" uid="uid://biw41ady0kdxu" path="res://Scripts/obstacle_cube.gd" id="2_qkkv5"]
+[ext_resource type="PackedScene" uid="uid://bx8ra316hj0ub" path="res://Scenes/Obstacles/obstacle.tscn" id="1_e1mkt"]
+[ext_resource type="Script" uid="uid://biw41ady0kdxu" path="res://Scripts/obstacle_cube.gd" id="2_4frmc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1n6n5"]
 
@@ -37,8 +37,8 @@ nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0)
 render_priority = 0
 shader = SubResource("VisualShader_wjw31")
 
-[node name="Obstacle" unique_id=1354599717 instance=ExtResource("1_1n6n5")]
-script = ExtResource("2_qkkv5")
+[node name="Obstacle" unique_id=1354599717 instance=ExtResource("1_e1mkt")]
+script = ExtResource("2_4frmc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" parent_id_path=PackedInt32Array(1701168608) index="0" unique_id=451890866]
 shape = SubResource("BoxShape3D_1n6n5")
