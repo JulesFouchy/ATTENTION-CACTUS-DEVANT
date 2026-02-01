@@ -9,6 +9,9 @@ func _ready() -> void:
 	self.material.set_shader_parameter("pixalate_enabled", false)
 	self.material.set_shader_parameter("vhs_enabled", false)
 	self.material.set_shader_parameter("water_enabled", false)
+	self.material.set_shader_parameter("negative_enabled", false)
+	self.material.set_shader_parameter("edge_enabled", false)
+	self.material.set_shader_parameter("radial_aberration_enabled", false)
 	self.material.set_shader_parameter("global_opacity", opacity)
 
 func set_shader_boolean(boolean, effect) -> void :
@@ -21,6 +24,9 @@ func _on_mask_changed() -> void:
 	set_shader_boolean("vhs_enabled", MaskState.Effect.VHS)
 	set_shader_boolean("water_enabled", MaskState.Effect.Water)
 	set_shader_boolean("pixelate_enabled", MaskState.Effect.Pixelate)
+	set_shader_boolean("negative_enabled", MaskState.Effect.Negative)
+	set_shader_boolean("edge_enabled", MaskState.Effect.Edge)
+	set_shader_boolean("radial_aberration_enabled", MaskState.Effect.ChromaticAberration)
 
 func more_transparency() ->void :
 	if opacity >= -0.2:

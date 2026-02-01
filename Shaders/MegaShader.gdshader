@@ -9,7 +9,13 @@ uniform sampler2D noise_texture : hint_screen_texture, repeat_enable;
 uniform bool vhs_enabled = false;
 uniform bool water_enabled = false;
 uniform bool pixelate_enabled = false;
+uniform bool negative_enabled = false;
+uniform bool edge_enabled = false;
+uniform bool radial_aberration_enabled = false;
 uniform float global_opacity = 1.;
+
+//Paramètres chromatic radial
+uniform float radial_aberration_strength : hint_range(0.0, 10.) = 0.02;
 
 //Paramètres Pixelate
 uniform float pixel_size = 100.0;
@@ -139,6 +145,56 @@ vec2 pixelate(vec2 uv) {
     return pixel_uv;
 }
 
+vec4 apply_edge(vec4 color, vec2 uv) {
+    if (!edge_enabled) return color;
+
+    // Échantillonne les pixels autour
+    float dx = 1.0 / resolution.x;
+    float dy = 1.0 / resolution.y;
+
+    vec3 center = texture(screen_texture, uv).rgb;
+    vec3 right = texture(screen_texture, uv + vec2(dx, 0.0)).rgb;
+    vec3 left = texture(screen_texture, uv + vec2(-dx, 0.0)).rgb;
+    vec3 top = texture(screen_texture, uv + vec2(0.0, dy)).rgb;
+    vec3 bottom = texture(screen_texture, uv + vec2(0.0, -dy)).rgb;
+
+    // Calcule la différence de luminosité
+    float edge_x = length(right - left);
+    float edge_y = length(top - bottom);
+    float edge = max(edge_x, edge_y);
+
+    // Seuil pour détecter les contours
+    float threshold = 0.1;
+    if (edge > threshold) {
+        return vec4(vec3(1.0), color.a);  // Contours en blanc
+    } else {
+        return color;  // Garde la couleur originale
+    }
+}
+
+vec4 apply_negative(vec4 color) {
+    return vec4(1.0 - color.r, 1.0 - color.g, 1.0 - color.b, color.a);
+}
+vec4 apply_radial_chromatic_aberration(vec4 color, vec2 uv) {
+
+    // Calcule la distance depuis le centre de l'écran
+    vec2 center_uv = uv - vec2(0.5);
+    float dist = length(center_uv) * 2.0;  // Normalise entre 0 et 1
+
+    // Décale les canaux RGB en fonction de la distance radiale
+    vec2 offset_r = center_uv * radial_aberration_strength * dist * 0.5;
+    vec2 offset_g = center_uv * radial_aberration_strength * dist * 0.3;
+    vec2 offset_b = center_uv * radial_aberration_strength * dist * 0.0;
+
+    color.r = texture(screen_texture, uv - offset_r).r;
+    color.g = texture(screen_texture, uv - offset_g).g;
+    color.b = texture(screen_texture, uv - offset_b).b;
+
+    return color;
+}
+
+
+
 // --- Fragment Shader ---
 void fragment() {
     vec2 uv = UV;
@@ -154,6 +210,15 @@ void fragment() {
 
     // 2. Récupère la couleur de base (avec distorsion si eau activée)
     vec4 color = texture(screen_texture, uv);
+	
+    if (radial_aberration_enabled) color = apply_radial_chromatic_aberration(color, uv);
+
+    // 6. Applique le négatif (si activé)
+	if (negative_enabled)
+    	color = apply_negative(color);
+
+    // 7. Applique la détection de contours (si activé)
+    if (edge_enabled) color = apply_edge(color, uv);
 
     // 3. Applique l'effet VHS
 	if (vhs_enabled) {

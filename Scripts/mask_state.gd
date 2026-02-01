@@ -6,6 +6,9 @@ enum Effect {
 	Water,
 	VHS,
 	Pixelate,
+	Negative,
+	Edge,
+	ChromaticAberration,
 }
 
 var _slots: Array[int]
