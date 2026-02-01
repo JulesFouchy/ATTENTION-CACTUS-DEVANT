@@ -4,6 +4,8 @@ enum Effect {
 	SpheresDisappear,
 	CubesArePink,
 	SpeedUp,
+	SpeedUpExtreme,
+	SlowDown,
 	Dissolve,
 	Water,
 	VHS,

@@ -41,17 +41,14 @@ func _ready() -> void:
 			spawndecor(decor_to_spawn)
 
 	
-		
-	
 func _on_mask_changed() -> void:
-	if MaskState.is_effect_active(MaskState.Effect.SpeedUp):
-		Engine.time_scale = 50
-		ambiencebackgroundmusic.pitch_scale = 10
-		walkingsound.pitch_scale = 10
-	else:
-		Engine.time_scale = 1
-		ambiencebackgroundmusic.pitch_scale = 1
-		walkingsound.pitch_scale = 1
+	var speed = ((50.0 if MaskState.is_effect_active(MaskState.Effect.SpeedUp) else 1.0)
+	* (500.0 if MaskState.is_effect_active(MaskState.Effect.SpeedUpExtreme) else 1.0)
+	* (0.01 if MaskState.is_effect_active(MaskState.Effect.SlowDown) else 1.0)
+	)
+	Engine.time_scale = speed
+	ambiencebackgroundmusic.pitch_scale = speed
+	walkingsound.pitch_scale = speed
 		
 func spawn(scene_to_spawn) -> void:
 	add_child(scene_to_spawn)
@@ -70,14 +67,14 @@ func spawndecor(decor_to_spawn) -> void:
 
 func _on_timer_timeout():
 	timeurcount += 1
-	if (timeurcount%1000==0):
+	if (timeurcount % 1000 == 0):
 		var chartospawn = (persosajout.pick_random()).instantiate()
 		var disty = chartospawn.getdist()
-		var randomy = randf_range(disty/2,disty)
+		var randomy = randf_range(disty / 2, disty)
 		add_child(chartospawn)
-		chartospawn.set_global_position(Vector3(50, 0.,randomy))
+		chartospawn.set_global_position(Vector3(50, 0., randomy))
 		
-		print(Vector3(50, 0.,randomy))
+		print(Vector3(50, 0., randomy))
 		
 	var scene_to_spawn
 	var decor_to_spawn
