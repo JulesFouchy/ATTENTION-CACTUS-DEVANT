@@ -162,8 +162,6 @@ wait_time = 5.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=80694050]
 
-[node name="Post-process" parent="CanvasLayer" unique_id=847744655 instance=ExtResource("10_2klc5")]
-
 [node name="ui_game" parent="CanvasLayer" unique_id=1752764723 instance=ExtResource("5_0f350")]
 mouse_filter = 1
 script = ExtResource("93_1u35f")
@@ -171,6 +169,8 @@ script = ExtResource("93_1u35f")
 [node name="UiGameOver" parent="CanvasLayer" unique_id=657935277 instance=ExtResource("5_wqkje")]
 unique_name_in_owner = true
 visible = false
+
+[node name="Post-process" parent="CanvasLayer" unique_id=847744655 instance=ExtResource("10_2klc5")]
 
 [node name="Lighting" type="Node3D" parent="." unique_id=1207204043]
 
