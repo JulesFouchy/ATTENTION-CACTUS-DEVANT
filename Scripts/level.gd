@@ -1,5 +1,4 @@
 extends Node3D
-@onready var ui_game_over: Control = %UiGameOver
 
 @export var obstacle_scenes: Array[PackedScene]
 @export var decors_scenes: Array[PackedScene]
@@ -17,12 +16,10 @@ var movables_count: int = 0
 func _ready() -> void:
 	State.level = self
 	$Timer.start(TimeInSeconds)
-	State.YouLost.connect(_on_you_lost)
-	State.TryAgain.connect(_on_try_again)
 	State.destroyed_movable.connect(_on_movable_destroyed)
 	State.LevelInit.emit()
-	for n in range(0,1000):
-		x_spawn = n /20.
+	for n in range(0, 1000):
+		x_spawn = n / 20.
 		var scene_to_spawn
 		var decor_to_spawn
 		if randf() <= pick_mask_scene_probability:
@@ -33,10 +30,8 @@ func _ready() -> void:
 			decor_to_spawn = (decors_scenes.pick_random()).instantiate()
 		if movables_count < max_movables && randf() < scene_to_spawn.spawn_probability:
 			spawn(scene_to_spawn)
-		if decor_to_spawn !=null && movables_count < max_movables && randf() < decor_to_spawn.spawn_probability :
+		if decor_to_spawn != null && movables_count < max_movables && randf() < decor_to_spawn.spawn_probability:
 			spawndecor(decor_to_spawn)
-		
-	
 		
 	
 func spawn(scene_to_spawn) -> void:
@@ -45,13 +40,12 @@ func spawn(scene_to_spawn) -> void:
 	movables_count += 1
 
 func spawndecor(decor_to_spawn) -> void:
-
 	add_child(decor_to_spawn)
 	var disty = decor_to_spawn.getdist()
-	var sens = (randi_range(1,2)*2-3)
-	var randomy = sens*randf_range(disty/2,disty)
-	decor_to_spawn.set_global_position(Vector3(x_spawn, 0.,randomy))
-	decor_to_spawn.set_global_rotation(Vector3(0,randf_range(0,360),0))
+	var sens = (randi_range(1, 2) * 2 - 3)
+	var randomy = sens * randf_range(disty / 2, disty)
+	decor_to_spawn.set_global_position(Vector3(x_spawn, 0., randomy))
+	decor_to_spawn.set_global_rotation(Vector3(0, randf_range(0, 360), 0))
 	movables_count += 1
 
 
@@ -66,15 +60,9 @@ func _on_timer_timeout():
 		decor_to_spawn = (decors_scenes.pick_random()).instantiate()
 	if movables_count < max_movables && randf() < scene_to_spawn.spawn_probability:
 		spawn(scene_to_spawn)
-	if decor_to_spawn !=null && movables_count < max_movables && randf() < decor_to_spawn.spawn_probability :
+	if decor_to_spawn != null && movables_count < max_movables && randf() < decor_to_spawn.spawn_probability:
 		spawndecor(decor_to_spawn)
 		
 	
 func _on_movable_destroyed():
 	movables_count -= 1
-	
-func _on_you_lost() -> void:
-	ui_game_over.visible = true
-	
-func _on_try_again() -> void:
-	ui_game_over.visible = false
