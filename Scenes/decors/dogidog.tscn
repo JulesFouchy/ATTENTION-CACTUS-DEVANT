@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bx8ra316hj0ub" path="res://Scenes/Obstacles/obstacle.tscn" id="1_ce4ae"]
 [ext_resource type="PackedScene" uid="uid://b77rrrfyw4u0e" path="res://fbx/Meshy_AI_Happy_Golden_Retrieve_0131165632_texture_fbx/Meshy_AI_Happy_Golden_Retrieve_0131165632_texture.fbx" id="2_06wn2"]
 
-[node name="Obstacle" unique_id=1354599717 instance=ExtResource("1_ce4ae")]
+[node name="Obstacle2" unique_id=1354599717 instance=ExtResource("1_ce4ae")]
 transform = Transform3D(-0.0382657, 0, -0.9992676, 0, 1, 0, 0.9992676, 0, -0.0382657, 0, 0, 0)
 spawn_probability = 0.001
 
