@@ -1,95 +1,24 @@
 [gd_scene format=3 uid="uid://0y3drg66ums2"]
 
 [ext_resource type="Texture2D" uid="uid://bodao60mau1iy" path="res://IconesPNG/tetefond-removebg-preview.png" id="1_5uj8f"]
-[ext_resource type="Texture2D" uid="uid://beur4n8xqdox3" path="res://IconesPNG/5-59566_transparent-mouth-with-braces-hd-png-download-removebg-preview.png" id="2_6w1w1"]
-[ext_resource type="Texture2D" uid="uid://jvhtbnvsdhlh" path="res://IconesPNG/Weirdcore-Eyes-PNG-Pic.png" id="3_1tdhr"]
 [ext_resource type="PackedScene" uid="uid://cb5ka0bhwb7xc" path="res://Scenes/IconeMasque.tscn" id="5_fgjnt"]
+[ext_resource type="PackedScene" uid="uid://dimb1xaea5otu" path="res://test.tscn" id="6_e68xr"]
 
 [node name="ui_game" type="Control" unique_id=1752764723]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="Inventaire" type="HBoxContainer" parent="." unique_id=306369762]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 64.0
-offset_top = -138.0
-offset_right = 684.0
-offset_bottom = -38.0
-grow_vertical = 0
-theme_override_constants/separation = 30
-
-[node name="Inventaire" parent="Inventaire" unique_id=1322640462 instance=ExtResource("5_fgjnt")]
-layout_mode = 2
-texture = ExtResource("2_6w1w1")
-
-[node name="Inventaire2" parent="Inventaire" unique_id=999389504 instance=ExtResource("5_fgjnt")]
-layout_mode = 2
-texture = ExtResource("3_1tdhr")
-
-[node name="Inventaire3" parent="Inventaire" unique_id=475908257 instance=ExtResource("5_fgjnt")]
-layout_mode = 2
-
-[node name="Inventaire4" parent="Inventaire" unique_id=997772730 instance=ExtResource("5_fgjnt")]
-layout_mode = 2
-
-[node name="Inventaire5" parent="Inventaire" unique_id=1721827984 instance=ExtResource("5_fgjnt")]
-layout_mode = 2
-
-[node name="Mask" type="Control" parent="." unique_id=1275852801]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = -40.0
-grow_horizontal = 0
-grow_vertical = 0
-
-[node name="Head" type="TextureRect" parent="Mask" unique_id=963461125]
-layout_mode = 0
-offset_left = -407.0
-offset_top = -477.0
-offset_right = 93.0
-offset_bottom = 89.0
+[node name="TetefondRemovebgPreview" type="Sprite2D" parent="." unique_id=422472605]
+position = Vector2(954, 418)
+scale = Vector2(1, 1.137)
 texture = ExtResource("1_5uj8f")
 
-[node name="boucheolder" parent="Mask" unique_id=1183004861 instance=ExtResource("5_fgjnt")]
+[node name="TextureRect" parent="." unique_id=1322640462 instance=ExtResource("5_fgjnt")]
 layout_mode = 0
-offset_left = -183.0
-offset_top = -151.0
-offset_right = -83.0
-offset_bottom = -51.0
-_slot = 0
+offset_right = 100.0
+offset_bottom = 100.0
 
-[node name="oeilgaucheholder" parent="Mask" unique_id=157698956 instance=ExtResource("5_fgjnt")]
-layout_mode = 0
-offset_left = -111.0
-offset_top = -345.0
-offset_right = -11.0
-offset_bottom = -245.0
-_slot = 1
-
-[node name="oeildroitholder" parent="Mask" unique_id=24172022 instance=ExtResource("5_fgjnt")]
-layout_mode = 0
-offset_left = -278.0
-offset_top = -347.0
-offset_right = -178.0
-offset_bottom = -247.0
-_slot = 2
-
-[node name="nezholder" parent="Mask" unique_id=329045023 instance=ExtResource("5_fgjnt")]
-layout_mode = 0
-offset_left = -198.0
-offset_top = -262.0
-offset_right = -98.0
-offset_bottom = -162.0
-_slot = 3
+[node name="Node2D" parent="." unique_id=1953848623 instance=ExtResource("6_e68xr")]
+position = Vector2(7, 27)

@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://dimb1xaea5otu"]
+
+[ext_resource type="PackedScene" uid="uid://cb5ka0bhwb7xc" path="res://Scenes/IconeMasque.tscn" id="1_37kl0"]
+[ext_resource type="Texture2D" uid="uid://beur4n8xqdox3" path="res://IconesPNG/5-59566_transparent-mouth-with-braces-hd-png-download-removebg-preview.png" id="2_6uqi0"]
+[ext_resource type="Texture2D" uid="uid://jvhtbnvsdhlh" path="res://IconesPNG/Weirdcore-Eyes-PNG-Pic.png" id="3_ppyta"]
+
+[node name="Node2D" type="Node2D" unique_id=1953848623]
+
+[node name="Inventaire" parent="." unique_id=1322640462 instance=ExtResource("1_37kl0")]
+offset_left = 63.0
+offset_top = 509.0
+offset_right = 163.0
+offset_bottom = 609.0
+texture = ExtResource("2_6uqi0")
+
+[node name="Inventaire2" parent="." unique_id=1853086669 instance=ExtResource("1_37kl0")]
+offset_left = 203.0
+offset_top = 509.0
+offset_right = 303.0
+offset_bottom = 609.0
+texture = ExtResource("3_ppyta")
+
+[node name="Inventaire3" parent="." unique_id=912481589 instance=ExtResource("1_37kl0")]
+offset_left = 338.0
+offset_top = 514.0
+offset_right = 438.0
+offset_bottom = 614.0
+
+[node name="Inventaire4" parent="." unique_id=808484425 instance=ExtResource("1_37kl0")]
+offset_left = 468.0
+offset_top = 509.0
+offset_right = 568.0
+offset_bottom = 609.0
+
+[node name="Inventaire5" parent="." unique_id=1445656390 instance=ExtResource("1_37kl0")]
+offset_left = 611.0
+offset_top = 506.0
+offset_right = 711.0
+offset_bottom = 606.0
+
+[node name="boucheolder" parent="." unique_id=48969071 instance=ExtResource("1_37kl0")]
+offset_left = 929.0
+offset_top = 457.0
+offset_right = 1029.0
+offset_bottom = 557.0
+_slot = 0
+
+[node name="oeilgaucheholder" parent="." unique_id=1722123670 instance=ExtResource("1_37kl0")]
+offset_left = 1001.0
+offset_top = 263.0
+offset_right = 1101.0
+offset_bottom = 363.0
+_slot = 1
+
+[node name="oeildroitholder" parent="." unique_id=754243479 instance=ExtResource("1_37kl0")]
+offset_left = 834.0
+offset_top = 261.0
+offset_right = 934.0
+offset_bottom = 361.0
+_slot = 2
+
+[node name="nezholder" parent="." unique_id=1721713839 instance=ExtResource("1_37kl0")]
+offset_left = 914.0
+offset_top = 346.0
+offset_right = 1014.0
+offset_bottom = 446.0
+_slot = 3
