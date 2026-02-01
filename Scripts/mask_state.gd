@@ -9,6 +9,7 @@ enum Effect {
 	Negative,
 	Edge,
 	ChromaticAberration,
+	HueShift,
 }
 
 var _slots: Array[int]

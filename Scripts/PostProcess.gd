@@ -12,6 +12,7 @@ func _ready() -> void:
 	self.material.set_shader_parameter("negative_enabled", false)
 	self.material.set_shader_parameter("edge_enabled", false)
 	self.material.set_shader_parameter("radial_aberration_enabled", false)
+	self.material.set_shader_parameter("hue_shift_enabled", false)
 	self.material.set_shader_parameter("global_opacity", opacity)
 
 func set_shader_boolean(boolean, effect) -> void :
@@ -27,6 +28,7 @@ func _on_mask_changed() -> void:
 	set_shader_boolean("negative_enabled", MaskState.Effect.Negative)
 	set_shader_boolean("edge_enabled", MaskState.Effect.Edge)
 	set_shader_boolean("radial_aberration_enabled", MaskState.Effect.ChromaticAberration)
+	set_shader_boolean("hue_shift_enabled", MaskState.Effect.HueShift)
 
 func more_transparency() ->void :
 	if opacity >= -0.2:

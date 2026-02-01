@@ -12,7 +12,11 @@ uniform bool pixelate_enabled = false;
 uniform bool negative_enabled = false;
 uniform bool edge_enabled = false;
 uniform bool radial_aberration_enabled = false;
+uniform bool hue_shift_enabled = true;
 uniform float global_opacity = 1.;
+
+//Paramètres hue
+uniform float hue_shift_speed : hint_range(0.0, 2.0) = 0.5; // Vitesse de rotation de la teinte
 
 // Uniforms pour l'aberration chromatique radiale
 uniform float radial_aberration_strength : hint_range(0.0, 10.) = 0.02;
@@ -212,6 +216,38 @@ vec4 apply_radial_chromatic_aberration(vec4 color, vec2 uv) {
     return color;
 }
 
+// Fonction pour convertir RGB en HSV et modifier la teinte
+vec3 hue_shift(vec3 color, float hue) {
+    const vec3 kRGBToYPrime = vec3(0.299, 0.587, 0.114);
+    const vec3 kRGBToI = vec3(0.595716, -0.274453, -0.321263);
+    const vec3 kRGBToQ = vec3(0.211456, -0.522591, 0.311135);
+
+    // Convertit RGB en YIQ (proche de HSV)
+    float YPrime = dot(color, kRGBToYPrime);
+    float I = dot(color, kRGBToI);
+    float Q = dot(color, kRGBToQ);
+
+    // Applique la rotation de teinte
+    float cos_hue = cos(hue);
+    float sin_hue = sin(hue);
+
+    // Matrice de rotation de teinte
+    vec3 yiq = vec3(YPrime, I, Q);
+    vec3 rotated_IQ = vec3(
+        I * cos_hue - Q * sin_hue,
+        I * sin_hue + Q * cos_hue,
+		0.);
+
+    // Convertit YIQ en RGB
+    vec3 rgb = vec3(
+        YPrime + rotated_IQ.x * 0.9563 + rotated_IQ.y * 0.6210,
+        YPrime - rotated_IQ.x * 0.2721 - rotated_IQ.y * 0.6474,
+        YPrime - rotated_IQ.x * 1.1070 + rotated_IQ.y * 1.7046
+    );
+
+    return rgb;
+}
+
 
 // --- Fragment Shader ---
 void fragment() {
@@ -247,12 +283,15 @@ void fragment() {
         color.rgb = mix(color.rgb, water_color, 0.3); // 30% de teinte bleue
         color.rgb = mix(color.rgb, vec3(dot(color.rgb, vec3(0.3))), 0.2);
     }
+	
+	if (hue_shift_enabled) {
+        // Calcule la rotation de teinte en fonction du temps
+        float hue = TIME * hue_shift_speed;
+        color.rgb = hue_shift(color.rgb, hue);
+	}
 
     // 5. Applique l'opacité globale
     color = apply_opacity(color);
 	
     COLOR = color;
 }
-
-
-
