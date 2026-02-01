@@ -66,7 +66,7 @@ func spawndecor(decor_to_spawn) -> void:
 
 func _process(delta: float) -> void:
 	timeurcount += delta
-	print(timeurcount)
+
 	if (int(timeurcount)%60==1):
 		timeurcount+= 1
 		var chartospawn = (persosajout.pick_random()).instantiate()
