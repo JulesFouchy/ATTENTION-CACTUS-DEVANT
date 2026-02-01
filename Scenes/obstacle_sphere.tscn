@@ -36,7 +36,6 @@ shader_parameter/animation_intensity = 0.65999998524768
 
 [node name="Obstacle" unique_id=1354599717 instance=ExtResource("1_2c7ma")]
 script = ExtResource("2_jsu32")
-spawn_probability = 0.9
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" parent_id_path=PackedInt32Array(1701168608) index="0" unique_id=283052725]
 shape = SubResource("SphereShape3D_2c7ma")
