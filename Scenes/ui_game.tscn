@@ -7,9 +7,11 @@
 
 [node name="ui_game" type="Control" unique_id=1752764723]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="HEAD" type="TextureRect" parent="." unique_id=205050167]
 modulate = Color(1, 1, 1, 0.50980395)
@@ -19,10 +21,9 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 664.0
-offset_top = 88.0
-offset_right = 1164.0
-offset_bottom = 665.0
+offset_left = -414.0
+offset_top = -625.0
+offset_right = 86.0
 grow_horizontal = 0
 grow_vertical = 0
 texture = ExtResource("1_5uj8f")
@@ -30,79 +31,88 @@ script = ExtResource("2_6w1w1")
 
 [node name="boucheolder" parent="HEAD" unique_id=1276609383 instance=ExtResource("5_fgjnt")]
 layout_mode = 0
-offset_left = 207.0
-offset_top = 310.0
-offset_right = 307.0
-offset_bottom = 410.0
+offset_left = 204.0
+offset_top = 334.0
+offset_right = 304.0
+offset_bottom = 434.0
 is_visible = false
 _slot = 0
 
 [node name="oeilgaucheholder" parent="HEAD" unique_id=727223041 instance=ExtResource("5_fgjnt")]
 layout_mode = 0
-offset_left = 260.0
-offset_top = 158.0
-offset_right = 360.0
-offset_bottom = 258.0
+offset_left = 266.0
+offset_top = 180.0
+offset_right = 366.0
+offset_bottom = 280.0
 is_visible = false
 _slot = 1
 
 [node name="oeildroitholder" parent="HEAD" unique_id=1283938135 instance=ExtResource("5_fgjnt")]
 layout_mode = 0
-offset_left = 141.0
-offset_top = 155.0
-offset_right = 241.0
-offset_bottom = 255.0
+offset_left = 143.0
+offset_top = 183.0
+offset_right = 243.0
+offset_bottom = 283.0
 is_visible = false
 _slot = 2
 
 [node name="nezholder" parent="HEAD" unique_id=1175113513 instance=ExtResource("5_fgjnt")]
 layout_mode = 0
-offset_left = 209.0
-offset_top = 236.0
-offset_right = 309.0
-offset_bottom = 336.0
+offset_left = 206.0
+offset_top = 247.0
+offset_right = 306.0
+offset_bottom = 347.0
 is_visible = false
 _slot = 3
 
-[node name="Inventaire" parent="." unique_id=1322640462 instance=ExtResource("5_fgjnt")]
+[node name="Inventaire" type="Control" parent="." unique_id=394876953]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+
+[node name="Inventaire" parent="Inventaire" unique_id=1322640462 instance=ExtResource("5_fgjnt")]
 layout_mode = 0
 offset_left = 63.0
-offset_top = 509.0
+offset_top = -99.0
 offset_right = 163.0
-offset_bottom = 609.0
+offset_bottom = 1.0
 script = ExtResource("4_fmrx5")
 start_with_a_piece = true
 
-[node name="Inventaire2" parent="." unique_id=983430755 instance=ExtResource("5_fgjnt")]
+[node name="Inventaire2" parent="Inventaire" unique_id=983430755 instance=ExtResource("5_fgjnt")]
 layout_mode = 0
 offset_left = 203.0
-offset_top = 509.0
+offset_top = -99.0
 offset_right = 303.0
-offset_bottom = 609.0
+offset_bottom = 1.0
 script = ExtResource("4_fmrx5")
 start_with_a_piece = true
 
-[node name="Inventaire3" parent="." unique_id=1208005838 instance=ExtResource("5_fgjnt")]
+[node name="Inventaire3" parent="Inventaire" unique_id=1208005838 instance=ExtResource("5_fgjnt")]
 layout_mode = 0
 offset_left = 338.0
-offset_top = 514.0
+offset_top = -94.0
 offset_right = 438.0
-offset_bottom = 614.0
+offset_bottom = 6.0
 script = ExtResource("4_fmrx5")
 start_with_a_piece = true
 
-[node name="Inventaire4" parent="." unique_id=1268681765 instance=ExtResource("5_fgjnt")]
+[node name="Inventaire4" parent="Inventaire" unique_id=1268681765 instance=ExtResource("5_fgjnt")]
 layout_mode = 0
 offset_left = 468.0
-offset_top = 509.0
+offset_top = -99.0
 offset_right = 568.0
-offset_bottom = 609.0
+offset_bottom = 1.0
 script = ExtResource("4_fmrx5")
 
-[node name="Inventaire5" parent="." unique_id=829220440 instance=ExtResource("5_fgjnt")]
+[node name="Inventaire5" parent="Inventaire" unique_id=829220440 instance=ExtResource("5_fgjnt")]
 layout_mode = 0
 offset_left = 611.0
-offset_top = 506.0
+offset_top = -102.0
 offset_right = 711.0
-offset_bottom = 606.0
+offset_bottom = -2.0
 script = ExtResource("4_fmrx5")
