@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://ductso18hnvfk" path="res://Scripts/level.gd" id="1_81xng"]
 [ext_resource type="PackedScene" uid="uid://bf8pn47wr7lf4" path="res://Scenes/decors/obstacle_cube.tscn" id="2_wqkje"]
 [ext_resource type="PackedScene" uid="uid://cydoeybs5bcuy" path="res://Scenes/player.tscn" id="3_0f350"]
-[ext_resource type="PackedScene" uid="uid://ceb0701pf7fv6" path="res://Scenes/decors/obstacle_sphere.tscn" id="3_8c0lf"]
 [ext_resource type="PackedScene" uid="uid://vrwb4coykvc1" path="res://Scenes/decors/dogidog.tscn" id="4_oqgf2"]
+[ext_resource type="PackedScene" uid="uid://dj205wxp4agtk" path="res://Scenes/obstacle_sphere.tscn" id="4_s6d7k"]
 [ext_resource type="PackedScene" uid="uid://0y3drg66ums2" path="res://Scenes/ui_game.tscn" id="5_0f350"]
 [ext_resource type="Texture2D" uid="uid://beur4n8xqdox3" path="res://IconesPNG/5-59566_transparent-mouth-with-braces-hd-png-download-removebg-preview.png" id="5_24uko"]
 [ext_resource type="PackedScene" uid="uid://c6bph7tclmmdh" path="res://Scenes/ui_game_over.tscn" id="5_wqkje"]
@@ -138,8 +138,9 @@ adjustment_color_correction = SubResource("GradientTexture1D_0f350")
 
 [node name="Level" type="Node3D" unique_id=1840064657]
 script = ExtResource("1_81xng")
-obstacle_scenes = Array[PackedScene]([ExtResource("2_wqkje"), ExtResource("3_8c0lf"), ExtResource("4_oqgf2")])
+obstacle_scenes = Array[PackedScene]([ExtResource("2_wqkje"), ExtResource("4_oqgf2"), ExtResource("4_s6d7k")])
 mask_textures = Array[Texture2D]([ExtResource("5_24uko"), ExtResource("6_gf56v"), ExtResource("7_6y3s5"), ExtResource("8_u0did"), ExtResource("9_53r2q"), ExtResource("10_1u35f"), ExtResource("11_and2w"), ExtResource("12_xmogu"), ExtResource("10_5o4ln"), ExtResource("14_udrpa"), ExtResource("11_ag4x3"), ExtResource("12_2veds"), ExtResource("12_maxl3"), ExtResource("18_tj58u"), ExtResource("19_3swfc"), ExtResource("20_05khn"), ExtResource("13_md013"), ExtResource("22_fuggk"), ExtResource("23_k723r"), ExtResource("24_pmxja"), ExtResource("25_dg2l7"), ExtResource("26_lmykf"), ExtResource("27_v6qoc"), ExtResource("28_xu2fp"), ExtResource("29_g8uvf"), ExtResource("14_ogdfn"), ExtResource("15_l1uqm"), ExtResource("32_111if"), ExtResource("16_gx30c"), ExtResource("34_5q7ay"), ExtResource("35_h7lby"), ExtResource("36_3xexw"), ExtResource("17_jmchl"), ExtResource("19_m4bds"), ExtResource("39_w7m5c"), ExtResource("40_afpv0"), ExtResource("20_t4ggf"), ExtResource("18_s14gf"), ExtResource("22_uoc0b"), ExtResource("44_68e30"), ExtResource("45_dbu2f"), ExtResource("23_2lp24"), ExtResource("24_v15qs"), ExtResource("48_u3gho"), ExtResource("49_2smgw"), ExtResource("19_cpxpw"), ExtResource("51_fquf2"), ExtResource("52_mt468"), ExtResource("10_luodc"), ExtResource("27_ubg6v"), ExtResource("55_wnl0u"), ExtResource("56_wuds5"), ExtResource("57_qrwbl"), ExtResource("28_ht0u2"), ExtResource("59_8y1i5"), ExtResource("60_on23f"), ExtResource("29_23rfw"), ExtResource("62_hiqwt"), ExtResource("21_wbq00"), ExtResource("22_dx6so"), ExtResource("11_1cgv8"), ExtResource("33_icsqr"), ExtResource("24_54tli"), ExtResource("68_tvyl6"), ExtResource("69_inlal"), ExtResource("25_8huh7"), ExtResource("71_lk1yr"), ExtResource("72_wv02e"), ExtResource("13_24uko"), ExtResource("74_rxf7p"), ExtResource("27_2veds"), ExtResource("28_m4bds"), ExtResource("12_hcs0j"), ExtResource("13_t205d"), ExtResource("41_5oihu"), ExtResource("42_16bfe"), ExtResource("81_d6te1"), ExtResource("31_t4ggf"), ExtResource("44_6g3im"), ExtResource("84_hxlo6"), ExtResource("85_vooir"), ExtResource("32_uoc0b"), ExtResource("87_5s2nr"), ExtResource("88_8xmy8"), ExtResource("89_gus1c"), ExtResource("46_w8uds")])
+x_spawn = 10.0
 y_spawn = 4.0
 TimeInSeconds = 0.1
 
