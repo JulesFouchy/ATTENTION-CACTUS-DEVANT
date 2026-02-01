@@ -112,6 +112,7 @@
 [ext_resource type="PackedScene" uid="uid://20eksw01fl1b" path="res://Scenes/tapisdegravat.tscn" id="98_s6d7k"]
 [ext_resource type="PackedScene" uid="uid://cg6e38dk0jrmp" path="res://Scenes/tapisdherbe.tscn" id="99_1u35f"]
 [ext_resource type="PackedScene" uid="uid://2gim1cvvocre" path="res://perso/perso1.tscn" id="108_k723r"]
+[ext_resource type="PackedScene" uid="uid://bqqlw7grwukx2" path="res://fbx/potted_plant_02_4k.fbx/potted_plant_02_4k.fbx" id="113_xu2fp"]
 
 [sub_resource type="Gradient" id="Gradient_wqkje"]
 offsets = PackedFloat32Array(0.14174455, 0.20404984, 0.24766356, 0.5413223, 0.8636364, 0.95454544)
@@ -203,5 +204,8 @@ transform = Transform3D(145.84798, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.005603552, 0)
 
 [node name="ground" parent="." unique_id=1744533803 instance=ExtResource("99_1u35f")]
 transform = Transform3D(176.93294, 0, 0, 0, 1.2131326, 0, 0, 0, 258.12128, 0, -0.119856834, 3.8110678)
+
+[node name="potted_plant_02_4k" parent="." unique_id=1164175686 instance=ExtResource("113_xu2fp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7011688, 0, 0.27046633)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

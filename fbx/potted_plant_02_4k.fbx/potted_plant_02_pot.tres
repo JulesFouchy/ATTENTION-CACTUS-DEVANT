@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dcuao6s76n2lx"]
+
+[ext_resource type="Texture2D" uid="uid://dw6kdic2heh54" path="res://fbx/potted_plant_02_4k.fbx/potted_plant_02_pot_diff_4k.png" id="1_1mfib"]
+
+[resource]
+resource_name = "potted_plant_02_pot"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_1mfib")
+emission_enabled = true
+normal_enabled = true
+normal_scale = 0.0
