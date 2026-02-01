@@ -21,4 +21,4 @@ offset_right = 100.0
 offset_bottom = 100.0
 
 [node name="Node2D" parent="." unique_id=1953848623 instance=ExtResource("6_e68xr")]
-position = Vector2(7, 27)
+position = Vector2(7, 22)

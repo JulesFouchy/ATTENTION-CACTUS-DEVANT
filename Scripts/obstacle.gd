@@ -1,6 +1,7 @@
 extends Movable
 class_name Obstacle
 
+
 func _ready() -> void:
 	State.MaskChanged.connect(_on_mask_changed)
 	_apply_mask()

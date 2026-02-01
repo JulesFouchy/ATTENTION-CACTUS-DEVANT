@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://b20e6p4rnch7e"]
+
+[ext_resource type="PackedScene" uid="uid://bx8ra316hj0ub" path="res://Scenes/obstacle.tscn" id="1_vfjis"]
+[ext_resource type="Script" uid="uid://67t7cvrrm5h6" path="res://Scripts/Decors.gd" id="2_28qde"]
+[ext_resource type="PackedScene" uid="uid://b4omk1xlxpgjt" path="res://fbx/Standart House/HouseFbx.fbx" id="2_tri5s"]
+
+[node name="Obstacle" unique_id=1354599717 instance=ExtResource("1_vfjis")]
+script = ExtResource("2_28qde")
+dist = 50.0
+
+[node name="HouseFbx" parent="." index="1" unique_id=1678041892 instance=ExtResource("2_tri5s")]
+transform = Transform3D(0.21472937, 0, 0.103303246, 0, 0.20441967, 0, -0.13181844, 0, 0.16827878, 0, 0, 0)
