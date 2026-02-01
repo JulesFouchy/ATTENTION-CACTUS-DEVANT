@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://d3wfcawa40c"]
+
+[ext_resource type="PackedScene" uid="uid://ppmlxxh6e6jn" path="res://fbx/fire_hydrant_4k.fbx/fire_hydrant_4k.fbx" id="1_ivg7i"]
+
+[node name="fire_hydrant_4k" unique_id=683266248 instance=ExtResource("1_ivg7i")]
+
+[node name="fire_hydrant_aged" parent="." index="5" unique_id=1101270704]
+visible = false
+
+[node name="fire_hydrant_cap_01_aged" parent="." index="6" unique_id=569605009]
+visible = false
+
+[node name="fire_hydrant_cap_02_aged" parent="." index="7" unique_id=1268859949]
+visible = false
+
+[node name="fire_hydrant_cap_03_aged" parent="." index="8" unique_id=1328991264]
+visible = false
+
+[node name="fire_hydrant_chain_aged" parent="." index="9" unique_id=1178614203]
+visible = false
