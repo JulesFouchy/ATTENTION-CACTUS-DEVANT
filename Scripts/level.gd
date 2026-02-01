@@ -15,7 +15,7 @@ const MORCEAU_DE_MASQUE_3D = preload("uid://bwnft7trmnfmw")
 @export var max_movables: int = 20000
 @export var pick_mask_scene_probability: float = 0.3
 
-var timeurcount: int = 0
+var timeurcount: float = 2.
 
 var movables_count: int = 0
 
@@ -67,17 +67,21 @@ func spawndecor(decor_to_spawn) -> void:
 	decor_to_spawn.set_global_rotation(Vector3(0, randf_range(0, 360), 0))
 	movables_count += 1
 
-
-func _on_timer_timeout():
-	timeurcount += 1
-	if (timeurcount%1000==0):
+func _process(delta: float) -> void:
+	timeurcount += delta
+	print(timeurcount)
+	if (int(timeurcount)%60==1):
+		timeurcount+= 1
 		var chartospawn = (persosajout.pick_random()).instantiate()
 		var disty = chartospawn.getdist()
 		var randomy = randf_range(disty/2,disty)
 		add_child(chartospawn)
 		chartospawn.set_global_position(Vector3(50, 0.,randomy))
 		
-		print(Vector3(50, 0.,randomy))
+		
+
+func _on_timer_timeout():
+	
 		
 	var scene_to_spawn
 	var decor_to_spawn
