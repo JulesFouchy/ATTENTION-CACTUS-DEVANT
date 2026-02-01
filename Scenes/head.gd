@@ -1,4 +1,4 @@
-extends TextureRect
+extends Control
 
 func _ready() -> void:
 	var slot: IconeDrag = get_children().pick_random()

@@ -2,8 +2,15 @@
 
 [ext_resource type="Texture2D" uid="uid://bodao60mau1iy" path="res://IconesPNG/tetefond-removebg-preview.png" id="1_5uj8f"]
 [ext_resource type="Script" uid="uid://do2lp4djd3prf" path="res://Scenes/head.gd" id="2_6w1w1"]
+[ext_resource type="Script" uid="uid://dab1bwpddjgwa" path="res://Scenes/path_follow_2d.gd" id="4_1tdhr"]
 [ext_resource type="Script" uid="uid://5rhrpieyne0b" path="res://Scripts/floatingdrag.gd" id="4_fmrx5"]
 [ext_resource type="PackedScene" uid="uid://cb5ka0bhwb7xc" path="res://Scenes/IconeMasque.tscn" id="5_fgjnt"]
+
+[sub_resource type="Curve2D" id="Curve2D_6w1w1"]
+_data = {
+"points": PackedVector2Array(89.73541, -182.40854, -89.73541, 182.40854, 2038.8148, 1129.898, 100.66664, 176.97202, -100.66664, -176.97202, 1632.5944, 1115.7521, -149.11418, 361.38083, 149.11418, -361.38083, 1609.4553, 114.934814, -74.557076, -380.91492, 74.557076, 380.91492, 2103.09, 259.9295, 49.704727, -102.554016, -49.704727, 102.554016, 2038.8148, 1129.898)
+}
+point_count = 5
 
 [node name="ui_game" type="Control" unique_id=1752764723]
 layout_mode = 3
@@ -13,6 +20,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Inventaire" type="Control" parent="." unique_id=394876953]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
 [node name="HEAD" type="TextureRect" parent="." unique_id=205050167]
 layout_mode = 1
 anchors_preset = 3
@@ -20,15 +39,22 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -414.0
-offset_top = -625.0
-offset_right = 86.0
+offset_left = -625.0
+offset_top = -772.0
+offset_right = -125.0
+offset_bottom = -147.0
 grow_horizontal = 0
 grow_vertical = 0
+mouse_filter = 2
 texture = ExtResource("1_5uj8f")
+
+[node name="head slots" type="Control" parent="HEAD" unique_id=608379615]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 script = ExtResource("2_6w1w1")
 
-[node name="boucheolder" parent="HEAD" unique_id=1276609383 instance=ExtResource("5_fgjnt")]
+[node name="boucheolder" parent="HEAD/head slots" unique_id=1276609383 instance=ExtResource("5_fgjnt")]
 layout_mode = 0
 offset_left = 204.0
 offset_top = 334.0
@@ -37,7 +63,7 @@ offset_bottom = 434.0
 is_visible = false
 _slot = 0
 
-[node name="oeilgaucheholder" parent="HEAD" unique_id=727223041 instance=ExtResource("5_fgjnt")]
+[node name="oeilgaucheholder" parent="HEAD/head slots" unique_id=727223041 instance=ExtResource("5_fgjnt")]
 layout_mode = 0
 offset_left = 266.0
 offset_top = 180.0
@@ -46,7 +72,7 @@ offset_bottom = 280.0
 is_visible = false
 _slot = 1
 
-[node name="oeildroitholder" parent="HEAD" unique_id=1283938135 instance=ExtResource("5_fgjnt")]
+[node name="oeildroitholder" parent="HEAD/head slots" unique_id=1283938135 instance=ExtResource("5_fgjnt")]
 layout_mode = 0
 offset_left = 143.0
 offset_top = 183.0
@@ -55,7 +81,7 @@ offset_bottom = 283.0
 is_visible = false
 _slot = 2
 
-[node name="nezholder" parent="HEAD" unique_id=1175113513 instance=ExtResource("5_fgjnt")]
+[node name="nezholder" parent="HEAD/head slots" unique_id=1175113513 instance=ExtResource("5_fgjnt")]
 layout_mode = 0
 offset_left = 206.0
 offset_top = 247.0
@@ -64,54 +90,123 @@ offset_bottom = 347.0
 is_visible = false
 _slot = 3
 
-[node name="Inventaire" type="Control" parent="." unique_id=394876953]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -40.0
-offset_right = 40.0
-grow_vertical = 0
-
-[node name="Inventaire" parent="Inventaire" unique_id=1322640462 instance=ExtResource("5_fgjnt")]
+[node name="3eoeilholder" parent="HEAD/head slots" unique_id=951209771 instance=ExtResource("5_fgjnt")]
 layout_mode = 0
-offset_left = 63.0
-offset_top = -99.0
-offset_right = 163.0
-offset_bottom = 1.0
+offset_left = 201.0
+offset_top = 72.0
+offset_right = 301.0
+offset_bottom = 172.0
+is_visible = false
+_slot = 4
+
+[node name="Path2D" type="Path2D" parent="HEAD" unique_id=527159346]
+position = Vector2(-1168, -7.9999695)
+scale = Vector2(0.7779029, 0.5655378)
+curve = SubResource("Curve2D_6w1w1")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="HEAD/Path2D" unique_id=873043903]
+position = Vector2(2038.8148, 1129.898)
+rotation = 2.0279813
+scale = Vector2(1.2855074, 1.7682284)
+script = ExtResource("4_1tdhr")
+
+[node name="Inventaire" parent="HEAD/Path2D/PathFollow2D" unique_id=1322640462 instance=ExtResource("5_fgjnt")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("4_fmrx5")
 start_with_a_piece = true
 
-[node name="Inventaire2" parent="Inventaire" unique_id=983430755 instance=ExtResource("5_fgjnt")]
-layout_mode = 0
-offset_left = 203.0
-offset_top = -99.0
-offset_right = 303.0
-offset_bottom = 1.0
+[node name="PathFollow2D2" type="PathFollow2D" parent="HEAD/Path2D" unique_id=1350047454]
+position = Vector2(1581.4858, 992.479)
+rotation = -1.8728666
+scale = Vector2(1.2855074, 1.7682284)
+progress = 646.7786
+script = ExtResource("4_1tdhr")
+
+[node name="Inventaire2" parent="HEAD/Path2D/PathFollow2D2" unique_id=983430755 instance=ExtResource("5_fgjnt")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.00006
+offset_right = 50.0
+offset_bottom = 49.99997
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("4_fmrx5")
 start_with_a_piece = true
 
-[node name="Inventaire3" parent="Inventaire" unique_id=1208005838 instance=ExtResource("5_fgjnt")]
-layout_mode = 0
-offset_left = 338.0
-offset_top = -94.0
-offset_right = 438.0
-offset_bottom = 6.0
+[node name="PathFollow2D3" type="PathFollow2D" parent="HEAD/Path2D" unique_id=1302266049]
+position = Vector2(1542.9673, 352.2211)
+rotation = -1.4044846
+scale = Vector2(1.2855074, 1.7682284)
+progress = 1293.5573
+script = ExtResource("4_1tdhr")
+
+[node name="Inventaire3" parent="HEAD/Path2D/PathFollow2D3" unique_id=1208005838 instance=ExtResource("5_fgjnt")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -49.99994
+offset_right = 50.0
+offset_bottom = 50.00006
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("4_fmrx5")
 start_with_a_piece = true
 
-[node name="Inventaire4" parent="Inventaire" unique_id=1268681765 instance=ExtResource("5_fgjnt")]
-layout_mode = 0
-offset_left = 468.0
-offset_top = -99.0
-offset_right = 568.0
-offset_bottom = 1.0
+[node name="PathFollow2D4" type="PathFollow2D" parent="HEAD/Path2D" unique_id=1592978906]
+position = Vector2(1902.1072, -83.46262)
+rotation = 0.44903815
+scale = Vector2(1.2855074, 1.7682284)
+progress = 1940.3359
+script = ExtResource("4_1tdhr")
+
+[node name="Inventaire4" parent="HEAD/Path2D/PathFollow2D4" unique_id=1268681765 instance=ExtResource("5_fgjnt")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -49.99994
+offset_right = 50.0
+offset_bottom = 50.00006
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("4_fmrx5")
 
-[node name="Inventaire5" parent="Inventaire" unique_id=829220440 instance=ExtResource("5_fgjnt")]
-layout_mode = 0
-offset_left = 611.0
-offset_top = -102.0
-offset_right = 711.0
-offset_bottom = -2.0
+[node name="PathFollow2D5" type="PathFollow2D" parent="HEAD/Path2D" unique_id=1462810488]
+position = Vector2(2130.127, 494.07382)
+rotation = 1.5287154
+scale = Vector2(1.2855074, 1.7682284)
+progress = 2587.1145
+script = ExtResource("4_1tdhr")
+
+[node name="Inventaire5" parent="HEAD/Path2D/PathFollow2D5" unique_id=829220440 instance=ExtResource("5_fgjnt")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -49.99994
+offset_right = 50.0
+offset_bottom = 50.00006
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("4_fmrx5")

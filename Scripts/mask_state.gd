@@ -75,6 +75,6 @@ func _get_effect(i: int, mask_piece: int) -> Effect:
 	return _map[[i, mask_piece]]
 
 func _ready() -> void:
-	_slots.resize(4)
+	_slots.resize(5)
 	_effects_to_assign = Effect.values()
 	_effects_to_assign.shuffle()
