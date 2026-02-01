@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cn3b00h78pxf5"]
+
+[ext_resource type="PackedScene" uid="uid://bx8ra316hj0ub" path="res://Scenes/Obstacles/obstacle.tscn" id="1_myvoa"]
+[ext_resource type="PackedScene" uid="uid://bqqlw7grwukx2" path="res://fbx/potted_plant_02_4k.fbx/potted_plant_02_4k.fbx" id="2_7c05g"]
+
+[node name="Obstacle" unique_id=1354599717 instance=ExtResource("1_myvoa")]
+spawn_probability = 0.05
+
+[node name="potted_plant_02_4k" parent="." index="1" unique_id=1164175686 instance=ExtResource("2_7c05g")]
