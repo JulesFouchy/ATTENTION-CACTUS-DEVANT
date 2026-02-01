@@ -12,24 +12,25 @@ uniform bool pixelate_enabled = false;
 uniform bool negative_enabled = false;
 uniform bool edge_enabled = false;
 uniform bool radial_aberration_enabled = false;
-uniform bool hue_shift_enabled = true;
+uniform bool hue_shift_enabled = false;
+uniform bool screen_shake_enabled = false;
 uniform float global_opacity = 1.;
 
-//Paramètres hue
+// Paramètres ue
 uniform float hue_shift_speed : hint_range(0.0, 2.0) = 0.5; // Vitesse de rotation de la teinte
 
-// Uniforms pour l'aberration chromatique radiale
+// Paramètres aberration chromatique radiale
 uniform float radial_aberration_strength : hint_range(0.0, 10.) = 0.02;
-uniform float radial_aberration_fade : hint_range(0.0, 10.0) = 0.5;  // Fade-off de l'effet
-uniform float radial_aberration_blur : hint_range(0.0, 1) = 0.01;  // Intensité du blur
+uniform float radial_aberration_fade : hint_range(0.0, 10.0) = 0.5;
+uniform float radial_aberration_blur : hint_range(0.0, 3.) = 0.01;
 
 
-// Uniforms pour l'effet Edge
+// Paramètres Edge
 uniform float edge_threshold : hint_range(0.0, 0.5) = 0.1;  // Seuil de détection des contours
-uniform vec3 edge_color : source_color = vec3(1.0, 1.0, 1.0);  // Couleur des contours (blanc par défaut)
+uniform vec3 edge_color : source_color = vec3(1.0, 1.0, 1.0);  // Couleur des contours
 uniform float edge_intensity : hint_range(0.0, 1.0) = 1.0;  // Intensité des contours
 
-//Paramètres Pixelate
+// Paramètres Pixelate
 uniform float pixel_size = 100.0;
 
 // --- Paramètres VHS ---
@@ -51,7 +52,7 @@ uniform float water_distortion : hint_range(0.0, 0.1) = 0.02;
 uniform float water_speed : hint_range(0.0, 10.0) = 2.0;
 uniform vec3 water_color = vec3(0.0, 0.3, 0.7); // Teinte bleue pour l'eau
 
-// --- Fonctions utilitaires (à garder telles quelles) ---
+// --- Fonctions utilitaires  ---
 vec2 random(vec2 uv) {
     uv = vec2(dot(uv, vec2(127.1, 311.7)), dot(uv, vec2(269.5, 183.3)));
     return -1.0 + 2.0 * fract(sin(uv) * 43758.5453123);
@@ -89,209 +90,192 @@ float vignette(vec2 uv) {
     return pow(vig, vignette_intensity * vignette_opacity);
 }
 
+
+
+
+vec4 screen(vec2 uv) {
+    return texture(screen_texture, uv);
+}
+
+
+
+// -------------- Effets -------------
+
+vec4 pixelate(vec2 uv) {
+	if (pixelate_enabled) {
+        float aspect_ratio = resolution.x / resolution.y;
+        vec2 adjusted_pixel_size = (pixel_size * (5. * sin(30.*TIME))) * vec2(aspect_ratio, 1.0);
+        vec2 pixel_uv = floor(uv * adjusted_pixel_size) / adjusted_pixel_size;
+        pixel_uv += vec2(0.5 / adjusted_pixel_size.x, 0.5 / adjusted_pixel_size.y);
+        uv = pixel_uv;
+    }
+    return screen(uv);
+}
+
 // --- Effet Eau ---
-vec2 water_distort(vec2 uv) {
-    if (!water_enabled) return uv;
-    vec4 noise_color = texture(noise_texture, uv * 0.5 + TIME * water_speed);
-    return uv + (noise_color.rg - 0.5) * water_distortion;
+vec4 water_distort(vec2 uv) {
+    if (water_enabled){
+        vec4 noise_color = texture(noise_texture, uv * 0.5 + TIME * water_speed);
+        uv += (noise_color.rg - 0.5) * water_distortion;
+    }
+    return pixelate(uv);
+}
+
+// --- Effet Screen shake ---
+vec4 screen_shake(vec2 uv) {
+    if (screen_shake_enabled){
+        vec4 noise_color = water_distort(uv * 0.5 + TIME * water_speed);
+        uv += (noise_color.rg - 0.5) * water_distortion;
+    }
+    return water_distort(uv);
+}
+
+vec4 radial_chromatic_aberration(vec2 uv) {
+    vec4 color = screen_shake(uv);
+    if (radial_aberration_enabled){
+        vec2 center_uv = uv - vec2(0.5);
+        float dist = length(center_uv) * 2.0;
+
+        float fade_factor = 1.0 - dist;
+        fade_factor = smoothstep(radial_aberration_fade, 0.0, fade_factor);
+
+        vec2 offset_r = center_uv * radial_aberration_strength * dist * fade_factor * 0.5;
+        vec2 offset_g = center_uv * radial_aberration_strength * dist * fade_factor * 0.3;
+        vec2 offset_b = center_uv * radial_aberration_strength * dist * fade_factor * 0.0;
+
+        color.r = screen_shake(uv + offset_r).r;
+        color.g = screen_shake(uv + offset_g).g;
+        color.b = screen_shake(uv + offset_b).b;
+
+        float blur_amount = radial_aberration_blur * dist;
+        color.r = mix(color.r, screen_shake(uv - offset_r * 0.5).r, blur_amount);
+        color.g = mix(color.g, screen_shake(uv - offset_g * 0.5).g, blur_amount);
+        color.b = mix(color.b, screen_shake(uv - offset_b * 0.5).b, blur_amount);
+    }
+
+    return color;
+}
+
+vec4 edge(vec2 uv) {
+    vec4 color = radial_chromatic_aberration(uv);
+    if (edge_enabled) {
+        float dx = 1.0 / resolution.x;
+        float dy = 1.0 / resolution.y;
+
+        vec3 center = radial_chromatic_aberration(uv).rgb;
+        vec3 right = radial_chromatic_aberration(uv + vec2(dx, 0.0)).rgb;
+        vec3 left = radial_chromatic_aberration(uv + vec2(-dx, 0.0)).rgb;
+        vec3 top = radial_chromatic_aberration(uv + vec2(0.0, dy)).rgb;
+        vec3 bottom = radial_chromatic_aberration(uv + vec2(0.0, -dy)).rgb;
+
+        float edge_x = length(right - left);
+        float edge_y = length(top - bottom);
+        float edge = max(edge_x, edge_y);
+
+        float edge_factor = smoothstep(edge_threshold, edge_threshold + 0.1, edge);
+        color.rgb = mix(center, edge_color, edge_factor * edge_intensity);
+    }
+    return color;
 }
 
 // --- Effet VHS ---
-vec4 apply_vhs(vec4 color, vec2 uv) {
+vec4 vhs(vec2 uv) {
+    vec4 color = edge(uv);
+    if (vhs_enabled) {
+        // Scanlines
+        float scan = smoothstep(scanlines_width, scanlines_width + 0.5, abs(sin(uv.y * (resolution.y * 3.14159265))));
+        color.rgb = mix(color.rgb, color.rgb * scan, scanlines_opacity);
 
-    // Scanlines
-    float scan = smoothstep(scanlines_width, scanlines_width + 0.5, abs(sin(uv.y * (resolution.y * 3.14159265))));
-    color.rgb = mix(color.rgb, color.rgb * scan, scanlines_opacity);
+        // Grille CRT
+        float gr = smoothstep(0.85, 0.95, abs(sin(uv.x * (resolution.x * 3.14159265))));
+        float gg = smoothstep(0.85, 0.95, abs(sin(1.05 + uv.x * (resolution.x * 3.14159265))));
+        float gb = smoothstep(0.85, 0.95, abs(sin(2.1 + uv.x * (resolution.x * 3.14159265))));
+        color.r = mix(color.r, color.r * gr, grille_opacity);
+        color.g = mix(color.g, color.g * gg, grille_opacity);
+        color.b = mix(color.b, color.b * gb, grille_opacity);
 
-    // Grille CRT
-    float gr = smoothstep(0.85, 0.95, abs(sin(uv.x * (resolution.x * 3.14159265))));
-    float gg = smoothstep(0.85, 0.95, abs(sin(1.05 + uv.x * (resolution.x * 3.14159265))));
-    float gb = smoothstep(0.85, 0.95, abs(sin(2.1 + uv.x * (resolution.x * 3.14159265))));
-    color.r = mix(color.r, color.r * gr, grille_opacity);
-    color.g = mix(color.g, color.g * gg, grille_opacity);
-    color.b = mix(color.b, color.b * gb, grille_opacity);
+        // Roll effect
+        float roll_line = smoothstep(0.3, 0.9, sin(uv.y * roll_size - (TIME * roll_speed)));
+        roll_line *= roll_line * smoothstep(0.3, 0.9, sin(uv.y * roll_size * 1.5 - (TIME * roll_speed * 1.5)));
+        vec2 roll_uv = vec2(roll_line * distort_intensity, 0.0);
 
-    // Roll effect
-    float roll_line = smoothstep(0.3, 0.9, sin(uv.y * roll_size - (TIME * roll_speed)));
-    roll_line *= roll_line * smoothstep(0.3, 0.9, sin(uv.y * roll_size * 1.5 - (TIME * roll_speed * 1.5)));
-    vec2 roll_uv = vec2(roll_line * distort_intensity, 0.0);
+        // Aberration chromatique
+        color.r = edge(uv + roll_uv * 0.8 + vec2(aberration, 0.0) * 0.1).r;
+        color.g = edge(uv + roll_uv * 1.2 - vec2(aberration, 0.0) * 0.1).g;
+        color.b = edge(uv + roll_uv).b;
 
-    // Aberration chromatique
-    color.r = texture(screen_texture, uv + roll_uv * 0.8 + vec2(aberration, 0.0) * 0.1).r;
-    color.g = texture(screen_texture, uv + roll_uv * 1.2 - vec2(aberration, 0.0) * 0.1).g;
-    color.b = texture(screen_texture, uv + roll_uv).b;
+        // Noise
+        float n = noise(uv * vec2(2.0, 200.0) + vec2(10.0, TIME * noise_speed));
+        float nl = n * roll_line * clamp(random((ceil(uv * resolution) / resolution)).x + 0.8, 0.0, 1.0);
+        color.rgb = mix(color.rgb, color.rgb + nl, noise_opacity);
 
-    // Noise
-    float n = noise(uv * vec2(2.0, 200.0) + vec2(10.0, TIME * noise_speed));
-    float nl = n * roll_line * clamp(random((ceil(uv * resolution) / resolution)).x + 0.8, 0.0, 1.0);
-    color.rgb = mix(color.rgb, color.rgb + nl, noise_opacity);
-
-    // Vignette
-    color.rgb *= border(uv);
-    color.rgb *= vignette(uv);
-
+        // Vignette
+        color.rgb *= border(uv);
+        color.rgb *= vignette(uv);
+    }
     return color;
 }
 
 // --- Effet Opacité ---
-vec4 apply_opacity(vec4 color) {
-	color.rgb = mix(color.rgb, vec3(0.,0.,0.),global_opacity);
-    return color;
-}
-// ---- picelate
-
-vec2 pixelate(vec2 uv) {
-    // Calcule le ratio d'aspect
-    float aspect_ratio = resolution.x / resolution.y;
-
-    // Ajuste la taille des pixels en fonction du ratio
-    vec2 adjusted_pixel_size = (pixel_size * (5. * sin(30.*TIME))) * vec2(aspect_ratio, 1.0);
-
-    // Calcule les coordonnées pixelisées
-    vec2 pixel_uv = floor(uv * adjusted_pixel_size) / adjusted_pixel_size;
-
-    // Décalage pour centrer les pixels
-    pixel_uv += vec2(0.5 / adjusted_pixel_size.x, 0.5 / adjusted_pixel_size.y);
-
-    // Applique la pixelisation
-    return pixel_uv;
-}
-
-vec4 apply_edge(vec4 color, vec2 uv) {
-    if (!edge_enabled) return color;
-
-    float dx = 1.0 / resolution.x;
-    float dy = 1.0 / resolution.y;
-
-    vec3 center = texture(screen_texture, uv).rgb;
-    vec3 right = texture(screen_texture, uv + vec2(dx, 0.0)).rgb;
-    vec3 left = texture(screen_texture, uv + vec2(-dx, 0.0)).rgb;
-    vec3 top = texture(screen_texture, uv + vec2(0.0, dy)).rgb;
-    vec3 bottom = texture(screen_texture, uv + vec2(0.0, -dy)).rgb;
-
-    // Calcule la différence de luminosité
-    float edge_x = length(right - left);
-    float edge_y = length(top - bottom);
-    float edge = max(edge_x, edge_y);
-
-    // Applique le seuil et l'intensité
-    float edge_factor = smoothstep(edge_threshold, edge_threshold + 0.1, edge);
-    vec3 edge_final = mix(center, edge_color, edge_factor * edge_intensity);
-
-    return vec4(edge_final, color.a);
-}
-
-
-vec4 apply_negative(vec4 color) {
-    return vec4(1.0 - color.r, 1.0 - color.g, 1.0 - color.b, color.a);
-}
-
-vec4 apply_radial_chromatic_aberration(vec4 color, vec2 uv) {
-    if (!radial_aberration_enabled) return color;
-
-    // Calcule la distance depuis le centre
-    vec2 center_uv = uv - vec2(0.5);
-    float dist = length(center_uv) * 2.0;  // Normalise entre 0 et 1
-
-    // Fade-off : Réduit l'effet vers les bords
-    float fade_factor = 1.0 - dist;
-    fade_factor = smoothstep(radial_aberration_fade, 0.0, fade_factor);
-
-    // Décale les canaux RGB avec un effet radial
-    vec2 offset_r = center_uv * radial_aberration_strength * dist * fade_factor * 0.5;
-    vec2 offset_g = center_uv * radial_aberration_strength * dist * fade_factor * 0.3;
-    vec2 offset_b = center_uv * radial_aberration_strength * dist * fade_factor * 0.0;
-
-    // Applique un léger blur pour adoucir les transitions
-    color.r = texture(screen_texture, uv + offset_r).r;
-    color.g = texture(screen_texture, uv + offset_g).g;
-    color.b = texture(screen_texture, uv + offset_b).b;
-
-    // Mélange avec la couleur originale pour adoucir l'effet
-    float blur_amount = radial_aberration_blur * dist;
-    color.r = mix(color.r, texture(screen_texture, uv - offset_r * 0.5).r, blur_amount);
-    color.g = mix(color.g, texture(screen_texture, uv - offset_g * 0.5).g, blur_amount);
-    color.b = mix(color.b, texture(screen_texture, uv - offset_b * 0.5).b, blur_amount);
-
+vec4 opacity(vec2 uv) {
+    vec4 color = vhs(uv);
+    color.rgb = mix(color.rgb, vec3(0.,0.,0.), global_opacity);
     return color;
 }
 
-// Fonction pour convertir RGB en HSV et modifier la teinte
-vec3 hue_shift(vec3 color, float hue) {
-    const vec3 kRGBToYPrime = vec3(0.299, 0.587, 0.114);
-    const vec3 kRGBToI = vec3(0.595716, -0.274453, -0.321263);
-    const vec3 kRGBToQ = vec3(0.211456, -0.522591, 0.311135);
 
-    // Convertit RGB en YIQ (proche de HSV)
-    float YPrime = dot(color, kRGBToYPrime);
-    float I = dot(color, kRGBToI);
-    float Q = dot(color, kRGBToQ);
+vec4 negative(vec2 uv) {
+    vec4 color = opacity(uv);
+    if (negative_enabled)
+    {
+        color.rgb = vec3(1.0 - color.r, 1.0 - color.g, 1.0 - color.b);
+    }
+    return color;
+}
 
-    // Applique la rotation de teinte
-    float cos_hue = cos(hue);
-    float sin_hue = sin(hue);
 
-    // Matrice de rotation de teinte
-    vec3 yiq = vec3(YPrime, I, Q);
-    vec3 rotated_IQ = vec3(
-        I * cos_hue - Q * sin_hue,
-        I * sin_hue + Q * cos_hue,
-		0.);
+vec4 hue_shift(vec2 uv) {
+    vec4 color = negative(uv);
 
-    // Convertit YIQ en RGB
-    vec3 rgb = vec3(
-        YPrime + rotated_IQ.x * 0.9563 + rotated_IQ.y * 0.6210,
-        YPrime - rotated_IQ.x * 0.2721 - rotated_IQ.y * 0.6474,
-        YPrime - rotated_IQ.x * 1.1070 + rotated_IQ.y * 1.7046
-    );
+    if(hue_shift_enabled) {
+        float hue = TIME * hue_shift_speed;
 
-    return rgb;
+        const vec3 kRGBToYPrime = vec3(0.299, 0.587, 0.114);
+        const vec3 kRGBToI = vec3(0.595716, -0.274453, -0.321263);
+        const vec3 kRGBToQ = vec3(0.211456, -0.522591, 0.311135);
+
+        float YPrime = dot(color.rgb, kRGBToYPrime);
+        float I = dot(color.rgb, kRGBToI);
+        float Q = dot(color.rgb, kRGBToQ);
+
+        float cos_hue = cos(hue);
+        float sin_hue = sin(hue);
+
+        vec3 yiq = vec3(YPrime, I, Q);
+        vec3 rotated_IQ = vec3(
+            I * cos_hue - Q * sin_hue,
+            I * sin_hue + Q * cos_hue,
+            0.);
+
+        color.rgb = vec3(
+            YPrime + rotated_IQ.x * 0.9563 + rotated_IQ.y * 0.6210,
+            YPrime - rotated_IQ.x * 0.2721 - rotated_IQ.y * 0.6474,
+            YPrime - rotated_IQ.x * 1.1070 + rotated_IQ.y * 1.7046
+        );
+    }
+
+    return color;
 }
 
 
 // --- Fragment Shader ---
 void fragment() {
     vec2 uv = UV;
-
-	if (pixelate_enabled) {
-		uv = pixelate(uv);
-	}
 	
-    // 1. Applique la distorsion d'eau en premier
-    if (water_enabled) {
-        uv = water_distort(uv);
-    }
+    // if (water_enabled) {
+    //     color.rgb = mix(color.rgb, water_color, 0.3); // 30% de teinte bleue
+    //     color.rgb = mix(color.rgb, vec3(dot(color.rgb, vec3(0.3))), 0.2);
+    // }
 
-    // 2. Récupère la couleur de base (avec distorsion si eau activée)
-    vec4 color = texture(screen_texture, uv);
-	
-    if (radial_aberration_enabled) color = apply_radial_chromatic_aberration(color, uv);
-
-    // 6. Applique le négatif (si activé)
-	if (negative_enabled)
-    	color = apply_negative(color);
-
-    // 7. Applique la détection de contours (si activé)
-    if (edge_enabled) color = apply_edge(color, uv);
-
-    // 3. Applique l'effet VHS
-	if (vhs_enabled) {
-		color = apply_vhs(color, uv);}
-
-    // 4. Applique l'effet Eau (teinte bleue)
-    if (water_enabled) {
-        color.rgb = mix(color.rgb, water_color, 0.3); // 30% de teinte bleue
-        color.rgb = mix(color.rgb, vec3(dot(color.rgb, vec3(0.3))), 0.2);
-    }
-	
-	if (hue_shift_enabled) {
-        // Calcule la rotation de teinte en fonction du temps
-        float hue = TIME * hue_shift_speed;
-        color.rgb = hue_shift(color.rgb, hue);
-	}
-
-    // 5. Applique l'opacité globale
-    color = apply_opacity(color);
-	
-    COLOR = color;
+    COLOR = hue_shift(uv);
 }
