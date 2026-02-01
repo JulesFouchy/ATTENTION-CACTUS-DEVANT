@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dyh3djt286ppl" path="res://IconesPNG/235-2354425_illustration-hd-png-download-removebg-preview.png" id="4_wcsxc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ftbco"]
+size = Vector3(0.560791, 0.10803223, 1)
 
 [node name="Node3D" type="Node3D" unique_id=1633394539]
 script = ExtResource("1_6ns3s")
@@ -17,7 +18,7 @@ script = ExtResource("2_wcsxc")
 iconemasque_scene = ExtResource("3_cloln")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1209568522]
-transform = Transform3D(5.235, 0, 0, 0, 5.235, 0, 0, 0, 5.235, 0, 0, 0)
+transform = Transform3D(1.0077726, 0, 7.916242e-09, 0, 5.235, 0, -1.4901161e-08, 0, 0.03725552, 0.014961285, -0.016295463, 4.656613e-10)
 shape = SubResource("BoxShape3D_ftbco")
 debug_fill = false
 
