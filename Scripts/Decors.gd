@@ -2,10 +2,11 @@ extends Movable
 class_name Decors
 
 @export var dist: float = 0.
+@export var state: MaskState.Effect
+@export var ratio: float = 0.7
 
-func _on_area_3d_area_entered(area: Area3D) -> void:
-	if area.is_in_group("player"):
-		get_node("/root/Scripts/scene_fader").start_fade()  # Appelle le fondu
+func _apply_mask() -> void:
+	disapear(state,ratio)
 
 func getdist() -> float:
 	return dist

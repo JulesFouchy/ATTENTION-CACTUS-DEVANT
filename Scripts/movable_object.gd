@@ -44,3 +44,10 @@ func _for_each_mesh(callback: Callable):
 		for child2 in child.get_children():
 			if child2 is MeshInstance3D:
 				callback.call(child2)
+				
+
+func disapear (effect, ratio) -> void:
+	if MaskState.is_effect_active(effect) and (randf() < ratio):
+		visible = false
+	else:
+		visible = true

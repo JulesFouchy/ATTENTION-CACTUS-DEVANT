@@ -30,7 +30,7 @@
 [ext_resource type="Script" uid="uid://d27fgfelfybbt" path="res://Scripts/music_player.gd" id="11_2klc5"]
 [ext_resource type="Texture2D" uid="uid://crbeq21u4pf2x" path="res://IconesPNG/bnrgnfgn.png" id="11_ag4x3"]
 [ext_resource type="Texture2D" uid="uid://5glibmikjf6u" path="res://IconesPNG/azdaz.png" id="11_and2w"]
-[ext_resource type="PackedScene" uid="uid://b882p1xy7ex01" path="res://Scenes/lampadaire.tscn" id="11_fuggk"]
+[ext_resource type="PackedScene" uid="uid://b882p1xy7ex01" path="res://Scenes/decors/lampadaire.tscn" id="11_fuggk"]
 [ext_resource type="Texture2D" uid="uid://b7j8mw0ujtwmc" path="res://IconesPNG/btgrtbrgbvrgbfrgb.png" id="12_2veds"]
 [ext_resource type="AudioStream" uid="uid://dumuv0fhx2ml7" path="res://AUDIO/ambiancebackground.mp3" id="12_crh0w"]
 [ext_resource type="Texture2D" uid="uid://jvhtbnvsdhlh" path="res://IconesPNG/Weirdcore-Eyes-PNG-Pic.png" id="12_hcs0j"]

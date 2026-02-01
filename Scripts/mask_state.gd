@@ -2,6 +2,14 @@ extends Node
 
 enum Effect {
 	SpheresDisappear,
+	LampadaireDisappear,
+	BuildingDisappear,
+	CottageDisappear,
+	Cottage2Disappear,
+	HouseDisappear,
+	ArbusteDisappear,
+	FireHydrantDisappear,
+	DogidogDisappear,
 	CubesArePink,
 	Dissolve,
 	Water,
