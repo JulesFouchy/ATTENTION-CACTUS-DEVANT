@@ -3,7 +3,7 @@ class_name Movable
 
 @export var spawn_probability: float = .1
 @export var speed: float = .2
-const DISSOLVE_OBSTACLES = preload("uid://c47tijdeiuast")
+@export var material : Material = preload("uid://fleyil8gndpe")
 
 func _ready() -> void:
 	State.MaskChanged.connect(_on_mask_changed)
@@ -26,13 +26,13 @@ func destroy():
 	State.destroyed_movable.emit()
 	queue_free()
 
-func apply_dissolve(mesh: MeshInstance3D)->void:
-	mesh.material_override = DISSOLVE_OBSTACLES
+func apply_dissolve(mesh: MeshInstance3D) -> void:
+	mesh.material_override = material
 func remove_dissolve(mesh: MeshInstance3D)->void:
 	mesh.material_override = null
 	
 func _apply_mask2() -> void:
-	if  MaskState.is_effect_active(MaskState.Effect.Dissolve) and (randf() < 0.5):
+	if (randf() < 0.5):
 		_for_each_mesh(apply_dissolve)
 	else:
 		_for_each_mesh(remove_dissolve)
@@ -44,7 +44,10 @@ func _for_each_mesh(callback: Callable):
 		for child2 in child.get_children():
 			if child2 is MeshInstance3D:
 				callback.call(child2)
-				
+			for child3 in child2.get_children():
+				if child3 is MeshInstance3D:
+					callback.call(child3)
+								
 
 func disapear (effect, ratio) -> void:
 	if MaskState.is_effect_active(effect) and (randf() < ratio):

@@ -1,6 +1,6 @@
-[gd_resource type="ShaderMaterial" format=3 uid="uid://c47tijdeiuast"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://fleyil8gndpe"]
 
-[ext_resource type="Shader" uid="uid://brjguxyfobkne" path="res://Shaders/dissolve.gdshader" id="1_84ggx"]
+[ext_resource type="Shader" uid="uid://brjguxyfobkne" path="res://Shaders/dissolve.gdshader" id="1_23job"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_kp8mi"]
 
@@ -12,18 +12,18 @@
 
 [resource]
 render_priority = 0
-shader = ExtResource("1_84ggx")
+shader = ExtResource("1_23job")
 shader_parameter/baseColor = Color(0.3792119, 0.25544468, 0.20375466, 1)
 shader_parameter/normalTexture = SubResource("NoiseTexture2D_lgok3")
 shader_parameter/aoTexture = SubResource("NoiseTexture2D_kp8mi")
 shader_parameter/heightTexture = SubResource("NoiseTexture2D_5ad1v")
 shader_parameter/roughnessTexture = SubResource("NoiseTexture2D_o1iyx")
-shader_parameter/dissolveSlider = 0.894000089965
-shader_parameter/dissolveNoiseScale = 3.805
-shader_parameter/edgeNoiseScale = -5.26000010594848
-shader_parameter/edgesThickness = 0.026000001235
+shader_parameter/dissolveSlider = 1.0040000951899999
+shader_parameter/dissolveNoiseScale = 2.42
+shader_parameter/edgeNoiseScale = -7.73000005073904
+shader_parameter/edgesThickness = 0.0400000019
 shader_parameter/edgeColor = Color(0.36295795, 0.6086801, 0, 1)
 shader_parameter/edgeEmissionSlider = 1.37999996915424
 shader_parameter/enable_dissolve_animation = true
-shader_parameter/animation_speed = 0.40000000596048
-shader_parameter/animation_intensity = 0.9499999787656
+shader_parameter/animation_speed = 0.10000000149012
+shader_parameter/animation_intensity = 0.999999977648
