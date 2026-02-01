@@ -3,7 +3,7 @@ class_name Movable
 
 @export var spawn_probability: float = .1
 @export var speed: float = .2
-const DISSOLVE_MATERIAL = preload("uid://btybj3d42fepu")
+const DISSOLVE_OBSTACLES = preload("uid://c47tijdeiuast")
 
 func _ready() -> void:
 	State.MaskChanged.connect(_on_mask_changed)
@@ -27,7 +27,7 @@ func destroy():
 	queue_free()
 
 func apply_dissolve(mesh: MeshInstance3D)->void:
-	mesh.material_override = DISSOLVE_MATERIAL
+	mesh.material_override = DISSOLVE_OBSTACLES
 func remove_dissolve(mesh: MeshInstance3D)->void:
 	mesh.material_override = null
 	
