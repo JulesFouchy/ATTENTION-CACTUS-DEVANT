@@ -5,6 +5,7 @@ enum Effect {
 	CubesArePink,
 	Water,
 	VHS,
+	Pixelate,
 }
 
 var _slots: Array[int]

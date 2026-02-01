@@ -8,7 +8,11 @@ uniform sampler2D noise_texture : hint_screen_texture, repeat_enable;
 // --- Activation des effets ---
 uniform bool vhs_enabled = false;
 uniform bool water_enabled = false;
+uniform bool pixelate_enabled = false;
 uniform float global_opacity = 1.;
+
+//Paramètres Pixelate
+uniform float pixel_size = 100.0;
 
 // --- Paramètres VHS ---
 uniform float scanlines_opacity : hint_range(0.0, 1.0) = 0.4;
@@ -116,11 +120,33 @@ vec4 apply_opacity(vec4 color) {
 	color.rgb = mix(color.rgb, vec3(0.,0.,0.),global_opacity);
     return color;
 }
+// ---- picelate
+
+vec2 pixelate(vec2 uv) {
+    // Calcule le ratio d'aspect
+    float aspect_ratio = resolution.x / resolution.y;
+
+    // Ajuste la taille des pixels en fonction du ratio
+    vec2 adjusted_pixel_size = (pixel_size * (5. * sin(30.*TIME))) * vec2(aspect_ratio, 1.0);
+
+    // Calcule les coordonnées pixelisées
+    vec2 pixel_uv = floor(uv * adjusted_pixel_size) / adjusted_pixel_size;
+
+    // Décalage pour centrer les pixels
+    pixel_uv += vec2(0.5 / adjusted_pixel_size.x, 0.5 / adjusted_pixel_size.y);
+
+    // Applique la pixelisation
+    return pixel_uv;
+}
 
 // --- Fragment Shader ---
 void fragment() {
     vec2 uv = UV;
 
+	if (pixelate_enabled) {
+		uv = pixelate(uv);
+	}
+	
     // 1. Applique la distorsion d'eau en premier
     if (water_enabled) {
         uv = water_distort(uv);
@@ -144,3 +170,6 @@ void fragment() {
 	
     COLOR = color;
 }
+
+
+
