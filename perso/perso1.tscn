@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://2gim1cvvocre"]
+
+[ext_resource type="PackedScene" uid="uid://cp1p8l20jsqpw" path="res://perso/Walking(1).fbx" id="1_v11hi"]
+[ext_resource type="Script" uid="uid://cmu26loq8g5ce" path="res://Scripts/movable_object.gd" id="2_c0pwh"]
+[ext_resource type="AudioStream" uid="uid://bti6e23801isp" path="res://AUDIO/walk.mp3" id="3_h5l33"]
+
+[node name="Walking(1)" unique_id=47875763 instance=ExtResource("1_v11hi")]
+transform = Transform3D(-4.3711385e-08, 0, -0.9999999, 0, 1, 0, 0.9999999, 0, -4.3711385e-08, 0, 0, 0)
+script = ExtResource("2_c0pwh")
+spawn_probability = 0.01
+speed = 0.5
+
+[node name="Skeleton3D" parent="CMU compliant skeleton" parent_id_path=PackedInt32Array(207409488) index="0" unique_id=482632496]
+bones/0/position = Vector3(-0.008754768, 0.89433545, -5.7796948e-05)
+bones/0/rotation = Quaternion(-0.29891083, 0.09955821, -0.03145711, 0.948552)
+bones/2/rotation = Quaternion(0.3146463, 0.5375453, 0.54744524, 0.5588796)
+bones/3/rotation = Quaternion(0.5596213, -0.029082596, -0.06856885, 0.8253948)
+bones/4/rotation = Quaternion(-0.4840393, -0.022946639, -0.084911264, 0.87061447)
+bones/7/rotation = Quaternion(-0.26283804, 0.028497815, 0.06553783, 0.9621897)
+bones/8/rotation = Quaternion(0.16010669, -0.027527152, -0.035078224, 0.9860921)
+bones/9/rotation = Quaternion(0.010234407, -0.044231378, -0.76572675, 0.6415618)
+bones/10/rotation = Quaternion(0.09405465, -0.03450962, -0.55515224, 0.825693)
+bones/11/rotation = Quaternion(0.20213218, 0.0011493539, -0.0059377607, 0.9793396)
+bones/12/rotation = Quaternion(0.2396807, 0.15914778, 0.011136498, 0.95765406)
+bones/16/rotation = Quaternion(0.17455141, 0.0071428083, -0.051442962, 0.9832774)
+bones/17/rotation = Quaternion(-0.006913016, -0.008193084, 0.010593394, 0.9998865)
+bones/19/rotation = Quaternion(-0.071260825, -0.002213732, 0.7702546, 0.6337388)
+bones/20/rotation = Quaternion(-0.090727255, 0.1899458, 0.49879315, 0.8407703)
+bones/21/rotation = Quaternion(0.03079824, -0.0008690936, 0.0010076979, 0.99952483)
+bones/22/rotation = Quaternion(0.17981946, -0.46552908, -0.19180839, 0.84507823)
+bones/27/rotation = Quaternion(0.51157266, -0.4973493, -0.4395746, 0.54562944)
+bones/28/rotation = Quaternion(0.26932818, 0.07113816, -0.054265782, 0.95888317)
+bones/29/rotation = Quaternion(-0.54505706, -0.05416178, 0.15289693, 0.82255805)
+
+[node name="AnimationPlayer" parent="." index="1" unique_id=936071395]
+autoplay = &"mixamo_com"
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="2" unique_id=770070687]
+stream = ExtResource("3_h5l33")
+pitch_scale = 1.35
+autoplay = true
