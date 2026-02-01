@@ -32,7 +32,7 @@ func remove_dissolve(mesh: MeshInstance3D)->void:
 	mesh.material_override = null
 	
 func _apply_mask2() -> void:
-	if (randf() < 0.5):
+	if MaskState.is_effect_active(MaskState.Effect.Dissolve) and (randf() < 0.5):
 		_for_each_mesh(apply_dissolve)
 	else:
 		_for_each_mesh(remove_dissolve)
