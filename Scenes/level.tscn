@@ -154,6 +154,7 @@ wait_time = 5.0
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=80694050]
 
 [node name="ui_game" parent="CanvasLayer" unique_id=1752764723 instance=ExtResource("5_0f350")]
+mouse_filter = 1
 
 [node name="UiGameOver" parent="CanvasLayer" unique_id=657935277 instance=ExtResource("5_wqkje")]
 unique_name_in_owner = true
@@ -183,10 +184,10 @@ autoplay = true
 panning_strength = 1.47
 parameters/looping = true
 
-[node name="MeshInstance3D" parent="." unique_id=205945086 instance=ExtResource("98_s6d7k")]
+[node name="walkway" parent="." unique_id=205945086 instance=ExtResource("98_s6d7k")]
 transform = Transform3D(145.84798, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.005603552, 0)
 
-[node name="MeshInstance3D2" parent="." unique_id=1744533803 instance=ExtResource("99_1u35f")]
+[node name="ground" parent="." unique_id=1744533803 instance=ExtResource("99_1u35f")]
 transform = Transform3D(176.93294, 0, 0, 0, 1.2131326, 0, 0, 0, 258.12128, 0, -0.119856834, 3.8110678)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
