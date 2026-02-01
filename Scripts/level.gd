@@ -3,6 +3,8 @@ extends Node3D
 @export var obstacle_scenes: Array[PackedScene]
 @export var decors_scenes: Array[PackedScene]
 @export var mask_textures: Array[Texture2D]
+@export var persosajout: Array[PackedScene]
+
 const MORCEAU_DE_MASQUE_3D = preload("uid://bwnft7trmnfmw")
 @onready var ambiencebackgroundmusic: AudioStreamPlayer3D = $ambiencebackgroundmusic
 @onready var walkingsound: AudioStreamPlayer3D = $walkingsound
@@ -12,6 +14,8 @@ const MORCEAU_DE_MASQUE_3D = preload("uid://bwnft7trmnfmw")
 @export var TimeInSeconds: float = 1.
 @export var max_movables: int = 20000
 @export var pick_mask_scene_probability: float = 0.3
+
+var timeurcount: int = 0
 
 var movables_count: int = 0
 
@@ -36,6 +40,9 @@ func _ready() -> void:
 		if decor_to_spawn != null && movables_count < max_movables && randf() < decor_to_spawn.spawn_probability:
 			spawndecor(decor_to_spawn)
 
+	
+		
+	
 func _on_mask_changed() -> void:
 	if MaskState.is_effect_active(MaskState.Effect.SpeedUp):
 		Engine.time_scale = 50
@@ -62,6 +69,16 @@ func spawndecor(decor_to_spawn) -> void:
 
 
 func _on_timer_timeout():
+	timeurcount += 1
+	if (timeurcount%1000==0):
+		var chartospawn = (persosajout.pick_random()).instantiate()
+		var disty = chartospawn.getdist()
+		var randomy = randf_range(disty/2,disty)
+		add_child(chartospawn)
+		chartospawn.set_global_position(Vector3(50, 0.,randomy))
+		
+		print(Vector3(50, 0.,randomy))
+		
 	var scene_to_spawn
 	var decor_to_spawn
 	if randf() <= pick_mask_scene_probability:
