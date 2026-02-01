@@ -96,6 +96,7 @@
 [ext_resource type="Texture2D" uid="uid://b5825jkeebhfk" path="res://IconesPNG/zegezgzeg.png" id="87_5s2nr"]
 [ext_resource type="Texture2D" uid="uid://dhmx81oxnjwrd" path="res://IconesPNG/zegzegezg.png" id="88_8xmy8"]
 [ext_resource type="Texture2D" uid="uid://b7iavkm21f8sq" path="res://IconesPNG/zzzergr.png" id="89_gus1c"]
+[ext_resource type="Script" uid="uid://b8e42y6d2vhvb" path="res://Scenes/ui_game.gd" id="93_1u35f"]
 [ext_resource type="AudioStream" uid="uid://bti6e23801isp" path="res://AUDIO/walk.mp3" id="97_tj58u"]
 [ext_resource type="PackedScene" uid="uid://20eksw01fl1b" path="res://Scenes/tapisdegravat.tscn" id="98_s6d7k"]
 [ext_resource type="PackedScene" uid="uid://cg6e38dk0jrmp" path="res://Scenes/tapisdherbe.tscn" id="99_1u35f"]
@@ -155,6 +156,7 @@ wait_time = 5.0
 
 [node name="ui_game" parent="CanvasLayer" unique_id=1752764723 instance=ExtResource("5_0f350")]
 mouse_filter = 1
+script = ExtResource("93_1u35f")
 
 [node name="UiGameOver" parent="CanvasLayer" unique_id=657935277 instance=ExtResource("5_wqkje")]
 unique_name_in_owner = true
